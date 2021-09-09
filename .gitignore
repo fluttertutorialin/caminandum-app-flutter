@@ -48,3 +48,13 @@ Thumbs.db
 *.mov
 *.wmv
 
+
+
+.dart_tool/version
+.dart_tool/package_config.json
+.dart_tool/package_config_subset
+.packages
+.gitignore
+.gitignore
+.flutter-plugins
+.flutter-plugins-dependencies
