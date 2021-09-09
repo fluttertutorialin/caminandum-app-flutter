@@ -8,7 +8,7 @@ reset=`tput sgr0`
 echo "Deploying to pipeline"
 echo "Current dir: $PWD "
 export BASE_DIR=/home/ubuntu/caminandum_webapp_flutter
-export FLUTTER_PROJECT=$BASE_DIR
+export FLUTTER_PROJECT=$BASE_DIR/caminandum_web
 export FLUTTER_BUILD=$FLUTTER_PROJECT/build/web
 export WEB_DIRECTORY=/var/www/caminandum_webapp_flutter
 export TARGET=ubuntu@51.210.246.200
