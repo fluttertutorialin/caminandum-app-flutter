@@ -12,7 +12,7 @@ export FLUTTER_PROJECT=$BASE_DIR/caminandum_web
 export FLUTTER_BUILD=$FLUTTER_PROJECT/build/web
 export WEB_DIRECTORY=/var/www/caminandum_webapp_flutter
 export TARGET=ubuntu@51.210.246.200
-export GIT_REPO_URL=git@bitbucket.org:caminandum/caminandum-mobile-flutter.git
+export GIT_REPO_URL=git@bitbucket.org:caminandum/caminandum-app-flutter.git
 
 # create directories if not exist
 mkdir -p $BASE_DIR || echo "$BASE_DIR already exists"
