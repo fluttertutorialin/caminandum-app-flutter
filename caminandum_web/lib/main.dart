@@ -1,7 +1,7 @@
 import 'package:caminandum_web/views/StartScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../views/MyHomePage.dart';
+// import '../views/MyHomePage.dart';
 
 void main() {
   runApp(MyApp());
