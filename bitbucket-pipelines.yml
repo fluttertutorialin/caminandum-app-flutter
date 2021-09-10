@@ -1,10 +1,11 @@
 image: atlassian/default-image:latest
 
 pipelines:
-  default:
-    - step:
-        deployment: staging
-        script:
-          - echo "Deploying to Radio Server"
-          - cat ./deploy_web.sh | ssh -tt ubuntu@51.210.246.200
-          - echo "Finished"
+  branches:
+    master:
+      - step:
+          deployment: staging
+          script:
+            - echo "Deploying to API Server 1 on 51.210.246.200"
+            - cat ./deploy_web.sh | ssh -tt ubuntu@51.210.246.200
+            - echo "Finished"
