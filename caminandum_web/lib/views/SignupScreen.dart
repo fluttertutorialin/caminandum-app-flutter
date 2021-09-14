@@ -1,4 +1,5 @@
 import 'package:caminandum_web/controllers/AuthenticationController.dart';
+import 'package:caminandum_web/view/widgets/menuWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,12 +10,46 @@ import 'package:get/get.dart';
 //   _SignupScreenState createState() => _SignupScreenState();
 // }
 
-class SignupScreen extends GetView<AuthenticationController> {
+class SignupScreen extends StatelessWidget {
   // const SignupScreen({Key? key}) : super(key: key);
   final AuthenticationController controller = Get.put(AuthenticationController());
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold( body: Container(
+    return Scaffold(
+      appBar: AppBar(
+        // backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        leading: MenuWidget(),
+        title: Text(
+          'caminandum',
+          // style: TextStyle(color: textColor),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 5, bottom: 5, top: 2),
+            child: Container(
+              height: 70,
+              width: 70,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0XFFBE0C1C),
+                    blurRadius: 5,
+                  ),
+                ],
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/caminandum-logo.png',
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/images/Caminandum-screen.png"),
@@ -28,7 +63,8 @@ class SignupScreen extends GetView<AuthenticationController> {
           child: Form(
             autovalidateMode: AutovalidateMode.onUserInteraction,
             key: controller.signupFormKey,
-            child: Padding(
+            child: Container(
+              width: 390,
               padding: const EdgeInsets.all(30.0),
               child: Column(
                 children: <Widget>[
@@ -42,6 +78,10 @@ class SignupScreen extends GetView<AuthenticationController> {
                     ),
                     ),
                     child: TextFormField(
+                      controller: controller.firstNameController,
+                      onSaved: (value) {
+                        controller.firstName = value!;
+                      },
                       decoration: InputDecoration(
                         labelText: "First Name",
                         prefixIcon: Icon(Icons.person),
@@ -57,6 +97,10 @@ class SignupScreen extends GetView<AuthenticationController> {
                       ),
                     ),
                     child: TextFormField(
+                      controller: controller.lastNameController,
+                      onSaved: (value) {
+                        controller.lastName = value!;
+                      },
                       decoration: InputDecoration(
                         labelText: "Last Name",
                         prefixIcon: Icon(Icons.person),
@@ -72,6 +116,10 @@ class SignupScreen extends GetView<AuthenticationController> {
                       ),
                     ),
                     child: TextFormField(
+                      controller: controller.userNameController,
+                      onSaved: (value) {
+                        controller.userName = value!;
+                      },
                       decoration: InputDecoration(
                         labelText: "Username",
                         prefixIcon: Icon(Icons.person),
@@ -123,7 +171,28 @@ class SignupScreen extends GetView<AuthenticationController> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 50,),
+                  SizedBox(height: 15,),
+                  Container(child: Row(
+                    children: [
+                      Obx(() => Checkbox(
+                          checkColor: Colors.white,
+                          // title: Text("Agreed with terms of use."),
+                          // fillColor:,
+                          value: controller.agreed.value,
+                          onChanged: (bool? value) {
+                            print(controller.agreed.value);
+                            controller.agreed.value = !controller.agreed.value;
+                            // setState(() {
+                            //   isChecked = value!;
+                            // });
+                          },
+                        ),
+                      ),
+                      Container(child: Text("Agreed with terms of use.", style: TextStyle(fontSize: 20.0, color: Colors.black),),)
+                    ],
+                  ),
+                  ),
+                  SizedBox(height: 45,),
                   Container(
                     child: FlatButton(
                       child: Text('Create an Account', style: TextStyle(fontSize: 20.0, color: Colors.white),),
@@ -131,7 +200,7 @@ class SignupScreen extends GetView<AuthenticationController> {
                       onPressed: () {
                         print('hello world from signup');
                         controller.checkSignup();
-                        Get.to(() => SignupScreen());
+                        // Get.to(() => SignupScreen());
                       },
                       color: Color(0xFFF55D32),
                       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),

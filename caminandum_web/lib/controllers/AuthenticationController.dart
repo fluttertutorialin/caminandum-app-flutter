@@ -4,15 +4,23 @@ import 'package:get/get.dart';
 class AuthenticationController extends GetxController {
   final GlobalKey<FormState>signupFormKey = GlobalKey<FormState>();
 
-  late TextEditingController emailController, passwordController;
+  late TextEditingController emailController, passwordController, firstNameController, lastNameController, userNameController;
   var email = "";
   var password = "";
+  var firstName = "";
+  var lastName = "";
+  var userName = "";
+  var agreed = true.obs;
 
   @override
   void onInit() {
     super.onInit();
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    firstNameController = TextEditingController();
+    lastNameController = TextEditingController();
+    userNameController = TextEditingController();
+    // agreedConditionController = TextEditingController();
   }
 
   @override
@@ -22,9 +30,12 @@ class AuthenticationController extends GetxController {
 
   @override
   void onClose() {
-
     emailController.dispose();
     passwordController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    userNameController.dispose();
+    // agreedConditionController.dispose();
   }
 
   String? validateEmail(String value) {
@@ -44,7 +55,9 @@ class AuthenticationController extends GetxController {
   }
 
   void checkSignup() {
-    final isValid= signupFormKey.currentState!.validate();
+    var status = {"username": userNameController.text, "firstName": firstNameController.text, "lastname":lastNameController.text, "email": emailController.text, "password": passwordController.text};
+    print(status);
+    final isValid = signupFormKey.currentState!.validate();
 
     if(!isValid){
       return;

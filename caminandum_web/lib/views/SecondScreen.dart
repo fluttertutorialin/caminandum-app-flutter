@@ -1,13 +1,46 @@
 import 'package:caminandum_web/views/ThirdScreen.dart';
+import 'package:caminandum_web/view/widgets/menuWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SecondScreen extends StatelessWidget {
-  const SecondScreen({Key? key}) : super(key: key);
+  // const SecondScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        // backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        leading: MenuWidget(),
+        title: Text(
+          'caminandum',
+          // style: TextStyle(color: textColor),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 5, bottom: 5, top: 2),
+            child: Container(
+              height: 70,
+              width: 70,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0XFFBE0C1C),
+                    blurRadius: 5,
+                  ),
+                ],
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/caminandum-logo.png',
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,

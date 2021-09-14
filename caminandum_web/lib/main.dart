@@ -48,7 +48,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  MenuItem currentItem = MenuItems.PlayerScreen;
+  MenuItem currentItem = MenuItems.Pedometer;
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return StartScreen();
 
       default:
-        return PlayerScreen();
+        return PedoMeterScreen();
     }
   }
 }

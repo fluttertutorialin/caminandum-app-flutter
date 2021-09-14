@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:caminandum_web/view/widgets/menuWidget.dart';
 import 'LoginSignupOptionsScreen.dart';
 
 class  ThirdScreen extends StatelessWidget {
@@ -9,6 +9,38 @@ class  ThirdScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        // backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        leading: MenuWidget(),
+        title: Text(
+          'caminandum',
+          // style: TextStyle(color: textColor),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 5, bottom: 5, top: 2),
+            child: Container(
+              height: 70,
+              width: 70,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0XFFBE0C1C),
+                    blurRadius: 5,
+                  ),
+                ],
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/caminandum-logo.png',
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -31,7 +63,7 @@ class  ThirdScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      'Welcome to Caminandum',
+                      'Welcome to caminandum',
                       textAlign: TextAlign.center,
                       // overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
