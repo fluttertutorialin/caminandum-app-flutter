@@ -60,14 +60,14 @@ class StartScreen extends StatelessWidget {
                 ),
                 Container(
                   child: FlatButton(
-                    child: Text('Continue', style: TextStyle(fontSize: 20.0),),
+                    child: Text('Continue', style: TextStyle(fontSize: 20.0, color: Colors.white),),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     onPressed: () {
                       print('hello world');
-                      Get.to(SecondScreen());
+                      Get.to(() => SecondScreen());
                     },
-                    color: Colors.orange,
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 150),
+                    color: Color(0xFFF55D32),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
                   ),
                   ),
                 Expanded(flex:1,child: SizedBox())

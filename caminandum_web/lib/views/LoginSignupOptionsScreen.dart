@@ -1,10 +1,9 @@
+import 'package:caminandum_web/views/SignupScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'LoginSignupOptionsScreen.dart';
-
-class  ThirdScreen extends StatelessWidget {
-  const ThirdScreen({Key? key}) : super(key: key);
+class  LoginSignupOptionsScreen extends StatelessWidget {
+  const LoginSignupOptionsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,39 +22,39 @@ class  ThirdScreen extends StatelessWidget {
             mainAxisAlignment : MainAxisAlignment.start,
             children: <Widget>[
               Expanded(
-                flex: 4,
+                flex: 3,
                 child: SizedBox(),
               ),
               Expanded(
-                  flex:3,
+                  flex:2,
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      'Welcome to Caminandum',
+                      'Caminandum',
                       textAlign: TextAlign.center,
                       // overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 40,
+                          fontSize: 38,
                           fontFamily: "MontserratReg",
                           letterSpacing: -2),
                     ),
                   )),
-              Row(children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(horizontal: 25),
-                    child: Text('We are a market place dedicated to'
-                        ' connecting people who want to do'
-                        ' outdoor sports through an app'
-                        ' that also offers services for the purchase'
-                        ' of activities ,both sports and adventure',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle( fontFamily: "MontserratReg", fontSize: 16, fontWeight: FontWeight.bold ),
-                    )
-                )
-              ],
-              ),
+              // Row(children: <Widget>[
+              //   Container(
+              //       width: MediaQuery.of(context).size.width,
+              //       padding: EdgeInsets.symmetric(horizontal: 25),
+              //       child: Text('We are a market place dedicated to'
+              //           ' connecting people who want to do'
+              //           ' outdoor sports through an app'
+              //           ' that also offers services for the purchase'
+              //           ' of activities ,both sports and adventure',
+              //         textAlign: TextAlign.center,
+              //         style: const TextStyle( fontFamily: "MontserratReg", fontSize: 16, fontWeight: FontWeight.bold ),
+              //       )
+              //   )
+              // ],
+              // ),
               Expanded(
                 flex:6,
                 child:Row(
@@ -71,19 +70,31 @@ class  ThirdScreen extends StatelessWidget {
                           // decoration: BoxDecoration(
                           //   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           // ),
-                          child:Image.asset("assets/images/Rectangle 83.png",),
+                          child:Image.asset("assets/images/photo-2.png", height: 305, width: 275, fit: BoxFit.fill),
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
+              Container(
+                child: FlatButton(
+                  child: Text('Create an Account', style: TextStyle(fontSize: 20.0, color: Colors.white),),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                  onPressed: () {
+                    print('hello world');
+                    Get.to(() => SignupScreen());
+                  },
+                  color: Color(0xFFF55D32),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+                ),
+              ),
               Expanded(
                   flex:1,
                   child: Container(
-                    // margin: EdgeInsets.all(20),
+                    margin: EdgeInsets.all(10),
                     child: Text(
-                      "Connecting people for outdoor Sports",
+                      "OR",
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontFamily: "Mo-re-B",
@@ -95,11 +106,11 @@ class  ThirdScreen extends StatelessWidget {
               ),
               Container(
                 child: FlatButton(
-                  child: Text('Continue', style: TextStyle(fontSize: 20.0, color: Colors.white),),
+                  child: Text('Login', style: TextStyle(fontSize: 20.0, color: Colors.white),),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                   onPressed: () {
                     print('hello world');
-                    Get.to(() => LoginSignupOptionsScreen());
+                    // Get.to(() => ThirdScreen());
                   },
                   color: Color(0xFFF55D32),
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
