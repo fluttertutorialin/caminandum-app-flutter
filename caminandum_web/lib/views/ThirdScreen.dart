@@ -71,7 +71,7 @@ class  ThirdScreen extends StatelessWidget {
                           // decoration: BoxDecoration(
                           //   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           // ),
-                          child:Image.asset("assets/images/Rectangle 83.png",),
+                          child:Image.asset("assets/images/Rectangle83.png"),
                         ),
                       ),
                     ),

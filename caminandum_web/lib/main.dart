@@ -1,9 +1,18 @@
 import 'package:caminandum_web/views/StartScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
-// import '../views/MyHomePage.dart';
 
-void main() {
+import '/bindings/radioBinind.dart';
+import '/constants/menuItems.dart';
+import '/model/menuItem.dart';
+import '/view/pages/menuScreen.dart';
+import '/view/pages/pedoMeterScreen.dart';
+import '/view/pages/playerScreen.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  RadioBinding().dependencies();
   runApp(MyApp());
 }
 
@@ -12,7 +21,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'caminandum',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -25,8 +35,57 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      // home: MyHomePage(title: 'Flutter Demo Home Page'),
-      home: StartScreen(),
+      home: HomeScreen(),
     );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  MenuItem currentItem = MenuItems.PlayerScreen;
+
+  @override
+  Widget build(BuildContext context) {
+    return ZoomDrawer(
+      style: DrawerStyle.Style1,
+      angle: -10,
+      borderRadius: 40,
+      mainScreen: getScreen(),
+      slideWidth: MediaQuery.of(context).size.width * 0.80,
+      showShadow: true,
+      backgroundColor: Colors.orangeAccent,
+      menuScreen: Builder(
+        builder: (context) => MenuScreen(
+          currentItem: currentItem,
+          onSelectedItem: (item) {
+            print(item);
+            setState(() => currentItem = item);
+            ZoomDrawer.of(context)!.close();
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget getScreen() {
+    switch (currentItem) {
+      case MenuItems.PlayerScreen:
+        return PlayerScreen();
+
+      case MenuItems.Pedometer:
+        return PedoMeterScreen();
+
+      case MenuItems.caminandum:
+        return StartScreen();
+
+      default:
+        return PlayerScreen();
+    }
   }
 }

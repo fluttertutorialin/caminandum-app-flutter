@@ -64,7 +64,7 @@ class StartScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     onPressed: () {
                       print('hello world');
-                      Get.to(() => SecondScreen());
+                      Get.to(SecondScreen());
                     },
                     color: Color(0xFFF55D32),
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),

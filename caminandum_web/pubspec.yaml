@@ -22,6 +22,21 @@ environment:
 
 dependencies:
   get: ^4.3.8
+  intl: ^0.17.0
+  janus_client: ^2.1.1-beta
+  flutter_webrtc: ^0.6.5
+  http: ^0.13.3
+  flutter_client_sse: ^0.1.0
+  carousel_slider: ^4.0.0
+  just_audio: ^0.9.10
+  sleek_circular_slider: ^2.0.1
+  font_awesome_flutter: ^9.1.0
+  syncfusion_flutter_gauges: ^19.2.60
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  flutter_native_splash: ^1.2.1
+  flutter_zoom_drawer: ^2.0.0
+  perfect_volume_control: ^1.0.4
   flutter:
     sdk: flutter
 
