@@ -1,3 +1,4 @@
+import 'package:caminandum_web/services/AuthenticationService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,16 @@ class AuthenticationController extends GetxController {
   var lastName = "";
   var userName = "";
   var agreed = true.obs;
+
+  var signupRes;
+
+  void signupNewUser() async{
+    try {
+      final res = await AuthenticationService.signupNewUser();
+    } catch (error) {
+      print(error);
+    }
+  }
 
   @override
   void onInit() {
@@ -62,6 +73,8 @@ class AuthenticationController extends GetxController {
     if(!isValid){
       return;
     }
+    print("method Called");
+    signupNewUser();
     signupFormKey.currentState!.save();
   }
 }

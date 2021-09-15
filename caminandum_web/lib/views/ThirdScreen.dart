@@ -1,3 +1,4 @@
+import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:caminandum_web/view/widgets/menuWidget.dart';
@@ -9,38 +10,7 @@ class  ThirdScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        leading: MenuWidget(),
-        title: Text(
-          'caminandum',
-          // style: TextStyle(color: textColor),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 5, bottom: 5, top: 2),
-            child: Container(
-              height: 70,
-              width: 70,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0XFFBE0C1C),
-                    blurRadius: 5,
-                  ),
-                ],
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(
-                    'assets/images/caminandum-logo.png',
-                  ),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppbarWidget(),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -55,7 +25,7 @@ class  ThirdScreen extends StatelessWidget {
             mainAxisAlignment : MainAxisAlignment.start,
             children: <Widget>[
               Expanded(
-                flex: 4,
+                flex: 2,
                 child: SizedBox(),
               ),
               Expanded(

@@ -1,5 +1,6 @@
 import 'package:caminandum_web/controllers/AuthenticationController.dart';
 import 'package:caminandum_web/view/widgets/menuWidget.dart';
+import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,38 +18,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        leading: MenuWidget(),
-        title: Text(
-          'caminandum',
-          // style: TextStyle(color: textColor),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 5, bottom: 5, top: 2),
-            child: Container(
-              height: 70,
-              width: 70,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0XFFBE0C1C),
-                    blurRadius: 5,
-                  ),
-                ],
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(
-                    'assets/images/caminandum-logo.png',
-                  ),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppbarWidget(),
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
@@ -57,18 +27,18 @@ class SignupScreen extends StatelessWidget {
         ),
         ),
         // margin: EdgeInsets.all(20),
-        width: context.width,
-        height: context.height,
+        // width: context.width,
+        // height: context.height,
         child: SingleChildScrollView(
           child: Form(
             autovalidateMode: AutovalidateMode.onUserInteraction,
             key: controller.signupFormKey,
             child: Container(
-              width: 390,
+              width: 400,
               padding: const EdgeInsets.all(30.0),
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 200,),
+                  SizedBox(height: 25,),
                   Text("Create an Account", style: TextStyle(fontSize: 30,letterSpacing: -1, fontWeight: FontWeight.bold, fontFamily: "Mo-re-B"),),
                   Container(
                     decoration: BoxDecoration(
@@ -88,7 +58,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                       ),
                     ),
-                  SizedBox(height: 15,),
+                  SizedBox(height: 10,),
                   Container(
                     decoration: BoxDecoration(
                       // borderRadius: BorderRadius.circular(10.0),
@@ -107,7 +77,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(height: 10,),
                   Container(
                     decoration: BoxDecoration(
                       // borderRadius: BorderRadius.circular(10.0),
@@ -126,7 +96,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(height: 10,),
                   Container(
                     decoration: BoxDecoration(
                       // borderRadius: BorderRadius.circular(10.0),
@@ -149,7 +119,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(height: 10,),
                   Container(
                     decoration: BoxDecoration(
                       // borderRadius: BorderRadius.circular(10.0),
@@ -171,7 +141,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15,),
+                  SizedBox(height: 10,),
                   Container(child: Row(
                     children: [
                       Obx(() => Checkbox(
@@ -192,7 +162,7 @@ class SignupScreen extends StatelessWidget {
                     ],
                   ),
                   ),
-                  SizedBox(height: 45,),
+                  SizedBox(height: 25,),
                   Container(
                     child: FlatButton(
                       child: Text('Create an Account', style: TextStyle(fontSize: 20.0, color: Colors.white),),

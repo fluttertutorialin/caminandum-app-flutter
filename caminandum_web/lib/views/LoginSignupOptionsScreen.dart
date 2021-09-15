@@ -1,5 +1,6 @@
+import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/SignupScreen.dart';
-import 'package:caminandum_web/view/widgets/menuWidget.dart';
+import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,38 +10,7 @@ class  LoginSignupOptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        // backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        leading: MenuWidget(),
-        title: Text(
-          'caminandum',
-          // style: TextStyle(color: textColor),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 5, bottom: 5, top: 2),
-            child: Container(
-              height: 70,
-              width: 70,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0XFFBE0C1C),
-                    blurRadius: 5,
-                  ),
-                ],
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(
-                    'assets/images/caminandum-logo.png',
-                  ),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: AppbarWidget(),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -144,7 +114,7 @@ class  LoginSignupOptionsScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                   onPressed: () {
                     print('hello world');
-                    // Get.to(() => ThirdScreen());
+                    Get.to(() => LoginScreen());
                   },
                   color: Color(0xFFF55D32),
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
