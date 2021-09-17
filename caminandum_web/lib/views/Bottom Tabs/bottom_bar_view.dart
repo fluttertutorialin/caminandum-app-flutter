@@ -66,13 +66,7 @@ class BottomBarView extends StatelessWidget {
                                 weight: FontWeight.bold,
                               ),
 
-        // flexibleSpace: Container(
-        //   decoration: const BoxDecoration(
-        //       color: Color(0xffED3238),
-        //       borderRadius: BorderRadius.only(
-        //           bottomLeft: Radius.circular(30.0),
-        //           bottomRight: Radius.circular(30.0))),
-        // ),
+       
       ),
     );
   }
