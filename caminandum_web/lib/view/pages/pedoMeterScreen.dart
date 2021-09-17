@@ -6,7 +6,7 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 import '/controllers/radioController.dart';
 import '/view/widgets/menuWidget.dart';
-import '/view/widgets/pAppBar.dart';
+import '../widgets/p_appBar.dart';
 
 class PedoMeterScreen extends StatefulWidget {
   const PedoMeterScreen({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -71,7 +71,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
               axes: <RadialAxis>[
                 RadialAxis(
                   pointers: <GaugePointer>[
-                    RangePointer(
+                    const RangePointer(
                       value: 500,
                       cornerStyle: CornerStyle.bothCurve,
                       enableAnimation: true,
@@ -126,7 +126,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                   maximum: 2000,
                   showLabels: false,
                   showTicks: false,
-                  axisLineStyle: AxisLineStyle(
+                  axisLineStyle: const AxisLineStyle(
                     thickness: 0.06,
                     cornerStyle: CornerStyle.bothCurve,
                     color: Color.fromARGB(30, 0, 169, 181),
@@ -153,17 +153,17 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Calories',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
-                      Text(
+                      const Text(
                         "244",
                         style: TextStyle(
                             fontSize: 28,
@@ -173,7 +173,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Container(
@@ -186,17 +186,18 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Active Time',
+                        // ignore: prefer_const_constructors
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
-                      Text(
+                      const Text(
                         "244",
                         style: TextStyle(
                             fontSize: 28,
@@ -206,7 +207,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Container(
@@ -219,17 +220,17 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Miles',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
-                      Text(
+                      const Text(
                         "244",
                         style: TextStyle(
                             fontSize: 28,
