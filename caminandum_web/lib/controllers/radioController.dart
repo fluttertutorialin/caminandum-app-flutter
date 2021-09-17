@@ -43,12 +43,10 @@ class RadioController extends GetxController {
     //   this.songsDetail.value = newSong;
     // });
 
-
-    /* need to uncomment radio request
     Timer.periodic(Duration(seconds: 2), (Timer t) async {
       songsDetail.value = await StreamService().getSongName();
     });
-    */
+
     eventList = await StreamService().getEvent();
 
     update();

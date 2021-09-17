@@ -1,14 +1,16 @@
-import 'package:caminandum_web/views/StartScreen.dart';
+import 'package:caminandum_web/views/Profile/profile_view.dart';
+import 'package:caminandum_web/views/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 
 import '/bindings/radioBinind.dart';
-import '/constants/menuItems.dart';
-import '/model/menuItem.dart';
-import '/view/pages/menuScreen.dart';
-import '/view/pages/pedoMeterScreen.dart';
-import '/view/pages/playerScreen.dart';
+import 'constants/menu_Items.dart';
+import 'model/menu_Item.dart';
+import 'view/pages/menu_screen.dart';
+import 'view/pages/pedometerscreen.dart';
+import 'view/pages/player_screen.dart';
+import 'views/Bottom Tabs/bottom_bar_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
@@ -76,16 +78,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget getScreen() {
     switch (currentItem) {
       case MenuItems.PlayerScreen:
-        return PlayerScreen();
+        return const PlayerScreen();
 
       case MenuItems.Pedometer:
-        return PedoMeterScreen();
+        return const PedoMeterScreen();
 
       case MenuItems.caminandum:
-        return StartScreen();
+        return const StartScreen();
+
+      case MenuItems.home:
+        return const BottomBarView();
+
+      case MenuItems.person:
+        return ProfileView();
 
       default:
-        return PedoMeterScreen();
+        return const PedoMeterScreen();
     }
   }
 }

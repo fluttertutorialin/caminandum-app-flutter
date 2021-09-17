@@ -1,16 +1,46 @@
-import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:caminandum_web/view/widgets/menuWidget.dart';
-import 'LoginSignupOptionsScreen.dart';
+import 'login_signup_options_screen.dart';
 
-class  ThirdScreen extends StatelessWidget {
+class ThirdScreen extends StatelessWidget {
   const ThirdScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(),
+      appBar: AppBar(
+        // backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        leading: MenuWidget(),
+        title: Text(
+          'caminandum',
+          // style: TextStyle(color: textColor),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 5, bottom: 5, top: 2),
+            child: Container(
+              height: 70,
+              width: 70,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0XFFBE0C1C),
+                    blurRadius: 5,
+                  ),
+                ],
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/Caminandum-logo.png',
+                  ),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -22,14 +52,14 @@ class  ThirdScreen extends StatelessWidget {
             ),
           ),
           child: Column(
-            mainAxisAlignment : MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Expanded(
-                flex: 2,
+                flex: 4,
                 child: SizedBox(),
               ),
               Expanded(
-                  flex:3,
+                  flex: 3,
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
@@ -43,24 +73,28 @@ class  ThirdScreen extends StatelessWidget {
                           letterSpacing: -2),
                     ),
                   )),
-              Row(children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.symmetric(horizontal: 25),
-                    child: Text('We are a market place dedicated to'
+              Row(
+                children: <Widget>[
+                  Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      child: Text(
+                        'We are a market place dedicated to'
                         ' connecting people who want to do'
                         ' outdoor sports through an app'
                         ' that also offers services for the purchase'
                         ' of activities ,both sports and adventure',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle( fontFamily: "MontserratReg", fontSize: 16, fontWeight: FontWeight.bold ),
-                    )
-                )
-              ],
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                            fontFamily: "MontserratReg",
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ))
+                ],
               ),
               Expanded(
-                flex:6,
-                child:Row(
+                flex: 6,
+                child: Row(
                   children: [
                     Expanded(
                       flex: 1,
@@ -73,7 +107,7 @@ class  ThirdScreen extends StatelessWidget {
                           // decoration: BoxDecoration(
                           //   borderRadius: BorderRadius.all(Radius.circular(10.0)),
                           // ),
-                          child:Image.asset("assets/images/Rectangle83.png"),
+                          child: Image.asset("assets/images/Rectangle83.png"),
                         ),
                       ),
                     ),
@@ -81,7 +115,7 @@ class  ThirdScreen extends StatelessWidget {
                 ),
               ),
               Expanded(
-                  flex:1,
+                  flex: 1,
                   child: Container(
                     // margin: EdgeInsets.all(20),
                     child: Text(
@@ -93,12 +127,15 @@ class  ThirdScreen extends StatelessWidget {
                         // fontWeight: FontWeight.bold
                       ),
                     ),
-                  )
-              ),
+                  )),
               Container(
                 child: FlatButton(
-                  child: Text('Continue', style: TextStyle(fontSize: 20.0, color: Colors.white),),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                  child: Text(
+                    'Continue',
+                    style: TextStyle(fontSize: 20.0, color: Colors.white),
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
                   onPressed: () {
                     print('hello world');
                     Get.to(() => LoginSignupOptionsScreen());
@@ -107,7 +144,7 @@ class  ThirdScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
                 ),
               ),
-              Expanded(flex:1,child: SizedBox())
+              Expanded(flex: 1, child: SizedBox())
             ],
           ),
         ),

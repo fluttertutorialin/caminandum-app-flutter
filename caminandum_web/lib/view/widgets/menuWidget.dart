@@ -13,7 +13,7 @@ class MenuWidget extends StatelessWidget {
         onPressed: () => ZoomDrawer.of(context)!.toggle(),
         icon: Icon(
           Icons.notes,
-          color: Colors.white,
+          color: _radioController.isDarkMode ? Colors.white : Colors.black,
         ));
   }
 }
