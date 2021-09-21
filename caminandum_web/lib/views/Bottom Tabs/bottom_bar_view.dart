@@ -1,6 +1,7 @@
 import 'package:caminandum_web/constants/images.dart';
 import 'package:caminandum_web/controllers/bottom_bar_view_controller.dart';
 import 'package:caminandum_web/view/widgets/text_widget.dart';
+import 'package:caminandum_web/views/ChatScreen/chat_screen.dart';
 import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
 import 'package:flutter/material.dart';
@@ -52,8 +53,8 @@ class BottomBarView extends StatelessWidget {
                           )
                         : landingPageController.tabIndex.value == 4
                             ? const TextWidget(
-                                label: 'Message',
-                                align: TextAlign.center,
+                                label: 'Chat',
+                                align: TextAlign.left,
                                 color: Colors.black,
                                 size: 22.0,
                                 weight: FontWeight.bold,
@@ -65,8 +66,6 @@ class BottomBarView extends StatelessWidget {
                                 size: 22.0,
                                 weight: FontWeight.bold,
                               ),
-
-       
       ),
     );
   }
@@ -178,8 +177,9 @@ class BottomBarView extends StatelessWidget {
               HomePage(),
               HomePage(),
               HomePage(),
-              HomePage(),
+              ChatScreen(),
               ProfileView(),
+
             ],
           )),
     ));

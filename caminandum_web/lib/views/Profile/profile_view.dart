@@ -128,17 +128,7 @@ class ProfileView extends StatelessWidget {
     final controller = Get.put(ProfileViewController());
 
     return Scaffold(
-      appBar: AppBar(
-        leading: const Icon(Icons.chevron_left),
-        bottom: TabBar(
-          controller: controller.tabController,
-          tabs: [
-            const Tab(icon: Icon(Icons.directions_car)),
-            const Tab(icon: Icon(Icons.directions_bike)),
-          ],
-        ),
-        backgroundColor: Colors.white,
-      ),
+
       body: TabBarView(
         controller: controller.tabController,
         children: [

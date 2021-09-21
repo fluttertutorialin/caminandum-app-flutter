@@ -1,6 +1,6 @@
 import 'package:get/instance_manager.dart';
 
-import '/controllers/radioController.dart';
+import 'package:caminandum_web/controllers/radioController.dart';
 
 class RadioBinding extends Bindings {
   @override

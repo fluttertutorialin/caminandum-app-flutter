@@ -6,9 +6,9 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:just_audio/just_audio.dart';
 
-import '/model/songDetails.dart';
-import '/services/streamService/streamService.dart';
-import '/model/eventItem.dart';
+import 'package:caminandum_web/model/songDetails.dart';
+import 'package:caminandum_web/services/streamService/streamService.dart';
+import 'package:caminandum_web/model/eventItem.dart';
 
 class RadioController extends GetxController {
   var songsDetail = Rx<SongsDetails>(SongsDetails());

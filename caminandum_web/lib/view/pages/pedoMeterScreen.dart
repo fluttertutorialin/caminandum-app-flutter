@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
-import '/controllers/radioController.dart';
-import '/view/widgets/menuWidget.dart';
+import 'package:caminandum_web/controllers/radioController.dart';
+import 'package:caminandum_web/view/widgets/menuWidget.dart';
 import '../widgets/p_appBar.dart';
 
 class PedoMeterScreen extends StatefulWidget {

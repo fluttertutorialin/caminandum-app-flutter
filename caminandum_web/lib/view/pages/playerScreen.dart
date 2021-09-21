@@ -10,13 +10,13 @@ import 'package:just_audio/just_audio.dart';
 import 'dart:math' show pi;
 // import 'package:volume/volume.dart';
 
-import '/controllers/radioController.dart';
-import '/services/streamService/conf.dart';
-import '/view/widgets/blob.dart';
-import '/view/widgets/menuWidget.dart';
-import '/view/widgets/notificationWidget.dart';
-import '/view/widgets/shareIconWidgets.dart';
-import '/view/widgets/volumeSliderWidget.dart';
+import 'package:caminandum_web/controllers/radioController.dart';
+import 'package:caminandum_web/services/streamService/conf.dart';
+import 'package:caminandum_web/view/widgets/blob.dart';
+import 'package:caminandum_web/view/widgets/menuWidget.dart';
+import 'package:caminandum_web/view/widgets/notificationWidget.dart';
+import 'package:caminandum_web/view/widgets/shareIconWidgets.dart';
+import 'package:caminandum_web/view/widgets/volumeSliderWidget.dart';
 
 class PlayerScreen extends StatefulWidget {
   const PlayerScreen({Key? key}) : super(key: key);

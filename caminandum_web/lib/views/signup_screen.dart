@@ -22,7 +22,7 @@ class SignupScreen extends StatelessWidget {
         // backgroundColor: isDarkMode ? Colors.black : Colors.white,
         leading: MenuWidget(),
         title: Text(
-          'caminandum',
+          'caminsandum',
           // style: TextStyle(color: textColor),
         ),
         actions: [
