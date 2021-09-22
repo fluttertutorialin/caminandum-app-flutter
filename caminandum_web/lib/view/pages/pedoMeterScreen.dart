@@ -113,7 +113,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                       widget: Text(
                         _steps,
                         style: TextStyle(
-                          fontSize: 55,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Colors.white.withOpacity(0.65),
                         ),
@@ -283,7 +283,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
   void onStepCountError(error) {
     print('onStepCountError: $error');
     setState(() {
-      _steps = 'Step Count not available';
+      _steps = 'Not available';
     });
   }
 
