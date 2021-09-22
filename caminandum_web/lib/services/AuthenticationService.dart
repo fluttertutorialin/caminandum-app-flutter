@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
@@ -7,45 +6,55 @@ class AuthenticationService {
   static var client = http.Client();
   static var baseUrl = "https://api.caminandum.com";
 
-  static Future signupNewUser() async {
-    var url =  baseUrl + "/api/v1/user/signup";
-    var data = {"first_name": "kapil", "last_name": "Kapoor", "email": "k@s.com", "password": "1234567"};
+  static Future signupNewUser(String userName, String firstName,
+      String lastName, String email, String password) async {
+    var data = {
+      "first_name": firstName,
+      "email": email,
+      "last_name": lastName,
+      "password": password,
+      "user_name": userName,
+    };
+    print(data);
+    var url = baseUrl + "/api/v1/user/signup";
     try {
-      final res = await client.post(Uri.parse(url), body: data);
-      print(res);
-      return res;
+      final res = await client.post(Uri.parse(url),
+          body: jsonEncode(data),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          });
+      print(res.body);
+      return res.body;
     } catch (error) {
       print(error);
-      // return error.message;
+      return error;
     }
-    return "Raj Kapoor";
   }
 
   static Future loginUser(String email, String password) async {
     var url = baseUrl + "/api/v1/user/login";
 
-    var data  = {
-      "email": email,
-      "password": password
-    };
+    var data = {"email": email, "password": password};
 
     try {
-      final res =  await http.post(Uri.parse("https://api.caminandum.com/api/v1/user/login"), body: jsonEncode(data),headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },);
-      if(res.statusCode == 200)
-        {
-          return res.body;
-        } else {
+      final res = await http.post(
+        Uri.parse(url),
+        body: jsonEncode(data),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+      if (res.statusCode == 200) {
+        return res.body;
+      } else {
         print("<===================error=================== Authserv40/40>");
         print(res.body);
         print("<===================error=================== Authserv40/42>");
-        return res.statusCode;
+        return res.body;
       }
     } catch (error) {
       print("<===================error===================> $error");
       return error;
     }
   }
-  
 }

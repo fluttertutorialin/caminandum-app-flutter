@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SportScreen extends StatelessWidget {
   const SportScreen({Key? key}) : super(key: key);
@@ -7,9 +8,14 @@ class SportScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(
-          Icons.arrow_back,
-          color: Color(0xFFF55D32),
+        leading: InkWell(
+          onTap: () {
+            Get.back();
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: Color(0xFFF55D32),
+          ),
         ),
         title: Text(
           'Sports',

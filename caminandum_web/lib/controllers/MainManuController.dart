@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 
 class MainMenuController extends GetxController {
   Rx<MenuItem> currentItem = MenuItems.Pedometer.obs;
-
+  var flag = true.obs;
 
   Widget getScreen() {
     switch (currentItem.value) {
@@ -18,13 +18,12 @@ class MainMenuController extends GetxController {
       case MenuItems.Pedometer:
         return PedoMeterScreen();
 
-      case MenuItems.Caminandum:
+      case MenuItems.caminandum:
+        // Get.to(() => StartScreen());
         return StartScreen();
 
       default:
         return PedoMeterScreen();
     }
   }
-
-
 }
