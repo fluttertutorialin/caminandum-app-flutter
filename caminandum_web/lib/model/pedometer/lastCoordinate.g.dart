@@ -8,17 +8,17 @@ part of 'lastCoordinate.dart';
 
 LastCoordinate _$LastCoordinateFromJson(Map<String, dynamic> json) {
   return LastCoordinate(
-    long: json['long'] as int,
-    lat: json['lat'] as int,
-    city: json['city'] as String,
-    city_aliases: json['city_aliases'] as String,
-    name: json['name'] as String,
-    search_name: json['search_name'] as String,
-    type: json['type'] as String,
-    country: json['country'] as String,
-    country_aliases: json['country_aliases'] as String,
-    country_code: json['country_code'] as String,
-    timing: json['timing'] as int,
+    long: json['long'] as int?,
+    lat: json['lat'] as int?,
+    city: json['city'] as String?,
+    city_aliases: json['city_aliases'] as String?,
+    name: json['name'] as String?,
+    search_name: json['search_name'] as String?,
+    type: json['type'] as String?,
+    country: json['country'] as String?,
+    country_aliases: json['country_aliases'] as String?,
+    country_code: json['country_code'] as String?,
+    timing: json['timing'] as int?,
   );
 }
 
