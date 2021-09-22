@@ -5,12 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class StartScreen extends StatelessWidget {
-  // const StartScreen({Key? key}) : super(key: key);
+  const StartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBodyBehindAppBar: true,
       appBar: AppbarWidget(),
       body: Center(
         child: Container(
@@ -44,19 +43,19 @@ class StartScreen extends StatelessWidget {
                 ),
                     )),
                 Expanded(
-                  flex: 6,
+                  flex: 5,
                   child: Image.asset("assets/images/Icon1.png"),
                 ),
                 Expanded(
                   flex:1,
-                    child: Container(
+                    child: Center(
                       // margin: EdgeInsets.all(20),
                       child: Text(
                               "Connecting people for outdoor Sports",
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 fontFamily: "Mo-re-B",
-                                fontSize: 17,
+                                fontSize: 15,
                                 fontWeight: FontWeight.bold
                               ),
                           ),

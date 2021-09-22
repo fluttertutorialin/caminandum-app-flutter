@@ -63,21 +63,21 @@ class  LoginSignupOptionsScreen extends StatelessWidget {
                 child:Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                      Container(
-                        padding: const EdgeInsets.all(40.0),
-                        height: 305,
-                        width: 390,
+                    Container(
+                      padding: const EdgeInsets.all(40.0),
+                      height: 305,
+                      width: 390,
 
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(25.0),
-                          // color: Colors.redAccent,
-                          // margin:EdgeInsets.symmetric(horizontal: 50.0),
-                          // decoration: BoxDecoration(
-                          //   borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                          // ),
-                          child:Image.asset("assets/images/photo-2.png", height: 305, width: 275, fit: BoxFit.fill),
-                        ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(25.0),
+                        // color: Colors.redAccent,
+                        // margin:EdgeInsets.symmetric(horizontal: 50.0),
+                        // decoration: BoxDecoration(
+                        //   borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        // ),
+                        child:Image.asset("assets/images/photo-2.png", height: 305, width: 275, fit: BoxFit.fill),
                       ),
+                    ),
                   ],
                 ),
               ),

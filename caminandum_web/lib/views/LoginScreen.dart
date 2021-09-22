@@ -1,11 +1,15 @@
 import 'package:caminandum_web/controllers/AuthenticationController.dart';
+import 'package:caminandum_web/views/MountainSportScreen.dart';
+import 'package:caminandum_web/views/SportScreen.dart';
+import 'package:caminandum_web/views/WaterSportScreen.dart';
 import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   // const LoginScreen({Key? key}) : super(key: key);
-  final AuthenticationController controller = Get.put(AuthenticationController());
+  final AuthenticationController controller =
+      Get.put(AuthenticationController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                flex:1,
+                flex: 1,
                 child: SingleChildScrollView(
                   child: Form(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -35,8 +39,17 @@ class LoginScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(30.0),
                       child: Column(
                         children: <Widget>[
-                          SizedBox(height: 25,),
-                          Text("Welcome Back!", style: TextStyle(fontSize: 30,letterSpacing: -1, fontWeight: FontWeight.bold, fontFamily: "Mo-re-B"),),
+                          SizedBox(
+                            height: 25,
+                          ),
+                          Text(
+                            "Welcome Back!",
+                            style: TextStyle(
+                                fontSize: 30,
+                                letterSpacing: -1,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: "Mo-re-B"),
+                          ),
                           // Container(
                           //   decoration: BoxDecoration(
                           //     // borderRadius: BorderRadius.circular(10.0),
@@ -55,9 +68,18 @@ class LoginScreen extends StatelessWidget {
                           //     ),
                           //   ),
                           // ),
-                          SizedBox(height: 10,),
-                          Container(height: 30,
-                              child: Text("Login to your Account", style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20.0), textAlign: TextAlign.right,)),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                              height: 30,
+                              child: Text(
+                                "Login to your Account",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 20.0),
+                                textAlign: TextAlign.right,
+                              )),
                           // Container(
                           //   decoration: BoxDecoration(
                           //     // borderRadius: BorderRadius.circular(10.0),
@@ -76,7 +98,9 @@ class LoginScreen extends StatelessWidget {
                           //     ),
                           //   ),
                           // ),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           // Container(
                           //   decoration: BoxDecoration(
                           //     // borderRadius: BorderRadius.circular(10.0),
@@ -95,12 +119,17 @@ class LoginScreen extends StatelessWidget {
                           //     ),
                           //   ),
                           // ),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           Container(
                             decoration: BoxDecoration(
                               // borderRadius: BorderRadius.circular(10.0),
                               border: Border(
-                                bottom: BorderSide(width: 2.0, color: Colors.black,),
+                                bottom: BorderSide(
+                                  width: 2.0,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                             child: TextFormField(
@@ -117,12 +146,17 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           Container(
                             decoration: BoxDecoration(
                               // borderRadius: BorderRadius.circular(10.0),
                               border: Border(
-                                bottom: BorderSide(width: 2.0, color: Colors.black,),
+                                bottom: BorderSide(
+                                  width: 2.0,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                             child: TextFormField(
@@ -140,7 +174,9 @@ class LoginScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 10,),
+                          SizedBox(
+                            height: 10,
+                          ),
                           // Container(child: Row(
                           //   children: [
                           //     Obx(() => Checkbox(
@@ -160,18 +196,26 @@ class LoginScreen extends StatelessWidget {
                           //     Container(child: Text("Agreed with terms of use.", style: TextStyle(fontSize: 20.0, color: Colors.black),),)
                           //   ],
                           // ),),
-                          SizedBox(height: 25,),
+                          SizedBox(
+                            height: 25,
+                          ),
                           Container(
                             child: FlatButton(
-                              child: Text('Login', style: TextStyle(fontSize: 20.0, color: Colors.white),),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+                              child: Text(
+                                'Login',
+                                style: TextStyle(
+                                    fontSize: 20.0, color: Colors.white),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50)),
                               onPressed: () {
                                 print('hello world from Login');
                                 controller.checkLogin();
-                                // Get.to(() => SignupScreen());
+                                Get.to(() => MountainSportScreen());
                               },
                               color: Color(0xFFF55D32),
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 50),
                             ),
                           ),
                         ],
@@ -187,5 +231,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
-

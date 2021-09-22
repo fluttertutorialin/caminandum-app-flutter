@@ -1,5 +1,5 @@
 import 'package:caminandum_web/views/Profile/profile_view.dart';
-import 'package:caminandum_web/views/start_screen.dart';
+import 'package:caminandum_web/views/StartScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';

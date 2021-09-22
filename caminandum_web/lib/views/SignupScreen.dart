@@ -1,5 +1,4 @@
 import 'package:caminandum_web/controllers/AuthenticationController.dart';
-import 'package:caminandum_web/view/widgets/menuWidget.dart';
 import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,10 +20,10 @@ class SignupScreen extends StatelessWidget {
       appBar: AppbarWidget(),
       body: Container(
         decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/Caminandum-screen.png"),
-              fit: BoxFit.fill,
-        ),
+          image: DecorationImage(
+            image: AssetImage("assets/images/Caminandum-screen.png"),
+            fit: BoxFit.fill,
+          ),
         ),
         // margin: EdgeInsets.all(20),
         width: context.width,
@@ -48,8 +47,8 @@ class SignupScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             // borderRadius: BorderRadius.circular(10.0),
                             border: Border(
-                            bottom: BorderSide(width: 2.0, color: Colors.black,),
-                          ),
+                              bottom: BorderSide(width: 2.0, color: Colors.black,),
+                            ),
                           ),
                           child: TextFormField(
                             controller: controller.firstNameController,
@@ -60,8 +59,8 @@ class SignupScreen extends StatelessWidget {
                               labelText: "First Name",
                               prefixIcon: Icon(Icons.person),
                             ),
-                            ),
                           ),
+                        ),
                         SizedBox(height: 10,),
                         Container(
                           decoration: BoxDecoration(
@@ -149,18 +148,18 @@ class SignupScreen extends StatelessWidget {
                         Container(child: Row(
                           children: [
                             Obx(() => Checkbox(
-                                checkColor: Colors.white,
-                                // title: Text("Agreed with terms of use."),
-                                // fillColor:,
-                                value: controller.agreed.value,
-                                onChanged: (bool? value) {
-                                  print(controller.agreed.value);
-                                  controller.agreed.value = !controller.agreed.value;
-                                  // setState(() {
-                                  //   isChecked = value!;
-                                  // });
-                                },
-                              ),
+                              checkColor: Colors.white,
+                              // title: Text("Agreed with terms of use."),
+                              // fillColor:,
+                              value: controller.agreed.value,
+                              onChanged: (bool? value) {
+                                print(controller.agreed.value);
+                                controller.agreed.value = !controller.agreed.value;
+                                // setState(() {
+                                //   isChecked = value!;
+                                // });
+                              },
+                            ),
                             ),
                             Container(child: Text("Agreed with terms of use.", style: TextStyle(fontSize: 20.0, color: Colors.black),),)
                           ],
