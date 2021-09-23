@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 
-import '/constants/menuItems.dart';
-import '/controllers/radioController.dart';
-import '/model/menuItem.dart';
+import 'package:caminandum_web/constants/menuItems.dart';
+import 'package:caminandum_web/controllers/radioController.dart';
+import 'package:caminandum_web/model/menuItem.dart';
 
 class MenuScreen extends StatelessWidget {
   final MenuItem currentItem;

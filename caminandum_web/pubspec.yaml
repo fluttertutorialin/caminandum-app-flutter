@@ -96,6 +96,11 @@ flutter:
       fonts:
         - asset: assets/fonts/Montserrat-Bold.ttf
   #         weight: 700
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+  #       - asset: fonts/Schyl
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

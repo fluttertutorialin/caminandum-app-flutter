@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
-import '/model/songDetails.dart';
-import '/model/eventItem.dart';
+import 'package:caminandum_web/model/songDetails.dart';
+import 'package:caminandum_web/model/eventItem.dart';
 
 class StreamService {
   SongsDetails songsDetail = new SongsDetails();
