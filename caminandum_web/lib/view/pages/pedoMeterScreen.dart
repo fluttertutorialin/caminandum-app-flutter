@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:pedometer/pedometer.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
@@ -16,6 +17,15 @@ class PedoMeterScreen extends StatefulWidget {
 }
 
 class _PedoMeterScreenState extends State<PedoMeterScreen> {
+  late Stream<StepCount> _stepCountStream;
+  late Stream<PedestrianStatus> _pedestrianStatusStream;
+  String _status = '?', _steps = '?';
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
   // RadioController _radioController = Get.find<RadioController>();
   @override
   Widget build(BuildContext context) {
@@ -101,9 +111,9 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                       positionFactor: 0.1,
                       angle: 90,
                       widget: Text(
-                        '500',
+                        _steps,
                         style: TextStyle(
-                          fontSize: 55,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Colors.white.withOpacity(0.65),
                         ),
@@ -246,5 +256,46 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
         ],
       ),
     );
+  }
+
+  void onStepCount(StepCount event) {
+    print(event);
+    setState(() {
+      _steps = event.steps.toString();
+    });
+  }
+
+  void onPedestrianStatusChanged(PedestrianStatus event) {
+    print(event);
+    setState(() {
+      _status = event.status;
+    });
+  }
+
+  void onPedestrianStatusError(error) {
+    print('onPedestrianStatusError: $error');
+    setState(() {
+      _status = 'Pedestrian Status not available';
+    });
+    print(_status);
+  }
+
+  void onStepCountError(error) {
+    print('onStepCountError: $error');
+    setState(() {
+      _steps = 'Not available';
+    });
+  }
+
+  void initPlatformState() {
+    _pedestrianStatusStream = Pedometer.pedestrianStatusStream;
+    _pedestrianStatusStream
+        .listen(onPedestrianStatusChanged)
+        .onError(onPedestrianStatusError);
+
+    _stepCountStream = Pedometer.stepCountStream;
+    _stepCountStream.listen(onStepCount).onError(onStepCountError);
+
+    if (!mounted) return;
   }
 }
