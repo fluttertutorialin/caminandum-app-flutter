@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '/view/widgets/menuWidget.dart';
-import '/controllers/radioController.dart';
+import 'package:caminandum_web/view/widgets/menuWidget.dart';
+import 'package:caminandum_web/controllers/radioController.dart';
 
 class PAppBarScreen extends StatefulWidget implements PreferredSizeWidget {
   @override

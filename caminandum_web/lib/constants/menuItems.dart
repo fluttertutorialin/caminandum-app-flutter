@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/model/menuItem.dart';
+import 'package:caminandum_web/model/menuItem.dart';
 
 class MenuItems {
   static const PlayerScreen = MenuItem('Radio', Icons.radio_rounded);
