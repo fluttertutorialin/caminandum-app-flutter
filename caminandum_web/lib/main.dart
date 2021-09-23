@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-j
+home: const BottomBarView(),
     );
   }
 }
@@ -36,6 +36,7 @@ j
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
