@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:caminandum_web/services/AuthenticationService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -22,9 +20,12 @@ class AuthenticationController extends GetxController {
 
   var signupRes;
 
-  void signupNewUser() async {
+  void signupNewUser(String userNameS, String firstNameS, String lastNameS,
+      String emailS, String passwordS) async {
     try {
-      final res = await AuthenticationService.signupNewUser();
+      final res = await AuthenticationService.signupNewUser(
+          userNameS, firstNameS, lastNameS, emailS, passwordS);
+      print('responce signup =>>>>>>>>>>>>>>>>>>>>>>>>>>>> $res');
     } catch (error) {
       print(error);
     }
@@ -82,19 +83,13 @@ class AuthenticationController extends GetxController {
   }
 
   void checkSignup() {
-    var status = {
-      "username": userNameController.text,
-      "firstName": firstNameController.text,
-      "lastname": lastNameController.text,
-      "email": emailController.text,
-      "password": passwordController.text
-    };
     final isValid = signupFormKey.currentState!.validate();
 
     if (!isValid) {
       return;
     }
-    signupNewUser();
+    signupNewUser(userNameController.text, firstNameController.text,
+        lastNameController.text, emailController.text, passwordController.text);
     signupFormKey.currentState!.save();
   }
 
