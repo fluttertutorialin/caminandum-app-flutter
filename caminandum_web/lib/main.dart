@@ -3,6 +3,7 @@ import 'package:caminandum_web/views/StartScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
+import 'package:pedometer/pedometer.dart';
 import './bindings/radioBinind.dart';
 import 'constants/menu_Items.dart';
 import 'model/menu_Item.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-home: const BottomBarView(),
+home: const HomeScreen(),
     );
   }
 }
