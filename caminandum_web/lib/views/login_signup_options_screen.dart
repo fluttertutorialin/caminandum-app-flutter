@@ -141,20 +141,21 @@ class LoginSignupOptionsScreen extends StatelessWidget {
                 ),
               ),
               Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.all(10),
-                    child: const Text(
-                      'OR',
-                      textAlign: TextAlign.center,
-                      // ignore: unnecessary_const
-                      style: const TextStyle(
-                        fontFamily: 'Mo-re-B',
-                        fontSize: 17,
-                        // fontWeight: FontWeight.bold
-                      ),
+                flex: 1,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: const Text(
+                    'OR',
+                    textAlign: TextAlign.center,
+                    // ignore: unnecessary_const
+                    style: const TextStyle(
+                      fontFamily: 'Mo-re-B',
+                      fontSize: 17,
+                      // fontWeight: FontWeight.bold
                     ),
-                  )),
+                  ),
+                ),
+              ),
               // ignore: avoid_unnecessary_containers
               Container(
                 // ignore: deprecated_member_use
