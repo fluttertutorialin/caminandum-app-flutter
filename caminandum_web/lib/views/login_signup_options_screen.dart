@@ -1,5 +1,6 @@
 // ignore: file_names
-import 'package:caminandum_web/views/signup_screen.dart';
+import 'package:caminandum_web/views/SignupScreen.dart';
+
 import 'package:caminandum_web/view/widgets/menuWidget.dart';
 import 'package:caminandum_web/views/ThirdScreen.dart';
 import 'package:flutter/material.dart';
