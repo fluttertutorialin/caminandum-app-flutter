@@ -30,7 +30,7 @@ Size get preferredSize => Size.fromHeight(60.0);
               shape: BoxShape.circle,
               image: DecorationImage(
                 image: AssetImage(
-                  'assets/images/caminandum-logo.png',
+                  'assets/images/Caminandum-logo.png',
                 ),
                 fit: BoxFit.fill,
               ),
