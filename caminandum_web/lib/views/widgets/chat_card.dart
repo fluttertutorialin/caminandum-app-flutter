@@ -1,3 +1,4 @@
+import 'package:caminandum_web/constants/styles.dart';
 import 'package:flutter/material.dart';
 
 class ChatCard extends StatelessWidget {
@@ -18,24 +19,29 @@ class ChatCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(15), color: Colors.white),
       margin: EdgeInsets.all(5),
       padding: EdgeInsets.symmetric(horizontal: 5),
-      child: Row(
+      child: Row(mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
-            // height: 30,
-            margin: EdgeInsets.only(right: 4),
+            padding: EdgeInsets.all(5),
             child: CircleAvatar(
+              radius: 35,
               backgroundImage: NetworkImage(
                 avatarURL!,
               ),
             ),
           ),
+          SizedBox(
+            width: 5,
+          ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                username!,
+                username!,textAlign: TextAlign.left,
+                style: kChatUsernameStyle,
               ),
-              Text(lastMessage!)
+              Text(lastMessage!, textAlign: TextAlign.left,style: kLastChatMessageStyle)
             ],
           ),
         ],

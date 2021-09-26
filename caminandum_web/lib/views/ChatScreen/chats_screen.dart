@@ -20,7 +20,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
         id: "https://c1.wallpaperflare.com/preview/835/832/858/man-face-human-portrait.jpg"),
     new ChatModel(
         senderId: "Harvey Spectre",
-        text: "Hey I have hacked whatsapp!",
+        text: "Hey I have installed Caminandum!",
         updatedAt: "20:45",
         id: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
     new ChatModel(

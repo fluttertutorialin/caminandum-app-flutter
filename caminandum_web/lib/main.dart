@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 home:
-HomeScreen(),
-//const BottomBarView(),
+//HomeScreen(),
+const BottomBarView(),
     );
   }
 }

@@ -52,7 +52,7 @@ class _BottomBarViewState extends State<BottomBarView>
             showUnselectedLabels: false,
             showSelectedLabels: false,
             type: BottomNavigationBarType.fixed,
-            iconSize: 35.0,
+            iconSize: 30.0,
             onTap: onItemClicked,
             //landingPageController.changeTabIndex,
             currentIndex: selectedIndex,
@@ -180,7 +180,7 @@ class _BottomBarViewState extends State<BottomBarView>
               //Obx(() =>
               TabBarView(
                 controller: tabController,
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: NeverScrollableScrollPhysics(),
                   children: <Widget>[
                 HomePage(),
                 HomePage(),

@@ -1,6 +1,26 @@
 import 'package:caminandum_web/view/widgets/menuWidget.dart';
 import 'package:flutter/material.dart';
 
+class GlobalAppBar extends StatelessWidget {
+  final Widget? leftWidget;
+  final String? title;
+  final Widget? rightWidget;
+
+  GlobalAppBar({this.leftWidget, this.title, this.rightWidget});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+
+        ],
+      ),
+    );
+  }
+}
+
 // class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
 //   const AppbarWidget({Key? key}) : super(key: key);
 // @override
