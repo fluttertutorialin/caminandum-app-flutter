@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-home: const BottomBarView(),
+home:
+HomeScreen(),
+//const BottomBarView(),
     );
   }
 }

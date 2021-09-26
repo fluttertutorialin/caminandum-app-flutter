@@ -9,7 +9,7 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(),
+
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,

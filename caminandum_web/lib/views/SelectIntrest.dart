@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 class SelectIntrest extends StatelessWidget {
   const SelectIntrest({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -3,7 +3,7 @@ import 'package:caminandum_web/constants/images.dart';
 import 'package:caminandum_web/controllers/bottom_bar_view_controller.dart';
 import 'package:caminandum_web/view/widgets/text_widget.dart';
 import 'package:caminandum_web/views/ChatScreen/chat_detaill_screen.dart';
-import 'package:caminandum_web/views/ChatScreen/chat_screen.dart';
+import 'package:caminandum_web/views/ChatScreen/chats_screen.dart';
 import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
 import 'package:flutter/material.dart';
@@ -186,7 +186,7 @@ class _BottomBarViewState extends State<BottomBarView>
                 HomePage(),
                 HomePage(),
                 HomePage(),
-                ChatScreen(),
+                ChatsScreen(),
                 ProfileView(),
               ])
 

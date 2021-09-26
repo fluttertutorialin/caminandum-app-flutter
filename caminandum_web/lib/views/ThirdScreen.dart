@@ -12,7 +12,6 @@ class ThirdScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return OpenMenuScreen(
       child: Scaffold(
-        appBar: AppbarWidget(),
         body: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,

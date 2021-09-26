@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
 class ChatCard extends StatelessWidget {
-  final String? postUsername;
-  final String? location;
-  final String? postURL;
+  final String? username;
+  final String? lastMessage;
+
   final String? avatarURL;
-  ChatCard({this.postUsername, this.avatarURL, this.location, this.postURL});
+  ChatCard({this.username, this.avatarURL, this.lastMessage});
 
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
     // final user = Provider.of<UserProvider>(context, listen: false);
     //final PostModel postData = InheritedPostModel.of(context).postData;
-    return Container(height: 100,
+    return Container(
+      height: 100,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15), color: Colors.white),
       margin: EdgeInsets.all(5),
@@ -32,11 +33,9 @@ class ChatCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                postUsername!,
+                username!,
               ),
-              Text(
-                location!,
-              ),
+              Text(lastMessage!)
             ],
           ),
         ],
