@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
 
     var width = MediaQuery.of(context).size.width;
-    // ignore: avoid_unnecessary_containers
+
     return Column(
       children: [
         Container(
