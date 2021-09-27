@@ -1,4 +1,7 @@
+import 'package:caminandum_web/constants/colors.dart';
+import 'package:caminandum_web/constants/styles.dart';
 import 'package:caminandum_web/view/widgets/menuWidget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class GlobalAppBar extends StatelessWidget {
@@ -14,7 +17,15 @@ class GlobalAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-
+          leftWidget ?? Container(),
+          Text(
+            title!,
+            style: kChatUsernameStyle.copyWith(
+                color: ColorPalette.colorOrange,
+                fontWeight: FontWeight.bold,
+                fontSize: 18),
+          ),
+          rightWidget ?? Container()
         ],
       ),
     );

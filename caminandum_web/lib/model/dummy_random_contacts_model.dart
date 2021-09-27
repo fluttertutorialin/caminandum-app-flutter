@@ -1,26 +1,26 @@
-class DummyRandomContact {
-  DummyRandomContact({
-    required this.results,
+class DummyRandomContacts {
+  DummyRandomContacts({
+    required this.randomContacts,
     required this.info,
   });
-  late final List<Results> results;
+  late final List<RandomContactModel> randomContacts;
   late final Info info;
 
-  DummyRandomContact.fromJson(Map<String, dynamic> json){
-    results = List.from(json['results']).map((e)=>Results.fromJson(e)).toList();
+  DummyRandomContacts.fromJson(Map<String, dynamic> json){
+    randomContacts = List.from(json['results']).map((e)=>RandomContactModel.fromJson(e)).toList();
     info = Info.fromJson(json['info']);
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['results'] = results.map((e)=>e.toJson()).toList();
+    _data['results'] = randomContacts.map((e)=>e.toJson()).toList();
     _data['info'] = info.toJson();
     return _data;
   }
 }
 
-class Results {
-  Results({
+class RandomContactModel {
+  RandomContactModel({
     required this.gender,
     required this.name,
     required this.location,
@@ -47,7 +47,7 @@ class Results {
   late final Picture picture;
   late final String nat;
 
-  Results.fromJson(Map<String, dynamic> json){
+  RandomContactModel.fromJson(Map<String, dynamic> json){
     gender = json['gender'];
     name = Name.fromJson(json['name']);
     location = Location.fromJson(json['location']);
