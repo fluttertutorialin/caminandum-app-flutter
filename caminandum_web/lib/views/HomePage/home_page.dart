@@ -1,5 +1,6 @@
 import 'package:caminandum_web/constants/images.dart';
 import 'package:caminandum_web/controllers/home_page_controller.dart';
+import 'package:caminandum_web/model/dummy_random_contacts_model.dart';
 import 'package:caminandum_web/views/HomePage/user_grid.dart';
 import 'package:caminandum_web/views/HomePage/user_list_view.dart';
 
@@ -8,10 +9,15 @@ import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 
 import 'user_grid_view.dart';
+import 'package:caminandum_web/services/random_contacts/add_contacts.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
+
+
+ // Future<DummyRandomContacts>? _dummyRandomContact;
   final homePageController = Get.put(HomePageController());
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -122,13 +128,15 @@ class HomePage extends StatelessWidget {
         ),
         // _userListView()
 
-        Obx(() => homePageController.isChangeViewToList.value
-            ? UserListView()
-            : homePageController.isChangeViewToGrid.value
-                ? UserGrid()
-                : homePageController.isChangeViewToGridView.value
-                    ? UserGridView()
-                    : UserListView()),
+        Obx(
+          () => homePageController.isChangeViewToList.value
+              ? UserListView()
+              : homePageController.isChangeViewToGrid.value
+                  ? UserGrid()
+                  : homePageController.isChangeViewToGridView.value
+                      ? UserGridView()
+                      : UserListView(),
+        ),
 
         // _userGridView3()
       ],

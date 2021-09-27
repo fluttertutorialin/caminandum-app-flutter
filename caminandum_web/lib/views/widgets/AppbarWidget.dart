@@ -14,7 +14,9 @@ class GlobalAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-
+          leftWidget ?? Container(),
+          Text(title!),
+          rightWidget ?? Container()
         ],
       ),
     );
