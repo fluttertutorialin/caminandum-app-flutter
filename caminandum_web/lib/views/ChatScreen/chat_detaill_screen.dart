@@ -1,16 +1,17 @@
+import 'package:caminandum_web/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 
 // final _firestore = Firestore.instance;
 // FirebaseUser loggedInUser;
 
-class ChatScreen extends StatefulWidget {
-  static const String id = 'chat_screen';
+class ChatDetailScreen extends StatefulWidget {
+  static const String id = 'chat_detail_screen';
   @override
-  _ChatScreenState createState() => _ChatScreenState();
+  _ChatDetailScreenState createState() => _ChatDetailScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ChatDetailScreenState extends State<ChatDetailScreen> {
   final messageTextController = TextEditingController();
   //final _auth = FirebaseAuth.instance;
 
@@ -29,7 +30,8 @@ class _ChatScreenState extends State<ChatScreen> {
       // if (user != null) {
       //   loggedInUser = user;
       // }
-    } catch (e) {
+    } catch (e)
+    {
       print(e);
     }
   }
@@ -37,56 +39,45 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: null,
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.close),
-              onPressed: () {
-                //_auth.signOut();
-                Navigator.pop(context);
-              }),
-        ],
-        title: Text('⚡️Chat'),
-        backgroundColor: Colors.lightBlueAccent,
-      ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            MessagesStream(),
-            Container(
-             // decoration: kMessageContainerDecoration,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      controller: messageTextController,
-                      onChanged: (value) {
-                        messageText = value;
+        child: Container(color: ColorPalette.colorDarkGrey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              MessagesStream(),
+              Container(
+               // decoration: kMessageContainerDecoration,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                        controller: messageTextController,
+                        onChanged: (value) {
+                          messageText = value;
+                        },
+                       // decoration: kMessageTextFieldDecoration,
+                      ),
+                    ),
+                    FlatButton(
+                      onPressed: () {
+                        messageTextController.clear();
+                        // _firestore.collection('messages').add({
+                        //   'text': messageText,
+                        //   'sender': loggedInUser.email,
+                        // });
                       },
-                     // decoration: kMessageTextFieldDecoration,
+                      child: Text(
+                        'Send',
+                        //style: kSendButtonTextStyle,
+                      ),
                     ),
-                  ),
-                  FlatButton(
-                    onPressed: () {
-                      messageTextController.clear();
-                      // _firestore.collection('messages').add({
-                      //   'text': messageText,
-                      //   'sender': loggedInUser.email,
-                      // });
-                    },
-                    child: Text(
-                      'Send',
-                      //style: kSendButtonTextStyle,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -14,7 +14,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return OpenMenuScreen(
       child: Scaffold(
-        appBar: AppbarWidget(),
+
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(

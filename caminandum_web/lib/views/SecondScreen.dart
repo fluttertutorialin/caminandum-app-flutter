@@ -17,7 +17,7 @@ class SecondScreen extends StatelessWidget {
       angle: -10,
       borderRadius: 40,
       mainScreen: Scaffold(
-        appBar: AppbarWidget(),
+
         body: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
