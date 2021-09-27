@@ -13,10 +13,12 @@ class RandomContactService {
         Uri.parse("https://randomuser.me/api/"),
       );
       if (response.statusCode == 200) {
-        print('check: RESPOnse OK');
+
         var jsonString = response.body;
         var jsonMap = jsonDecode(jsonString);
-        randomContactModel = DummyRandomContacts.fromJson(jsonMap).contacts;
+        print('test1');
+        randomContactModel = DummyRandomContacts.fromJson(jsonMap).randomContacts;
+        print('test2');
       } else {
         print('check: response is not 200');
       }

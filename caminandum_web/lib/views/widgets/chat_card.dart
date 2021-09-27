@@ -14,7 +14,7 @@ class ChatCard extends StatelessWidget {
     // final user = Provider.of<UserProvider>(context, listen: false);
     //final PostModel postData = InheritedPostModel.of(context).postData;
     return Container(
-      height: 100,
+      height: 80,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15), color: Colors.white),
       margin: EdgeInsets.all(5),

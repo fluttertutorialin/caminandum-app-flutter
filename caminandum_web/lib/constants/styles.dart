@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 ///TextStyles
 const kChatUsernameStyle = TextStyle(
-    fontFamily: 'Poppins',fontSize: 20, fontWeight: FontWeight.w400,
+    fontFamily: 'Poppins',fontSize: 18, fontWeight: FontWeight.w400,
   //  decoration: TextDecoration.none,
     color:  ColorPalette.colorBlack);
 const kLastChatMessageStyle = TextStyle(

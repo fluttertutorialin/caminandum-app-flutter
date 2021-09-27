@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    homePageController.getDummyRandomContacts();
     var height = MediaQuery.of(context).size.height;
 
     var width = MediaQuery.of(context).size.width;
@@ -127,7 +128,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         // _userListView()
-
+Container(height: 100,color: Colors.red,),
         Obx(
           () => homePageController.isChangeViewToList.value
               ? UserListView()
@@ -137,7 +138,7 @@ class HomePage extends StatelessWidget {
                       ? UserGridView()
                       : UserListView(),
         ),
-
+        Container(height: 100,color: Colors.red,),
         // _userGridView3()
       ],
     );

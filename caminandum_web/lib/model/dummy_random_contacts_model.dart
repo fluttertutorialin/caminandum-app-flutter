@@ -1,19 +1,19 @@
 class DummyRandomContacts {
   DummyRandomContacts({
-    required this.contacts,
+    required this.randomContacts,
     required this.info,
   });
-  late final List<RandomContactModel> contacts;
+  late final List<RandomContactModel> randomContacts;
   late final Info info;
 
   DummyRandomContacts.fromJson(Map<String, dynamic> json){
-    contacts = List.from(json['results']).map((e)=>RandomContactModel.fromJson(e)).toList();
+    randomContacts = List.from(json['results']).map((e)=>RandomContactModel.fromJson(e)).toList();
     info = Info.fromJson(json['info']);
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
-    _data['results'] = contacts.map((e)=>e.toJson()).toList();
+    _data['results'] = randomContacts.map((e)=>e.toJson()).toList();
     _data['info'] = info.toJson();
     return _data;
   }
