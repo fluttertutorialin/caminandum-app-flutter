@@ -24,7 +24,7 @@ class AuthenticationController extends GetxController {
       String emailS, String passwordS) async {
     try {
       final res = await AuthenticationService.signupNewUser(
-          userNameS, firstNameS, lastNameS, emailS, passwordS);
+          firstNameS, lastNameS, emailS, passwordS);
       print('responce signup =>>>>>>>>>>>>>>>>>>>>>>>>>>>> $res');
     } catch (error) {
       print(error);
@@ -93,12 +93,17 @@ class AuthenticationController extends GetxController {
     signupFormKey.currentState!.save();
   }
 
-  void checkLogin() {
-    final isvalid = loginFormKey.currentState!.validate();
-    if (!isvalid) {
-      return;
+  bool? checkLogin() {
+    final bool isValid = loginFormKey.currentState!.validate();
+    final  loggedIn = loginUser(emailController.text, passwordController.text);
+    if (!isValid) {
+      print('check2');
+      return false;
+    } else {
+      print('check1');
+
+      loginFormKey.currentState!.save();
+      return true;
     }
-    loginUser(emailController.text, passwordController.text);
-    loginFormKey.currentState!.save();
   }
 }

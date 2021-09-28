@@ -85,7 +85,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
 
             Container(margin: EdgeInsets.symmetric(vertical: 25, horizontal: 5),
               child: GlobalAppBar(
-                leftWidget: _appbarListIcon!(),
+                leftWidget: _appbarListIcon(),
                 title: 'Chats',
                 rightWidget: _searchIcon(),
               ),
@@ -104,7 +104,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                           return ChatCard(
                             avatarURL: dummyData[index].id,
                             lastMessage: dummyData[index].text,
-                            username: dummyData[index].senderId,
+                            firstName: dummyData[index].senderId,
                           );
                         },
                       );

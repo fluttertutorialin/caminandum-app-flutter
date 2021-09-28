@@ -2,11 +2,11 @@ import 'package:caminandum_web/constants/styles.dart';
 import 'package:flutter/material.dart';
 
 class ChatCard extends StatelessWidget {
-  final String? username;
+  final String? firstName;
   final String? lastMessage;
 
   final String? avatarURL;
-  ChatCard({this.username, this.avatarURL, this.lastMessage});
+  ChatCard({this.firstName, this.avatarURL, this.lastMessage});
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +38,8 @@ class ChatCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                username!,textAlign: TextAlign.left,
-                style: kChatUsernameStyle,
+                firstName!,textAlign: TextAlign.left,
+                style: kChatFirstNameStyle,
               ),
               Text(lastMessage!, textAlign: TextAlign.left,style: kLastChatMessageStyle)
             ],
