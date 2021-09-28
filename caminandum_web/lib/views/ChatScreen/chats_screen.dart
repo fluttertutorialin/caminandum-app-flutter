@@ -104,7 +104,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
                           return ChatCard(
                             avatarURL: dummyData[index].id,
                             lastMessage: dummyData[index].text,
-                            username: dummyData[index].senderId,
+                            firstName: dummyData[index].senderId,
                           );
                         },
                       );

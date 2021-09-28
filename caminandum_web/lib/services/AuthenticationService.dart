@@ -6,14 +6,14 @@ class AuthenticationService {
   static var client = http.Client();
   static var baseUrl = "https://api.caminandum.com";
 
-  static Future signupNewUser(String userName, String firstName,
+  static Future signupNewUser(String firstName,
       String lastName, String email, String password) async {
     var data = {
       "first_name": firstName,
       "email": email,
       "last_name": lastName,
       "password": password,
-      "user_name": userName,
+
     };
     print(data);
     var url = baseUrl + "/api/v1/user/signup";

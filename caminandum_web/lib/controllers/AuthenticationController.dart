@@ -24,7 +24,7 @@ class AuthenticationController extends GetxController {
       String emailS, String passwordS) async {
     try {
       final res = await AuthenticationService.signupNewUser(
-          userNameS, firstNameS, lastNameS, emailS, passwordS);
+           firstNameS, lastNameS, emailS, passwordS);
       print('responce signup =>>>>>>>>>>>>>>>>>>>>>>>>>>>> $res');
     } catch (error) {
       print(error);

@@ -20,7 +20,7 @@ class GlobalAppBar extends StatelessWidget {
           leftWidget ?? Container(),
           Text(
             title!,
-            style: kChatUsernameStyle.copyWith(
+            style: kChatFirstNameStyle.copyWith(
                 color: ColorPalette.colorOrange,
                 fontWeight: FontWeight.bold,
                 fontSize: 18),
