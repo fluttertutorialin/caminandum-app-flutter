@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             SizedBox(
-                              height: 25,
+                              height: (MediaQuery.of(context).size.height) * 0.21,
                             ),
                             Text(
                               "Welcome Back!",

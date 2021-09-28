@@ -1,49 +1,89 @@
+// To parse this JSON data, do
+//
+//     final pedometerStat = pedometerStatFromJson(jsonString);
 
-import 'package:caminandum_web/model/pedometer/pedoCount.dart';
+import 'dart:convert';
 
-class PedometerStat{
-  String ?day;
-  int ?distance_in_meters;
-  String ?id;
-  int ?step_count;
-  String ?updated_at;
-  String ?user_id;
-  int ?activity_duration_seconds;
-  String ?anonymous_id;
+PedometerStat pedometerStatFromJson(String str) => PedometerStat.fromJson(json.decode(str));
+
+String pedometerStatToJson(PedometerStat data) => json.encode(data.toJson());
+
+class PedometerStat {
+  PedometerStat({
+    this.activityDurationSeconds,
+    this.anonymousId,
+    this.calories,
+    this.createdAt,
+    this.currentGoals,
+    this.day,
+    this.distanceInMeters,
+    this.id,
+    this.stepCount,
+    this.updatedAt,
+    this.userId,
+  });
+
+  int ?activityDurationSeconds;
+  String ?anonymousId;
   int ?calories;
-  String ?created_at;
-  PedoCount ?current_goals;
+  String ?createdAt;
+  CurrentGoals ?currentGoals;
+  String ?day;
+  int ?distanceInMeters;
+  String ?id;
+  int ?stepCount;
+  String ?updatedAt;
+  String ?userId;
 
-  //current goals
+  factory PedometerStat.fromJson(Map<String, dynamic> json) => PedometerStat(
+    activityDurationSeconds: json["activity_duration_seconds"],
+    anonymousId: json["anonymous_id"],
+    calories: json["calories"],
+    createdAt: json["created_at"],
+    currentGoals: CurrentGoals.fromJson(json["current_goals"]),
+    day: json["day"],
+    distanceInMeters: json["distance_in_meters"],
+    id: json["id"],
+    stepCount: json["step_count"],
+    updatedAt: json["updated_at"],
+    userId: json["user_id"],
+  );
 
-PedometerStat({
-  this.day,
-  this.distance_in_meters,
-  this.id,
-  this.step_count,
-  this.updated_at,
-  this.created_at,
-  this.activity_duration_seconds,
-  this.anonymous_id,
-  this.calories,
-  this.user_id,
-  this.current_goals});
+  Map<String, dynamic> toJson() => {
+    "activity_duration_seconds": activityDurationSeconds,
+    "anonymous_id": anonymousId,
+    "calories": calories,
+    "created_at": createdAt,
+    "current_goals": currentGoals!.toJson(),
+    "day": day,
+    "distance_in_meters": distanceInMeters,
+    "id": id,
+    "step_count": stepCount,
+    "updated_at": updatedAt,
+    "user_id": userId,
+  };
+}
 
-  PedometerStat fromJson(Map<String, dynamic> json) {
-    return PedometerStat(
-        activity_duration_seconds: json['activity_duration_seconds'],
-        anonymous_id:json['anonymous_id'],
-        calories: json['calories'],
-        created_at: json['created_at'],
-        day: json['day'],
-        distance_in_meters: json['distance_in_meters'],
-        id: json['id'],
-        step_count: json['step_count'],
-        updated_at: json['updated_at'],
-        user_id: json['user_id'],
-        current_goals: json['current_goals'] != null ? PedoCount.fromJson(json['current_goals']):
-        null,
-    );
-  }
+class CurrentGoals {
+  CurrentGoals({
+    this.dailyStepCountGoal,
+    this.monthlyStepCountGoal,
+    this.weeklyStepCountGoal,
+  });
 
+  int ?dailyStepCountGoal;
+  int ?monthlyStepCountGoal;
+  int ?weeklyStepCountGoal;
+
+  factory CurrentGoals.fromJson(Map<String, dynamic> json) => CurrentGoals(
+    dailyStepCountGoal: json["daily_step_count_goal"],
+    monthlyStepCountGoal: json["monthly_step_count_goal"],
+    weeklyStepCountGoal: json["weekly_step_count_goal"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "daily_step_count_goal": dailyStepCountGoal,
+    "monthly_step_count_goal": monthlyStepCountGoal,
+    "weekly_step_count_goal": weeklyStepCountGoal,
+  };
 }
