@@ -32,7 +32,7 @@ class AnonymousUser {
     "id": id,
     "refresh_token": refreshToken,
     "token": token,
-    "user": user!.toJson(),
+    "user": user?.toJson(),
   };
 }
 
@@ -105,9 +105,9 @@ class LastCoords {
 
   factory LastCoords.fromJson(Map<String, dynamic> json) => LastCoords(
     city: json["city"],
-    cityAliases: List<String>.from(json["city_aliases"].map((x) => x)),
+   // cityAliases: List<String>.from(json["city_aliases"].map((x) => x)),
     country: json["country"],
-    countryAliases: List<String>.from(json["country_aliases"].map((x) => x)),
+  //  countryAliases: List<String>.from(json["country_aliases"].map((x) => x)),
     countryCode: json["country_code"],
     lat: json["lat"],
     long: json["long"],

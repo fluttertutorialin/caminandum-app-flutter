@@ -47,6 +47,7 @@ dependencies:
   retrofit:
   logger:
   dio:
+  get_storage: ^2.0.3
 
 
 

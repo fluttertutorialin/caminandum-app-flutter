@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:caminandum_web/model/base/base.dart';
+import 'package:caminandum_web/model/error/error.dart';
+import 'package:caminandum_web/model/pedometer/AnonymousUser.dart';
 import 'package:caminandum_web/model/user/user.dart';
 import 'package:caminandum_web/model/user/userProfileResponse.dart';
 import 'package:dio/dio.dart';
@@ -13,10 +15,19 @@ abstract class GetDataService {
   factory GetDataService(Dio dio, {String baseUrl}) = _GetDataService;
 
   @POST("user/login")
-  Future<BaseData<UserProfile>> login(@Body() UserProfile userProfile);
+  Future<UserProfileResponse> login(@Body() UserProfile userProfile);
 
   @MultiPart()
   @POST("user/signup")
-  Future<BaseData<UserProfile>> signUp(@Body() UserProfile userProfile);
+  Future<Error> signUp(@Body() UserProfile userProfile);
+
+  @GET("user/search")
+  Future<Error> searchUser(@Body() UserProfile userProfile);
+
+  @PUT("user/unblock-user")
+  Future<Error> unblockUser(@Body() UserProfile userProfile);
+
+  @POST("anonymous/user/create-token")
+  Future<AnonymousUser> createAnonymousUser(@Body() AnonymousUser anonymousUser);
 
 }

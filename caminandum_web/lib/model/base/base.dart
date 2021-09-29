@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:caminandum_web/model/error/error.dart';
 import 'package:caminandum_web/model/user/userProfileResponse.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -22,14 +24,15 @@ class _Converter<T> implements JsonConverter<T, Object> {
 
   @override
   T fromJson(Object json) {
+    //debugger();
     T ?data;
     if (json == null) return data!;
      else {
       if (json is Map<String, dynamic> &&
-          json.containsKey('state') &&
-          json.containsKey('status') &&
-          json.containsKey('token') &&
-          json.containsKey('vaccineDate1') &&
+          json.containsKey('gender') &&
+          json.containsKey('nationality') &&
+          json.containsKey('first_name') &&
+          json.containsKey('last_name') &&
           json.containsKey("vaccineProvider"))
         return UserProfileResponse.fromJson(json) as T;
 
