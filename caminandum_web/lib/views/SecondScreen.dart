@@ -88,10 +88,9 @@ class SecondScreen extends StatelessWidget {
                 ),
                 Container(
                   child: FlatButton(
-                    child: Text('Continue', style: TextStyle(fontSize: 20.0, color: Colors.white),),
+                    child: Text('Continue', style: TextStyle(fontSize: 17.0, color: Colors.white),),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                     onPressed: () {
-                      print('hello world');
                       Get.to(() => ThirdScreen());
                     },
                     color: Color(0xFFF55D32),

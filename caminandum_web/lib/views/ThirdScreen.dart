@@ -26,7 +26,7 @@ class ThirdScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Expanded(
-                  flex: 2,
+                  flex: 4,
                   child: SizedBox(),
                 ),
                 Expanded(
@@ -39,7 +39,7 @@ class ThirdScreen extends StatelessWidget {
                         // overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 40,
+                            fontSize: 35,
                             fontFamily: "MontserratReg",
                             letterSpacing: -2),
                       ),
@@ -64,7 +64,7 @@ class ThirdScreen extends StatelessWidget {
                   ],
                 ),
                 Expanded(
-                  flex: 6,
+                  flex: 5,
                   child: Row(
                     children: [
                       Expanded(
@@ -103,12 +103,11 @@ class ThirdScreen extends StatelessWidget {
                   child: FlatButton(
                     child: Text(
                       'Continue',
-                      style: TextStyle(fontSize: 20.0, color: Colors.white),
+                      style: TextStyle(fontSize: 17.0, color: Colors.white),
                     ),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
                     onPressed: () {
-                      print('hello world');
                       Get.to(() => LoginSignupOptionsScreen());
                     },
                     color: Color(0xFFF55D32),

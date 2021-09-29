@@ -13,72 +13,117 @@ class StartScreen extends StatelessWidget {
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width,
+          height:MediaQuery.of(context).size.height ,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/Caminandum-screen.png"),
+             image: AssetImage("assets/images/Caminandum-screen.png"),
               fit: BoxFit.fill,
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Expanded(
-                flex: 2,
-                child: SizedBox(),
-              ),
-              Expanded(
-                  flex: 1,
-                  child: Container(
-                    child: Text(
-                      'caminandum',
-                      textAlign: TextAlign.end,
-                      // overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 44,
-                          fontFamily: "MontserratReg",
-                          letterSpacing: -3),
-                    ),
-                  )),
-              Expanded(
-                flex: 5,
-                child: Image.asset("assets/images/Icon1.png"),
-              ),
-              Expanded(
-                  flex: 1,
-                  child: Center(
-                    // margin: EdgeInsets.all(20),
-                    child: Text(
-                      "Connecting people for outdoor Sports",
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontFamily: "Mo-re-B",
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  )),
-              Container(
-                child: FlatButton(
-                  child: Text(
-                    'Continue',
-                    style: TextStyle(fontSize: 20.0, color: Colors.white),
+          child: Stack(
+            children:<Widget>[
+              Positioned(
+                top: 0,
+                right: 0,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: MediaQuery.of(context).size.height* 0.25,
+                  decoration: BoxDecoration(
+                    // borderRadius: BorderRadius.only(bottomLeft:Radius.circular(200)),
+                    // color: Colors.blue
                   ),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50)),
-                  onPressed: () {
-                    print('hello world');
-                    Get.to(SecondScreen());
-                  },
-                  color: Color(0xFFF55D32),
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
+                  child: CustomPaint(
+                    foregroundPainter: CirclePainter(),
+                  ),
                 ),
               ),
-              Expanded(flex: 1, child: SizedBox())
-            ],
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    flex: 3,
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                      flex: 0,
+                      child: Container(
+                        child: Text(
+                          'caminandum',
+                          textAlign: TextAlign.end,
+                          // overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40,
+                              fontFamily: "MontserratReg",
+                              letterSpacing: -3),
+                        ),
+                      )),
+                  Expanded(
+                    flex: 4,
+                    child: Image.asset("assets/images/Icon1.png"),
+                  ),
+                  Expanded(
+                      flex: 1,
+                      child: Center(
+                        // margin: EdgeInsets.all(20),
+                        child: Text(
+                          "Connecting people for outdoor Sports",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontFamily: "Mo-re-B",
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      )),
+                  Container(
+                    child: FlatButton(
+                      child: Text(
+                        'Continue',
+                        style: TextStyle(fontSize: 17.0, color: Colors.white),
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50)),
+                      onPressed: () {
+                        Get.to(SecondScreen());
+                      },
+                      color: Color(0xFFF55D32),
+                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
+                    ),
+                  ),
+                  Expanded(flex: 1, child: SizedBox())
+                ],
+              ),
+            ]
+
           ),
         ),
       ),
     );
   }
+
+
+}
+class CirclePainter extends CustomPainter{
+  @override
+  void paint(Canvas canvas, Size size) {
+    var height =size.height;
+    var width = size.width;
+    final c = Offset(width,height );
+    final paint = Paint()
+        ..color  = Colors.red;
+
+ //   canvas.drawCircle(c, size.height * 0.9, paint);
+ //    Path ovalPath = Path();
+ //    ovalPath.moveTo(0, 0);
+ //    ovalPath.quadraticBezierTo(width* -0.1, height * 0.5,width*0.35, height*0.70);
+ //    ovalPath.quadraticBezierTo(width* 0.7, height * 0.95,width, height*0.8);
+ //    canvas.drawPath(ovalPath, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+   return false;
+  }
+
 }

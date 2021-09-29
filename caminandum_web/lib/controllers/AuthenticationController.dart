@@ -1,4 +1,12 @@
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:caminandum_web/model/base/base.dart';
+import 'package:caminandum_web/model/user/user.dart';
 import 'package:caminandum_web/services/AuthenticationService.dart';
+import 'package:caminandum_web/services/api/retrofit_client.dart';
+import 'package:caminandum_web/views/SelectIntrest.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -17,6 +25,8 @@ class AuthenticationController extends GetxController {
   var lastName = "";
   var userName = "";
   var agreed = true.obs;
+  var isloading = false.obs as RxBool;
+
 
   var signupRes;
 
@@ -85,25 +95,81 @@ class AuthenticationController extends GetxController {
   void checkSignup() {
     final isValid = signupFormKey.currentState!.validate();
 
-    if (!isValid) {
-      return;
+    if (isValid) {
+      try {
+        isloading.value = true;
+        UserProfile newSignIn = UserProfile(
+            email: emailController.text,
+            password: passwordController.text,
+            firstName: firstNameController.text,
+            lastName: lastNameController.text);
+        RetrofitClientInstance.getInstance()
+            .getDataService()
+            .signUp(newSignIn)
+            .then((value) {
+          Get.to(() => SelectIntrest());
+        });
+      } catch (e) {
+        onError(e);
+      }
     }
-    signupNewUser(userNameController.text, firstNameController.text,
-        lastNameController.text, emailController.text, passwordController.text);
+    // signupNewUser(userNameController.text, firstNameController.text,
+    //     lastNameController.text, emailController.text, passwordController.text);
     signupFormKey.currentState!.save();
   }
 
-  bool? checkLogin() {
-    final bool isValid = loginFormKey.currentState!.validate();
-    final  loggedIn = loginUser(emailController.text, passwordController.text);
-    if (!isValid) {
-      print('check2');
-      return false;
-    } else {
-      print('check1');
 
-      loginFormKey.currentState!.save();
-      return true;
+  // bool? checkLogin() {
+  //   final bool isValid = loginFormKey.currentState!.validate();
+  //   final loggedIn = loginUser(emailController.text, passwordController.text);
+  //   if (!isValid) {
+  //     print('check2');
+  //     return false;
+  //   } else {
+  //     print('check1');
+  //
+  //     loginFormKey.currentState!.save();
+  //     return true;
+  //   }
+  // }
+  void checkLogin() async {
+    final isvalid = loginFormKey.currentState!.validate();
+    if (isvalid) {
+      isloading.value = true;
+      UserProfile newLoggedIn = UserProfile(
+          email: emailController.text, password: passwordController.text);
+      try {
+        var res = await RetrofitClientInstance.getInstance()
+            .getDataService()
+            .login(newLoggedIn)
+            .then(onLoginResponse);
+        // .catchError(onError);
+        //debugger();
+
+        // if(res.data!.firstName != null){
+        //   Get.to(() => SelectIntrest());
+        //
+        // }
+      } catch (e) {
+        onError(e);
+      }
+      // loginFormKey.currentState!.save();
+    }
+  }
+
+  Future<FutureOr> onLoginResponse(BaseData<UserProfile> value) async {
+    isloading.value = false;
+    // print (value.data!.firstName);
+    if (value.data != null) {
+
+    }
+  }
+
+  onError(Object object) {
+    isloading.value = false;
+    if (object is DioError) {
+      Get.snackbar("Hey", object.response!.data['msg']);
+      print(object.response!.data['msg']);
     }
   }
 }

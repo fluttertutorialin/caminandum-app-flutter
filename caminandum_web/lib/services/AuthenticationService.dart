@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:caminandum_web/model/pedometer/User.dart';
+//import 'package:caminandum_web/model/pedometer/User.dart';
 import 'package:http/http.dart' as http;
 
 class AuthenticationService {
@@ -47,7 +47,7 @@ class AuthenticationService {
       if (res.statusCode == 200) {
         var jsonString = res.body;
 
-        return UserModel().fromJson(jsonDecode(jsonString));
+   //     return UserModel().fromJson(jsonDecode(jsonString));
       } else {
         print("<===================error=================== Authserv40/40>");
         print(res.body);
