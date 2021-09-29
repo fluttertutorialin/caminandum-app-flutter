@@ -1,3 +1,4 @@
+import 'package:caminandum_web/model/user_model_main.dart';
 import 'package:caminandum_web/services/AuthenticationService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -19,12 +20,21 @@ class AuthenticationController extends GetxController {
   var agreed = true.obs;
 
   var signupRes;
+  bool loggedInStatus = false;
+
+  UserModelMain _userModelMain = UserModelMain();
+  UserModelMain? get userModelMain => _userModelMain;
+
+  void setUser(UserModelMain user) {
+    _userModelMain = user;
+  }
 
   void signupNewUser(String userNameS, String firstNameS, String lastNameS,
       String emailS, String passwordS) async {
     try {
       final res = await AuthenticationService.signupNewUser(
           firstNameS, lastNameS, emailS, passwordS);
+
       print('responce signup =>>>>>>>>>>>>>>>>>>>>>>>>>>>> $res');
     } catch (error) {
       print(error);
@@ -34,6 +44,7 @@ class AuthenticationController extends GetxController {
   void loginUser(String emailL, String passwordL) async {
     try {
       final res = await AuthenticationService.loginUser(emailL, passwordL);
+      _userModelMain = res;
       print('responce login =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> $res');
     } catch (error) {
       print(error);
@@ -93,17 +104,24 @@ class AuthenticationController extends GetxController {
     signupFormKey.currentState!.save();
   }
 
-  bool? checkLogin() {
+  bool checkLogin() {
     final bool isValid = loginFormKey.currentState!.validate();
-    final  loggedIn = loginUser(emailController.text, passwordController.text);
-    if (!isValid) {
-      print('check2');
-      return false;
-    } else {
-      print('check1');
+    loginUser(emailController.text, passwordController.text);
 
-      loginFormKey.currentState!.save();
+    if (_userModelMain.id == true) {
+      print('check 4');
+      print(_userModelMain.email );
+      print('check 5');
       return true;
+    }
+    // if (!isValid) {
+    //   print('check2');
+    //   return false;
+    // }
+    else {
+      return false;
+      print('check1');
+      loginFormKey.currentState!.save();
     }
   }
 }

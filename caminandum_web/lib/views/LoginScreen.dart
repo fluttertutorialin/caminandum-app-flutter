@@ -165,7 +165,7 @@ class LoginScreen extends StatelessWidget {
                                 validator: (value) {
                                   return controller.validatePassword(value!);
                                 },
-                                obscureText: true,
+                                obscureText: false,
                                 decoration: InputDecoration(
                                   labelText: "Password",
                                   prefixIcon: Icon(Icons.lock),
@@ -207,9 +207,9 @@ class LoginScreen extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50)),
                                 onPressed: () {
-                                  controller.checkLogin()!
+                                  controller.checkLogin()
                                       ? Get.to(() => SelectIntrest())
-                                      : print('check navi');
+                                      : print('check login navigation');
                                 },
                                 color: Color(0xFFF55D32),
                                 padding: EdgeInsets.symmetric(
