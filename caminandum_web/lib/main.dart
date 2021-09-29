@@ -1,3 +1,4 @@
+import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
 import 'package:caminandum_web/views/StartScreen.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,6 @@ class MyApp extends StatelessWidget {
 home: const BottomBarView(),
 
 //HomeScreen(),
-
 
     );
   }

@@ -27,6 +27,8 @@ class _BottomBarViewState extends State<BottomBarView>
     tabController = TabController(length: 6, vsync: this);
   }
 
+
+
   @override
   void dispose() {
     // TODO: implement dispose

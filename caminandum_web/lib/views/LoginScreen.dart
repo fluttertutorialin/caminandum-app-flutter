@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
-  // const LoginScreen({Key? key}) : super(key: key);
   final AuthenticationController controller =
       Get.put(AuthenticationController());
 
@@ -14,7 +13,6 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return OpenMenuScreen(
       child: Scaffold(
-
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -209,8 +207,9 @@ class LoginScreen extends StatelessWidget {
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50)),
                                 onPressed: () {
-                                  controller.checkLogin();
-                                  Get.to(() => SelectIntrest());
+                                  controller.checkLogin()!
+                                      ? Get.to(() => SelectIntrest())
+                                      : print('check navi');
                                 },
                                 color: Color(0xFFF55D32),
                                 padding: EdgeInsets.symmetric(
