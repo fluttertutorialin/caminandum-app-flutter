@@ -25,7 +25,9 @@ class _GetDataService implements GetDataService {
                 .compose(_dio.options, 'user/login',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+   // debugger();
     final value = BaseData<UserProfile>.fromJson(_result.data!);
+//debugger();
     return value;
   }
 
@@ -38,7 +40,7 @@ class _GetDataService implements GetDataService {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<BaseData<UserProfile>>(
             Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, 'auth/register',
+                .compose(_dio.options, 'user/signup',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = BaseData<UserProfile>.fromJson(_result.data!);

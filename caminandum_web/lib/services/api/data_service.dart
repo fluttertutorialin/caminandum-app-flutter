@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:caminandum_web/model/base/base.dart';
 import 'package:caminandum_web/model/user/user.dart';
 import 'package:caminandum_web/model/user/userProfileResponse.dart';
@@ -14,7 +16,7 @@ abstract class GetDataService {
   Future<BaseData<UserProfile>> login(@Body() UserProfile userProfile);
 
   @MultiPart()
-  @POST("auth/register")
+  @POST("user/signup")
   Future<BaseData<UserProfile>> signUp(@Body() UserProfile userProfile);
 
 }

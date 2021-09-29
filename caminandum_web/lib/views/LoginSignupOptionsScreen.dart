@@ -31,7 +31,7 @@ class LoginSignupOptionsScreen extends StatelessWidget {
                   child: SizedBox(),
                 ),
                 Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
@@ -61,7 +61,7 @@ class LoginSignupOptionsScreen extends StatelessWidget {
                 // ],
                 // ),
                 Expanded(
-                  flex: 6,
+                  flex: 5,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -87,7 +87,7 @@ class LoginSignupOptionsScreen extends StatelessWidget {
                   child: FlatButton(
                     child: Text(
                       'Create an Account',
-                      style: TextStyle(fontSize: 20.0, color: Colors.white),
+                      style: TextStyle(fontSize: 17.0, color: Colors.white),
                     ),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),
@@ -117,7 +117,7 @@ class LoginSignupOptionsScreen extends StatelessWidget {
                   child: FlatButton(
                     child: Text(
                       'Login',
-                      style: TextStyle(fontSize: 20.0, color: Colors.white),
+                      style: TextStyle(fontSize: 17.0, color: Colors.white),
                     ),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50)),

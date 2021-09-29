@@ -9,6 +9,7 @@ class LoginScreen extends StatelessWidget {
   // const LoginScreen({Key? key}) : super(key: key);
   final AuthenticationController controller =
       Get.put(AuthenticationController());
+  bool isloading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +18,14 @@ class LoginScreen extends StatelessWidget {
 
         body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/Caminandum-screen.png"),
-              fit: BoxFit.fill,
-            ),
+            // image: DecorationImage(
+            //   image: AssetImage("assets/images/Caminandum-screen.png"),
+            //   fit: BoxFit.fill,
+            // ),
           ),
           // margin: EdgeInsets.all(20),
-          width: context.width,
-          height: context.height,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           child: Container(
             child: Column(
               children: [
@@ -40,34 +41,17 @@ class LoginScreen extends StatelessWidget {
                         child: Column(
                           children: <Widget>[
                             SizedBox(
-                              height: (MediaQuery.of(context).size.height) * 0.21,
+                              height: (MediaQuery.of(context).size.height) * 0.28,
                             ),
                             Text(
                               "Welcome Back!",
                               style: TextStyle(
-                                  fontSize: 30,
+                                  fontSize: 24,
                                   letterSpacing: -1,
                                   fontWeight: FontWeight.bold,
                                   fontFamily: "Mo-re-B"),
                             ),
-                            // Container(
-                            //   decoration: BoxDecoration(
-                            //     // borderRadius: BorderRadius.circular(10.0),
-                            //     border: Border(
-                            //       bottom: BorderSide(width: 2.0, color: Colors.black,),
-                            //     ),
-                            //   ),
-                            //   child: TextFormField(
-                            //     controller: controller.firstNameController,
-                            //     onSaved: (value) {
-                            //       controller.firstName = value!;
-                            //     },
-                            //     decoration: InputDecoration(
-                            //       labelText: "First Name",
-                            //       prefixIcon: Icon(Icons.person),
-                            //     ),
-                            //   ),
-                            // ),
+
                             SizedBox(
                               height: 10,
                             ),
@@ -77,48 +61,14 @@ class LoginScreen extends StatelessWidget {
                                   "Login to your Account",
                                   style: TextStyle(
                                       fontWeight: FontWeight.normal,
-                                      fontSize: 20.0),
+                                      fontSize: 18.0),
                                   textAlign: TextAlign.right,
                                 )),
-                            // Container(
-                            //   decoration: BoxDecoration(
-                            //     // borderRadius: BorderRadius.circular(10.0),
-                            //     border: Border(
-                            //       bottom: BorderSide(width: 2.0, color: Colors.black,),
-                            //     ),
-                            //   ),
-                            //   child: TextFormField(
-                            //     controller: controller.lastNameController,
-                            //     onSaved: (value) {
-                            //       controller.lastName = value!;
-                            //     },
-                            //     decoration: InputDecoration(
-                            //       labelText: "Last Name",
-                            //       prefixIcon: Icon(Icons.person),
-                            //     ),
-                            //   ),
-                            // ),
+
                             SizedBox(
                               height: 10,
                             ),
-                            // Container(
-                            //   decoration: BoxDecoration(
-                            //     // borderRadius: BorderRadius.circular(10.0),
-                            //     border: Border(
-                            //       bottom: BorderSide(width: 2.0, color: Colors.black,),
-                            //     ),
-                            //   ),
-                            //   child: TextFormField(
-                            //     controller: controller.userNameController,
-                            //     onSaved: (value) {
-                            //       controller.userName = value!;
-                            //     },
-                            //     decoration: InputDecoration(
-                            //       labelText: "Username",
-                            //       prefixIcon: Icon(Icons.person),
-                            //     ),
-                            //   ),
-                            // ),
+
                             SizedBox(
                               height: 10,
                             ),
@@ -141,8 +91,17 @@ class LoginScreen extends StatelessWidget {
                                   return controller.validateEmail(value!);
                                 },
                                 decoration: InputDecoration(
+                                  hintStyle: TextStyle(
+                                    fontSize: 18.0,
+                                  ),
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
                                   labelText: "Email",
                                   prefixIcon: Icon(Icons.email),
+
                                 ),
                               ),
                             ),
@@ -170,6 +129,11 @@ class LoginScreen extends StatelessWidget {
                                 obscureText: true,
                                 decoration: InputDecoration(
                                   labelText: "Password",
+                                  border: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  enabledBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  disabledBorder: InputBorder.none,
                                   prefixIcon: Icon(Icons.lock),
                                 ),
                               ),
@@ -177,45 +141,29 @@ class LoginScreen extends StatelessWidget {
                             SizedBox(
                               height: 10,
                             ),
-                            // Container(child: Row(
-                            //   children: [
-                            //     Obx(() => Checkbox(
-                            //       checkColor: Colors.white,
-                            //       // title: Text("Agreed with terms of use."),
-                            //       // fillColor:,
-                            //       value: controller.agreed.value,
-                            //       onChanged: (bool? value) {
-                            //         print(controller.agreed.value);
-                            //         controller.agreed.value = !controller.agreed.value;
-                            //         // setState(() {
-                            //         //   isChecked = value!;
-                            //         // });
-                            //       },
-                            //     ),
-                            //     ),
-                            //     Container(child: Text("Agreed with terms of use.", style: TextStyle(fontSize: 20.0, color: Colors.black),),)
-                            //   ],
-                            // ),),
+
                             SizedBox(
                               height: 25,
                             ),
                             Container(
-                              child: FlatButton(
-                                child: Text(
+                              child:Obx(()=>FlatButton(
+                                child: controller.isloading.value == false ? Text(
                                   'Login',
                                   style: TextStyle(
-                                      fontSize: 20.0, color: Colors.white),
-                                ),
+                                      fontSize: 18.0, color: Colors.white),
+                                ):
+                                Center(child: CircularProgressIndicator(color: Colors.white,),),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50)),
                                 onPressed: () {
                                   controller.checkLogin();
-                                  Get.to(() => SelectIntrest());
+                                  //
                                 },
                                 color: Color(0xFFF55D32),
                                 padding: EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 50),
-                              ),
+                              ),),
+
                             ),
                           ],
                         ),
@@ -227,7 +175,13 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
         ),
+        resizeToAvoidBottomInset: false,
       ),
     );
+
+
+
+    //temporary
+
   }
 }

@@ -23,10 +23,10 @@ class SignupScreen extends StatelessWidget {
 
         body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/Caminandum-screen.png"),
-              fit: BoxFit.fill,
-            ),
+            // image: DecorationImage(
+            //   image: AssetImage("assets/images/Caminandum-screen.png"),
+            //   fit: BoxFit.fill,
+            // ),
           ),
           // margin: EdgeInsets.all(20),
           width: context.width,
@@ -45,12 +45,12 @@ class SignupScreen extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           SizedBox(
-                            height: 25,
+                            height: (MediaQuery.of(context).size.height) * 0.22,
                           ),
                           Text(
                             "Create an Account",
                             style: TextStyle(
-                                fontSize: 30,
+                                fontSize: 24,
                                 letterSpacing: -1,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: "Mo-re-B"),
@@ -73,11 +73,14 @@ class SignupScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                 labelText: "First Name",
                                 prefixIcon: Icon(Icons.person),
+                                hintStyle: TextStyle(
+                                  fontSize: 18.0,
+                                ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -97,11 +100,14 @@ class SignupScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                 labelText: "Last Name",
                                 prefixIcon: Icon(Icons.person),
+                                hintStyle: TextStyle(
+                                  fontSize: 18.0,
+                                ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -121,11 +127,14 @@ class SignupScreen extends StatelessWidget {
                               decoration: InputDecoration(
                                 labelText: "Username",
                                 prefixIcon: Icon(Icons.person),
+                                hintStyle: TextStyle(
+                                  fontSize: 18.0,
+                                ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -148,12 +157,20 @@ class SignupScreen extends StatelessWidget {
                               obscureText: true,
                               decoration: InputDecoration(
                                 labelText: "Password",
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                enabledBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                disabledBorder: InputBorder.none,
                                 prefixIcon: Icon(Icons.lock),
+                                hintStyle: TextStyle(
+                                  fontSize: 18.0,
+                                ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -175,7 +192,16 @@ class SignupScreen extends StatelessWidget {
                               },
                               decoration: InputDecoration(
                                 labelText: "Email",
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                enabledBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                disabledBorder: InputBorder.none,
                                 prefixIcon: Icon(Icons.email),
+                                hintStyle: TextStyle(
+                                  fontSize: 18.0,
+
+                                ),
                               ),
                             ),
                           ),
@@ -205,7 +231,7 @@ class SignupScreen extends StatelessWidget {
                                   child: Text(
                                     "Agreed with terms of use.",
                                     style: TextStyle(
-                                        fontSize: 20.0, color: Colors.black),
+                                        fontSize: 18.0, color: Colors.black),
                                   ),
                                 )
                               ],
@@ -216,10 +242,11 @@ class SignupScreen extends StatelessWidget {
                           ),
                           Container(
                             child: FlatButton(
+
                               child: Text(
-                                'Create an Account',
+                                'Sign up',
                                 style: TextStyle(
-                                    fontSize: 20.0, color: Colors.white),
+                                    fontSize: 18.0, color: Colors.white),
                               ),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50)),
