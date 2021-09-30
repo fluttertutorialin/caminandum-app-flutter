@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class GlobalAppBar extends StatelessWidget {
   final Widget? leftWidget;
   final String? title;
-  final Widget? rightWidget;
+final  Widget? rightWidget;
 
   GlobalAppBar({this.leftWidget, this.title, this.rightWidget});
 
@@ -21,7 +21,7 @@ class GlobalAppBar extends StatelessWidget {
           Text(
             title!,
             style: kChatFirstNameStyle.copyWith(
-                color: ColorPalette.colorOrange,
+                color: ColorPalette.colorBlack,
                 fontWeight: FontWeight.bold,
                 fontSize: 18),
           ),

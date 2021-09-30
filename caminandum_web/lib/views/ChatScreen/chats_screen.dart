@@ -63,13 +63,13 @@ class _ChatsScreenState extends State<ChatsScreen> {
 
   Future<ChatModel>? _chatModel;
   var appBarIconSize;
-  Widget? _appbarListIcon() {
+  Widget _appbarListIcon() {
     return GestureDetector(
       child: Icon(Icons.list, color: ColorPalette.colorOrange, size: appBarIconSize),
     );
   }
 
-  Widget? _searchIcon(){
+  Widget _searchIcon(){
     return GestureDetector(
       child: Icon(Icons.search, color: ColorPalette.colorOrange, size: appBarIconSize),
     );

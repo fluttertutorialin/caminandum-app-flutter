@@ -118,99 +118,199 @@
 //   }
 // }
 
+import 'package:caminandum_web/constants/colors.dart';
 import 'package:caminandum_web/controllers/profile_view_controller.dart';
+import 'package:caminandum_web/views/Profile/profile_tabs/personal_tab.dart';
+import 'package:caminandum_web/views/Profile/profile_tabs/photos_tab.dart';
+import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
+  const ProfileView({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(ProfileViewController());
+  State<ProfileView> createState() => _ProfileViewState();
+}
 
-    return Scaffold(
+class _ProfileViewState extends State<ProfileView>
+    with SingleTickerProviderStateMixin {
+  TabController? _tabControllerNested;
+  int selectedIndex = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
 
-      body:   TabBarView(
-        controller: controller.tabController,
-        children: [
-          CarPage(),
-          BikePage(),
-        ],
-      ),
-    );
+    super.initState();
+    _tabControllerNested = TabController(length: 5, vsync: this);
   }
-}
 
-class HomeController extends GetxController with SingleGetTickerProviderMixin {
-  late TabController tabController;
-
-  @override
-  void onInit() {
-    tabController = TabController(vsync: this, length: 2);
-    super.onInit();
+  void onItemClicked(int index) {
+    setState(() {
+      selectedIndex = index;
+      _tabControllerNested!.index = selectedIndex;
+    });
   }
-}
 
-class CarPage extends StatefulWidget {
   @override
-  _CarPageState createState() => _CarPageState();
-}
-
-class _CarPageState extends State<CarPage> with AutomaticKeepAliveClientMixin {
-  final controller = Get.put(CarPageController());
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _tabControllerNested!.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    print('>>> Build Car Page');
-    super.build(context);
-    return Center(
-      child: Obx(() => Text(controller.car.value)),
+    final profileViewController = Get.put(ProfileViewController());
+
+    return Column(
+      children: <Widget>[
+        Container(
+          // margin: EdgeInsets.symmetric(vertical: 0),
+          child: GlobalAppBar(
+            leftWidget: Container(),
+            title: 'Profile',
+          ),
+        ),
+        TabBar(
+          controller: _tabControllerNested,
+          indicatorColor: ColorPalette.colorOrange,
+          labelColor: ColorPalette.colorOrange,
+          indicatorWeight: 5,
+          unselectedLabelColor: ColorPalette.colorBlack,
+          isScrollable: false,
+          tabs: <Widget>[
+            Tab(
+              text: "Personal",
+              icon: Icon(Icons.person),
+              iconMargin: EdgeInsets.zero,
+            ),
+            Tab(
+              text: "Photos",
+              icon: Icon(Icons.photo_library),
+              iconMargin: EdgeInsets.zero,
+            ),
+            Tab(
+              text: "Sports",
+              icon: Icon(Icons.directions_run),
+              iconMargin: EdgeInsets.zero,
+            ),
+            Tab(
+              text: "Calendar",
+              icon: Icon(Icons.calendar_today),
+              iconMargin: EdgeInsets.zero,
+            ),
+            Tab(
+              text: "Preference",
+            ),
+          ],
+        ),
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.only(left: 16.0, right: 16.0),
+            child: TabBarView(
+              controller: _tabControllerNested,
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    color: Colors.blueGrey[300],
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    color: Colors.blueGrey[300],
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    color: Colors.blueGrey[300],
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    color: Colors.blueGrey[300],
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8.0),
+                    color: Colors.blueGrey[300],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        // Container(
+        //   padding: EdgeInsets.symmetric(vertical: 13),
+        //   child: GlobalAppBar(
+        //     leftWidget: Container(),
+        //     title: 'Profile',
+        //     rightWidget: Container(),
+        //   ),
+        // ),
+        // BottomNavigationBar(
+        //   backgroundColor: Colors.white,
+        //   showUnselectedLabels: false,
+        //   showSelectedLabels: false,
+        //   type: BottomNavigationBarType.fixed,
+        //   iconSize: 30.0,
+        //   onTap: onItemClicked,
+        //   //landingPageController.changeTabIndex,
+        //   currentIndex: selectedIndex,
+        //   //landingPageController.tabIndex.value,
+        //   // ignore: prefer_const_constructors
+        //   selectedItemColor: Colors.black,
+        //   unselectedItemColor: ColorPalette.colorOrange,
+        //   items: [
+        //     BottomNavigationBarItem(
+        //       icon: Icon(
+        //         Icons.person,
+        //       ),
+        //       label: 'Personal',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(
+        //         Icons.photo_library,
+        //       ),
+        //       label: 'Photos',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(
+        //         Icons.timer,
+        //       ),
+        //       label: 'Sports',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(
+        //         Icons.mail,
+        //       ),
+        //       label: 'Calendar',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(
+        //         Icons.person,
+        //       ),
+        //       label: 'Preferences',
+        //     ),
+        //   ],
+        // ),
+        //
+        // TabBarView(
+        //   physics: NeverScrollableScrollPhysics(),
+        //   controller: _tabController,
+        //   children: [
+        //     PersonalTab(),
+        //     PhotosTab(),
+        //     PhotosTab(),
+        //     PhotosTab(),
+        //     PhotosTab(),
+        //   ],
+        // ),
+      ],
     );
-  }
-
-  @override
-  bool get wantKeepAlive => true;
-}
-
-class CarPageController extends GetxController {
-  final car = ''.obs;
-
-  @override
-  void onInit() {
-    print('Call API Car'); // called only once
-    car.value = 'Ferrari';
-    super.onInit();
-  }
-}
-
-class BikePage extends StatefulWidget {
-  @override
-  _BikePageState createState() => _BikePageState();
-}
-
-class _BikePageState extends State<BikePage>
-    with AutomaticKeepAliveClientMixin {
-  final controller = Get.put(BikePageController());
-
-  @override
-  Widget build(BuildContext context) {
-    print('>>> Build Bike Page');
-    super.build(context);
-    return Center(
-      child: Obx(() => Text(controller.bike.value)),
-    );
-  }
-
-  @override
-  bool get wantKeepAlive => true;
-}
-
-class BikePageController extends GetxController {
-  final bike = ''.obs;
-
-  @override
-  void onInit() {
-    print('Call API Bike'); // called only once
-    bike.value = 'BMC';
-    super.onInit();
   }
 }
