@@ -1,3 +1,4 @@
+import 'package:caminandum_web/view/pages/pedoMeterScreen.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
 import 'package:caminandum_web/views/StartScreen.dart';
@@ -11,7 +12,6 @@ import 'package:get_storage/get_storage.dart';
 import 'controllers/AuthenticationController.dart';
 import 'model/menu_Item.dart';
 import 'view/pages/menu_screen.dart';
-import 'view/pages/pedometerscreen.dart';
 import 'view/pages/player_screen.dart';
 import 'views/Bottom Tabs/bottom_bar_view.dart';
 
@@ -35,10 +35,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-home: HomeScreen(),
+
+      home: StartScreen(),
+
 
 //HomeScreen(),
-
     );
   }
 }

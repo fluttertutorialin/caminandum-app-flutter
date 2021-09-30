@@ -28,6 +28,7 @@ abstract class GetDataService {
   Future<Error> unblockUser(@Body() UserProfile userProfile);
 
   @POST("anonymous/user/create-token")
-  Future<AnonymousUser> createAnonymousUser(@Body() AnonymousUser anonymousUser);
-
+  Future<AnonymousUser> createAnonymousUser(
+    @Body() AnonymousUser anonymousUser,
+  );
 }
