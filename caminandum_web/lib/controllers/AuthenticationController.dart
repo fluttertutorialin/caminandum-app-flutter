@@ -2,17 +2,22 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:caminandum_web/model/base/base.dart';
+import 'package:caminandum_web/model/pedometer/AnonymousUser.dart';
 import 'package:caminandum_web/model/user/user.dart';
+import 'package:caminandum_web/model/user/userProfileResponse.dart';
 import 'package:caminandum_web/services/AuthenticationService.dart';
 import 'package:caminandum_web/services/api/retrofit_client.dart';
+import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/SelectIntrest.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AuthenticationController extends GetxController {
   final GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+
 
   late TextEditingController emailController,
       passwordController,
@@ -26,6 +31,7 @@ class AuthenticationController extends GetxController {
   var userName = "";
   var agreed = true.obs;
   var isloading = false.obs as RxBool;
+  final box = GetStorage();
 
 
   var signupRes;
@@ -41,7 +47,7 @@ class AuthenticationController extends GetxController {
     }
   }
 
-  void loginUser(String emailL, String passwordL) async {
+   loginUser(String emailL, String passwordL) async {
     try {
       final res = await AuthenticationService.loginUser(emailL, passwordL);
       print('responce login =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> $res');
@@ -103,18 +109,20 @@ class AuthenticationController extends GetxController {
             password: passwordController.text,
             firstName: firstNameController.text,
             lastName: lastNameController.text);
+
         RetrofitClientInstance.getInstance()
             .getDataService()
             .signUp(newSignIn)
             .then((value) {
-          Get.to(() => SelectIntrest());
-        });
+             Get.snackbar('Registration', value.msg.toString()) ;
+
+        }).catchError(onError);
+
+
       } catch (e) {
         onError(e);
       }
     }
-    // signupNewUser(userNameController.text, firstNameController.text,
-    //     lastNameController.text, emailController.text, passwordController.text);
     signupFormKey.currentState!.save();
   }
 
@@ -134,35 +142,35 @@ class AuthenticationController extends GetxController {
   // }
   void checkLogin() async {
     final isvalid = loginFormKey.currentState!.validate();
-    if (isvalid) {
-      isloading.value = true;
-      UserProfile newLoggedIn = UserProfile(
-          email: emailController.text, password: passwordController.text);
-      try {
-        var res = await RetrofitClientInstance.getInstance()
+
+    try{
+      if (isvalid) {
+        isloading.value = true;
+        //  AnonymousUser anonymousUser = AnonymousUser();
+        UserProfile newLoggedIn = UserProfile(
+            email: emailController.text, password: passwordController.text);
+
+        RetrofitClientInstance.getInstance()
             .getDataService()
             .login(newLoggedIn)
-            .then(onLoginResponse);
-        // .catchError(onError);
-        //debugger();
+            .then((value){
+          print(value.token.toString());
+          onLoginResponse(value);
+        }).catchError(onError);
+        loginFormKey.currentState!.save();
 
-        // if(res.data!.firstName != null){
-        //   Get.to(() => SelectIntrest());
-        //
-        // }
-      } catch (e) {
-        onError(e);
       }
-      // loginFormKey.currentState!.save();
+    }catch(e){
+      onError(e);
+
     }
+
   }
 
-  Future<FutureOr> onLoginResponse(BaseData<UserProfile> value) async {
+  Future<FutureOr> onLoginResponse(UserProfileResponse value) async {
     isloading.value = false;
-    // print (value.data!.firstName);
-    if (value.data != null) {
-
-    }
+    box.write("isFirstTime", false);
+      Get.to(() => SelectIntrest());
   }
 
   onError(Object object) {

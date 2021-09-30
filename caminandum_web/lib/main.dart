@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:pedometer/pedometer.dart';
 import './bindings/radioBinind.dart';
 import 'constants/menu_Items.dart';
+import 'package:get_storage/get_storage.dart';
 import 'model/menu_Item.dart';
 import 'view/pages/menu_screen.dart';
 import 'view/pages/pedometerscreen.dart';
@@ -16,6 +17,7 @@ import 'views/Bottom Tabs/bottom_bar_view.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   RadioBinding().dependencies();
+  await GetStorage.init();
   runApp(MyApp());
 }
 
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
 
-home: const HomeScreen(),
+home: StartScreen(),
 
 //HomeScreen(),
 
