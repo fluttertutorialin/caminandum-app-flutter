@@ -22,6 +22,7 @@ environment:
 
 dependencies:
   get: ^4.3.8
+  google_sign_in: ^5.1.1
   intl: ^0.17.0
   janus_client: ^2.1.1-beta
   flutter_webrtc: ^0.6.5
