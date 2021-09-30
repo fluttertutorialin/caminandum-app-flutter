@@ -1,6 +1,5 @@
 # caminandum_web
-
-A new Flutter project.
+caminandum connecting people for outdoor sports
 
 ## Getting Started
 

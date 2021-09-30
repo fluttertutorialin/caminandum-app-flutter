@@ -1,9 +1,6 @@
 import 'dart:convert';
 
-import 'package:caminandum_web/controllers/AuthenticationController.dart';
-import 'package:caminandum_web/model/pedometer/User.dart';
-import 'package:caminandum_web/model/user_model_main.dart';
-import 'package:get/get.dart';
+//import 'package:caminandum_web/model/pedometer/User.dart';
 import 'package:http/http.dart' as http;
 
 class AuthenticationService {
@@ -37,28 +34,25 @@ class AuthenticationService {
   static Future loginUser(String email, String password) async {
     var url = baseUrl + "/api/v1/user/login";
 
-    Map data = {"email": email, "password": password};
-print('check5');print(url);print('check6');
-    final UserModelMain user;
+    var data = {"email": email, "password": password};
+
     try {
       final res = await http.post(
         Uri.parse(url),
-        body:data,
+        body: jsonEncode(data),
         headers: <String, String>{
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json; charset=UTF-8',
         },
       );
       if (res.statusCode == 200) {
-        print('check 1 OK');
-
         var jsonString = res.body;
-        user = userModelMainFromJson(jsonString);
 
-        return user;
+   //     return UserModel().fromJson(jsonDecode(jsonString));
       } else {
-        print('check 2 NOT Ok');
-        print('check: status code is ${res.statusCode}');
-        return '';
+        print("<===================error=================== Authserv40/40>");
+        print(res.body);
+        print("<===================error=================== Authserv40/42>");
+        return res.body;
       }
     } catch (error) {
       print("<===================error===================> $error");
