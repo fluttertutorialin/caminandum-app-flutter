@@ -28,7 +28,7 @@ class RetrofitClientInstance {
     return _client;
   }
 
-  void set(String authToken) {
+  void setAuthToken(String authToken) {
     _instance = RetrofitClientInstance._internal(authToken);
   }
 }

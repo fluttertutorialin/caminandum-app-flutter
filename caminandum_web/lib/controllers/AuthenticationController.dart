@@ -32,6 +32,7 @@ class AuthenticationController extends GetxController {
   var agreed = true.obs;
   var isloading = false.obs as RxBool;
   final box = GetStorage();
+  late UserProfileResponse signedInUser;
 
 
   var signupRes;
@@ -114,7 +115,11 @@ class AuthenticationController extends GetxController {
             .getDataService()
             .signUp(newSignIn)
             .then((value) {
-             Get.snackbar('Registration', value.msg.toString()) ;
+             Get.defaultDialog(title: "Registration successful, check your mail for"
+                 "verification link",
+             onConfirm:(){
+               Get.to(() => LoginScreen());
+             } );
 
         }).catchError(onError);
 
@@ -170,6 +175,8 @@ class AuthenticationController extends GetxController {
   Future<FutureOr> onLoginResponse(UserProfileResponse value) async {
     isloading.value = false;
     box.write("isFirstTime", false);
+    RetrofitClientInstance.getInstance().setAuthToken(value.token.toString());
+    signedInUser = value;
       Get.to(() => SelectIntrest());
   }
 
@@ -180,4 +187,5 @@ class AuthenticationController extends GetxController {
       print(object.response!.data['msg']);
     }
   }
+
 }
