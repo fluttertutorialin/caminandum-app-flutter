@@ -20,7 +20,7 @@ class _GetDataService implements GetDataService {
     final _data = <String, dynamic>{};
     _data.addAll(userProfile.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<Error>(
+        _setStreamType<UserProfileResponse>(
             Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
                 .compose(_dio.options, 'user/login',
                     queryParameters: queryParameters, data: _data)

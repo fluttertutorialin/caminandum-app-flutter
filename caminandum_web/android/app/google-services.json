@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "395140163229",
+    "firebase_url": "https://caminandum-89c58.firebaseio.com",
+    "project_id": "caminandum-89c58",
+    "storage_bucket": "caminandum-89c58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395140163229:android:1364ccdf0600b9231a9674",
+        "android_client_info": {
+          "package_name": "com.caminandum.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395140163229-hhoa4sfa3urkqp97pdl24brhe176acjs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0v_FNkqnnd_UYRtuYT9iSPKfeEIknh_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395140163229-hhoa4sfa3urkqp97pdl24brhe176acjs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
