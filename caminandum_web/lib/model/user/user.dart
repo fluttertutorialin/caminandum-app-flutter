@@ -26,6 +26,8 @@ class UserProfile {
     this.password,
     this.phoneNo,
     this.postalCode,
+    this.msg
+
   });
 
   String ?avatar;
@@ -44,6 +46,7 @@ class UserProfile {
   String ?password;
   String ?phoneNo;
   String ?postalCode;
+  String ?msg;
 
   factory UserProfile.fromJson(Map<String, dynamic> json) => UserProfile(
     avatar: json["avatar"],
@@ -62,6 +65,7 @@ class UserProfile {
     password: json["password"],
     phoneNo: json["phone_no"],
     postalCode: json["postal_code"],
+      msg: json["msg"],
   );
 
   Map<String, dynamic> toJson() => {

@@ -1,6 +1,6 @@
 // To parse this JSON data, do
 //
-//     final userProfileResponse = userProfileResponseFromJson(jsonString);
+   // final userProfileResponse = userProfileResponseFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -72,66 +72,68 @@ class UserProfileResponse {
     this.weeklyStepCountGoal,
   });
 
-  bool ?anonymous;
-  List<String> ?availabilityActivities;
-  AvailabilityDays ?availabilityDays;
-  String ?avatar;
-  List<String> ?bikesIUse;
-  String ?bio;
-  String ?birthdate;
-  List<String> ?blockedUsers;
-  String ?certificateFirstName;
-  String ?certificateImage;
-  String ?certificateLastName;
-  String ?chatStatus;
-  String ?city;
-  List<String> ?companies;
-  String ?countryOfResidence;
-  bool ?covid19Vaccinated;
-  String ?cpnCode;
-  String ?createdAt;
-  String ?currentLanguage;
-  int ?dailyStepCountGoal;
-  int ?defaultRadius;
-  List<Device> ?devices;
-  bool ?disability;
-  bool ?disableLocationHistory;
-  String ?email;
-  String ?firstName;
-  String ?gender;
-  bool ?iHaveACat;
-  bool ?iHaveADog;
-  bool ?iSmoke;
-  bool ?iUseBike;
-  String ?id;
-  bool ?isOrg;
-  bool ?isPublicProfile;
-  List<String> ?knownLanguages;
-  List<LanguagesSpoken> ?languagesSpoken;
-  LastCoords ?lastCoords;
-  String ?lastName;
-  int ?loginCount;
-  bool ?loveMusic;
-  int ?monthlyStepCountGoal;
-  Nationality ?nationality;
-  String ?phoneNo;
-  List<String> ?photos;
-  String ?presentYourself;
-  bool ?profileCompleted;
-  String ?socialProvider;
-  String ?socialToken;
-  List<String> ?sponsoredBy;
-  int ?state;
-  String ?status;
-  String ?subscriptionExpires;
-  String ?token;
-  String ?updatedAt;
-  String ?vaccineDate1;
-  String ?vaccineDate2;
-  String ?vaccineProvider;
-  int ?walkRunSpeed;
-  String ?walkRunWith;
-  int ?weeklyStepCountGoal;
+  bool? anonymous;
+  List<String>? availabilityActivities;
+  AvailabilityDays? availabilityDays;
+  String? avatar;
+  List<String>? bikesIUse;
+  String? bio;
+  String? birthdate;
+  List<String>? blockedUsers;
+  String? certificateFirstName;
+  String? certificateImage;
+  String? certificateLastName;
+  String? chatStatus;
+  String? city;
+  List<String>? companies;
+  String? countryOfResidence;
+  bool? covid19Vaccinated;
+  String? cpnCode;
+  String? createdAt;
+  String? currentLanguage;
+  int? dailyStepCountGoal;
+  int? defaultRadius;
+  List<Device>? devices;
+  bool? disability;
+  bool? disableLocationHistory;
+  String? email;
+  String? firstName;
+  String? gender;
+  bool? iHaveACat;
+  bool? iHaveADog;
+  bool? iSmoke;
+  bool? iUseBike;
+  String? id;
+  bool? isOrg;
+  bool? isPublicProfile;
+  List<String>? knownLanguages;
+  List<LanguagesSpoken>? languagesSpoken;
+  LastCoords? lastCoords;
+  String? lastName;
+  int? loginCount;
+  bool? loveMusic;
+  int? monthlyStepCountGoal;
+  Nationality? nationality;
+  String? phoneNo;
+  List<String>? photos;
+  String? presentYourself;
+  bool? profileCompleted;
+  String? socialProvider;
+  String? socialToken;
+  List<String>? sponsoredBy;
+  int? state;
+  String? status;
+  String? subscriptionExpires;
+  String? token;
+  String? updatedAt;
+  String? vaccineDate1;
+  String? vaccineDate2;
+  String? vaccineProvider;
+  int? walkRunSpeed;
+  String? walkRunWith;
+  int? weeklyStepCountGoal;
+
+
 
   factory UserProfileResponse.fromJson(Map<String, dynamic> json) => UserProfileResponse(
     anonymous: json["anonymous"],
@@ -272,9 +274,9 @@ class AvailabilityDays {
   AdditionalProp ?additionalProp3;
 
   factory AvailabilityDays.fromJson(Map<String, dynamic> json) => AvailabilityDays(
-    additionalProp1: AdditionalProp.fromJson(json["additionalProp1"]),
-    additionalProp2: AdditionalProp.fromJson(json["additionalProp2"]),
-    additionalProp3: AdditionalProp.fromJson(json["additionalProp3"]),
+   // additionalProp1: AdditionalProp.fromJson(json["additionalProp1"]),
+   // additionalProp2: AdditionalProp.fromJson(json["additionalProp2"]),
+   // additionalProp3: AdditionalProp.fromJson(json["additionalProp3"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -390,7 +392,7 @@ class LanguagesSpoken {
     this.level,
   });
 
-  String ?code;
+  String?code;
   int ?level;
 
   factory LanguagesSpoken.fromJson(Map<String, dynamic> json) => LanguagesSpoken(

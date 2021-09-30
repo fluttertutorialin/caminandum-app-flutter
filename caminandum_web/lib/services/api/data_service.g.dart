@@ -14,36 +14,82 @@ class _GetDataService implements GetDataService {
   String? baseUrl;
 
   @override
-  Future<BaseData<UserProfile>> login(userProfile) async {
+  Future<UserProfileResponse> login(userProfile) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(userProfile.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseData<UserProfile>>(
+        _setStreamType<UserProfileResponse>(
             Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
                 .compose(_dio.options, 'user/login',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-   // debugger();
-    final value = BaseData<UserProfile>.fromJson(_result.data!);
-//debugger();
+    final value = UserProfileResponse.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<BaseData<UserProfile>> signUp(userProfile) async {
+  Future<Error> signUp(userProfile) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(userProfile.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseData<UserProfile>>(
+        _setStreamType<Error>(
             Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
                 .compose(_dio.options, 'user/signup',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseData<UserProfile>.fromJson(_result.data!);
+    final value = Error.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<Error> searchUser(userProfile) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(userProfile.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Error>(
+            Options(method: 'GET', headers: <String, dynamic>{}, extra: _extra)
+                .compose(_dio.options, 'user/search',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Error.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<Error> unblockUser(userProfile) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(userProfile.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<Error>(
+            Options(method: 'PUT', headers: <String, dynamic>{}, extra: _extra)
+                .compose(_dio.options, 'user/unblock-user',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Error.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<AnonymousUser> createAnonymousUser(anonymousUser) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(anonymousUser.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AnonymousUser>(
+            Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
+                .compose(_dio.options, 'anonymous/user/create-token',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = AnonymousUser.fromJson(_result.data!);
     return value;
   }
 
