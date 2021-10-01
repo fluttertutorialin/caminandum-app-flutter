@@ -18,21 +18,19 @@ class BottomBarView extends StatefulWidget {
 
 class _BottomBarViewState extends State<BottomBarView>
     with SingleTickerProviderStateMixin {
-  TabController? tabController;
+  TabController? _tabController;
   @override
   void initState() {
     // TODO: implement initState
 
     super.initState();
-    tabController = TabController(length: 6, vsync: this);
+    _tabController = TabController(length: 6, vsync: this);
   }
-
-
 
   @override
   void dispose() {
     // TODO: implement dispose
-    tabController!.dispose();
+    _tabController!.dispose();
     super.dispose();
   }
 
@@ -40,135 +38,130 @@ class _BottomBarViewState extends State<BottomBarView>
   void onItemClicked(int index) {
     setState(() {
       selectedIndex = index;
-      tabController!.index = selectedIndex;
+      _tabController!.index = selectedIndex;
     });
   }
 
   buildBottomNavigationMenu() {
-    return  Container(
-          decoration: const BoxDecoration(
-              border: Border(top: BorderSide(color: Color(0xFFF55D32)))),
-          height: 65.0,
-          child: BottomNavigationBar(
-            backgroundColor: Colors.white,
-            showUnselectedLabels: false,
-            showSelectedLabels: false,
-            type: BottomNavigationBarType.fixed,
-            iconSize: 30.0,
-            onTap: onItemClicked,
-            //landingPageController.changeTabIndex,
-            currentIndex: selectedIndex,
-            //landingPageController.tabIndex.value,
-            // ignore: prefer_const_constructors
-            selectedItemColor: Colors.black,
-            unselectedItemColor: ColorPalette.colorOrange,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.search,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.perm_contact_cal,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.timer,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.mail,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
-                ),
-                label: '',
-              ),
-            ],
-            // items: [
-            //   BottomNavigationBarItem(
-            //     icon: Image.asset(
-            //       landingPageController.tabIndex.value == 0
-            //           ? Images.selectedHome
-            //           : Images.unSelectedHome,
-            //       height: 30.0,
-            //       width: 30.0,
-            //     ),
-            //     // Icon(
-            //     //   Icons.home,
-            //     //   // size: 28.0,
-            //     // ),
-            //     label: '',
-            //   ),
-            //   BottomNavigationBarItem(
-            //     icon: Image.asset(
-            //       landingPageController.tabIndex.value == 1
-            //           ? Images.selectedSearch
-            //           : Images.unSelectedSearch,
-            //       height: 30.0,
-            //       width: 30.0,
-            //     ),
-            //     label: '',
-            //   ),
-            //   BottomNavigationBarItem(
-            //     icon: Image.asset(
-            //       landingPageController.tabIndex.value == 2
-            //           ? Images.selectedHeart
-            //           : Images.unSelectedHeart,
-            //       height: 30.0,
-            //       width: 30.0,
-            //     ),
-            //     label: '',
-            //   ),
-            //   BottomNavigationBarItem(
-            //     icon: Image.asset(
-            //       landingPageController.tabIndex.value == 3
-            //           ? Images.selectedClock
-            //           : Images.unSelectedClock,
-            //       height: 30.0,
-            //       width: 30.0,
-            //     ),
-            //     label: '',
-            //   ),
-            //   BottomNavigationBarItem(
-            //     icon: Image.asset(
-            //       landingPageController.tabIndex.value == 4
-            //           ? Images.selectedMessage
-            //           : Images.unSelectedMessage,
-            //       height: 30.0,
-            //       width: 30.0,
-            //     ),
-            //     label: '',
-            //   ),
-            //   BottomNavigationBarItem(
-            //     icon: Image.asset(
-            //       landingPageController.tabIndex.value == 5
-            //           ? Images.selectedProfile
-            //           : Images.unSelectedProfile,
-            //       height: 30.0,
-            //       width: 30.0,
-            //     ),
-            //     label: '',
-            //     // backgroundColor: const Color(0xffED3238),
-            //   ),
-            // ],
+    return BottomNavigationBar(
+      backgroundColor: Colors.white,
+      showUnselectedLabels: false,
+      showSelectedLabels: false,
+      type: BottomNavigationBarType.fixed,
+      iconSize: 30.0,
+      onTap: onItemClicked,
+      //landingPageController.changeTabIndex,
+      currentIndex: selectedIndex,
+      //landingPageController.tabIndex.value,
+      // ignore: prefer_const_constructors
+      selectedItemColor: Colors.black,
+      unselectedItemColor: ColorPalette.colorOrange,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
           ),
-        );
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.search,
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.perm_contact_cal,
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.timer,
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.mail,
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.person,
+          ),
+          label: '',
+        ),
+      ],
+      // items: [
+      //   BottomNavigationBarItem(
+      //     icon: Image.asset(
+      //       landingPageController.tabIndex.value == 0
+      //           ? Images.selectedHome
+      //           : Images.unSelectedHome,
+      //       height: 30.0,
+      //       width: 30.0,
+      //     ),
+      //     // Icon(
+      //     //   Icons.home,
+      //     //   // size: 28.0,
+      //     // ),
+      //     label: '',
+      //   ),
+      //   BottomNavigationBarItem(
+      //     icon: Image.asset(
+      //       landingPageController.tabIndex.value == 1
+      //           ? Images.selectedSearch
+      //           : Images.unSelectedSearch,
+      //       height: 30.0,
+      //       width: 30.0,
+      //     ),
+      //     label: '',
+      //   ),
+      //   BottomNavigationBarItem(
+      //     icon: Image.asset(
+      //       landingPageController.tabIndex.value == 2
+      //           ? Images.selectedHeart
+      //           : Images.unSelectedHeart,
+      //       height: 30.0,
+      //       width: 30.0,
+      //     ),
+      //     label: '',
+      //   ),
+      //   BottomNavigationBarItem(
+      //     icon: Image.asset(
+      //       landingPageController.tabIndex.value == 3
+      //           ? Images.selectedClock
+      //           : Images.unSelectedClock,
+      //       height: 30.0,
+      //       width: 30.0,
+      //     ),
+      //     label: '',
+      //   ),
+      //   BottomNavigationBarItem(
+      //     icon: Image.asset(
+      //       landingPageController.tabIndex.value == 4
+      //           ? Images.selectedMessage
+      //           : Images.unSelectedMessage,
+      //       height: 30.0,
+      //       width: 30.0,
+      //     ),
+      //     label: '',
+      //   ),
+      //   BottomNavigationBarItem(
+      //     icon: Image.asset(
+      //       landingPageController.tabIndex.value == 5
+      //           ? Images.selectedProfile
+      //           : Images.unSelectedProfile,
+      //       height: 30.0,
+      //       width: 30.0,
+      //     ),
+      //     label: '',
+      //     // backgroundColor: const Color(0xffED3238),
+      //   ),
+      // ],
+    );
   }
 
   @override
@@ -181,7 +174,7 @@ class _BottomBarViewState extends State<BottomBarView>
           body:
               //Obx(() =>
               TabBarView(
-                controller: tabController,
+                  controller: _tabController,
                   physics: NeverScrollableScrollPhysics(),
                   children: <Widget>[
                 HomePage(),
