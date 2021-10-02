@@ -6,6 +6,7 @@ import 'package:caminandum_web/views/ChatScreen/chat_detaill_screen.dart';
 import 'package:caminandum_web/views/ChatScreen/chats_screen.dart';
 import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
+import 'package:caminandum_web/views/contacts_page/contacts_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -66,6 +67,11 @@ class _BottomBarViewState extends State<BottomBarView>
         BottomNavigationBarItem(
           icon: Icon(
             Icons.search,
+          ),
+          label: '',
+        ),        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.connect_without_contact
           ),
           label: '',
         ),
@@ -179,7 +185,7 @@ class _BottomBarViewState extends State<BottomBarView>
                   children: <Widget>[
                 HomePage(),
                 HomePage(),
-                HomePage(),
+                ContactsPage(),
                 HomePage(),
                 ChatsScreen(),
                 ProfileView(),
