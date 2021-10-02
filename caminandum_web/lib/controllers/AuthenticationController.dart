@@ -30,6 +30,8 @@ class AuthenticationController extends GetxController {
   var userName = "";
   var agreed = true.obs;
   var isloading = false.obs as RxBool;
+
+
   final box = GetStorage();
   late UserProfileResponse signedInUser;
 

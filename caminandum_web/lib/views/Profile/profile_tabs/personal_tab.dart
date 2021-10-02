@@ -8,6 +8,7 @@ import 'package:caminandum_web/views/widgets/flutter_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class PersonalTab extends StatefulWidget {
   @override
@@ -278,6 +279,74 @@ class PersonalTabState extends State<PersonalTab>
                     SizedBox(
                       height: 20,
                     ),
+                    Container(
+                      width: 300,
+                      margin: EdgeInsets.only(bottom: 30),
+                      decoration: BoxDecoration(
+                        color: ColorPalette.colorLightGrey,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 4,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Obx(() => (Switch(
+                                value: profileViewController.disability.value,
+                                onChanged: (val) {
+                                  profileViewController.disability.value = val;
+                                },
+                                activeColor: ColorPalette.colorBlack,
+                                inactiveThumbColor: Colors.black,
+                              ))),
+                          Text('Disability'),
+                          Container(
+                            width: 50,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text('Who do you want to play sports with?'),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text('Nationality'),
+                    Text('Type Address'),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Center(
+                      child: Container(
+                        width: 320,
+                        height: 120,
+                        margin: EdgeInsets.only(bottom: 30),
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: ColorPalette.colorLightGrey,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 4,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text('Activity Preferences (Sport fast)'),
+                            Divider(),
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),

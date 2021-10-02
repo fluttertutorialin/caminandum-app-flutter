@@ -32,6 +32,9 @@ dependencies:
   just_audio: ^0.9.10
   sleek_circular_slider: ^2.0.1
   font_awesome_flutter: ^9.1.0
+  image_picker: ^0.8.4+2
+  fluttertoast: ^8.0.8
+  toggle_switch: ^1.2.0
   syncfusion_flutter_gauges: ^19.2.60
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -47,16 +50,12 @@ dependencies:
   logger:
   dio:
   get_storage: ^2.0.3
-
-
-
   flutter:
     sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-
 
 dev_dependencies:
   flutter_test:

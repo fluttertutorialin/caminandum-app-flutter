@@ -10,7 +10,7 @@ class ProfileViewController extends GetxController
       bioController,
       birthDateController;
 PickedFile? pickedFile;
-
+  var disability = false.obs;
 void updateAvatar(PickedFile file){
 pickedFile = file;
 update();
