@@ -29,3 +29,16 @@ const kTextFieldDecoration = InputDecoration(
     borderSide: BorderSide(color: Colors.red),
   ),
 );
+const kProfileTabTextStyle = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    //  decoration: TextDecoration.none,
+    color: ColorPalette.colorBlack);
+const kChooseLangLevel = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    //  decoration: TextDecoration.none,
+    color: ColorPalette.colorBlack);
+

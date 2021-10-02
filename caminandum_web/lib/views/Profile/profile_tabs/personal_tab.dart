@@ -5,6 +5,7 @@ import 'package:caminandum_web/constants/styles.dart';
 import 'package:caminandum_web/controllers/profile_view_controller.dart';
 import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
 import 'package:caminandum_web/views/widgets/flutter_toast.dart';
+import 'package:caminandum_web/views/widgets/language_radio_button_group.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,6 +15,10 @@ class PersonalTab extends StatefulWidget {
   @override
   PersonalTabState createState() => PersonalTabState();
 }
+
+enum LanguageSkillLevel { Low, Medium, High }
+
+LanguageSkillLevel? _languageSkillLevel = LanguageSkillLevel.Low;
 
 class PersonalTabState extends State<PersonalTab>
     with AutomaticKeepAliveClientMixin {
@@ -85,6 +90,35 @@ class PersonalTabState extends State<PersonalTab>
     );
   }
 
+  List<String> languageList = [
+    'English',
+    'Francais',
+    'Espanol',
+    'Valenciano',
+    'Svenska',
+    ',Deutsche',
+    'Netherlands',
+    'Italiano',
+    'PyckNN',
+    'Romana',
+    'Germany',
+    'Kiswahili',
+    'Germany'
+  ];
+
+  Widget? langugageSelectionGroupWidget() {
+    List<LanguageSelectionGroup> languageSelectionGroupWidget = [];
+    for (String language in languageList) {
+      languageSelectionGroupWidget.add(LanguageSelectionGroup(
+        language: language,
+      ));
+    }
+
+    return Column(
+      children: languageSelectionGroupWidget,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -93,6 +127,9 @@ class PersonalTabState extends State<PersonalTab>
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+              SizedBox(
+                height: 30,
+              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -369,10 +406,16 @@ class PersonalTabState extends State<PersonalTab>
                           ],
                         ),
                       ),
-                    )
+                    ),
+                    Center(
+                        child: Text(
+                      'Languages you speak',
+                      style: kProfileTabTextStyle,
+                    )),
                   ],
                 ),
               ),
+              langugageSelectionGroupWidget()!
             ],
           ),
         ),
