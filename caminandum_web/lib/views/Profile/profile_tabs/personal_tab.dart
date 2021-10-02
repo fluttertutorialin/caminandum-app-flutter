@@ -61,6 +61,8 @@ class PersonalTabState extends State<PersonalTab>
   final TextEditingController dateController = TextEditingController();
   final List<String> genderList = ['Male', 'Female', 'Special'];
   String selectedGender = 'Special';
+
+  double _currentSliderValue = 2;
   //drop down button to choose male or femal
   DropdownButton<String> genderDropdown() {
     List<DropdownMenuItem<String>> dropdownItems = [];
@@ -341,8 +343,29 @@ class PersonalTabState extends State<PersonalTab>
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text('Activity Preferences (Sport fast)'),
+                            Expanded(
+                                child:
+                                    Text('Activity Preferences (Sport fast)')),
                             Divider(),
+                            Column(
+                              children: [
+                                Slider(
+                                  thumbColor: ColorPalette.colorOrange,
+                                  activeColor: ColorPalette.colorBlack,
+                                  inactiveColor: ColorPalette.colorLightGrey,
+                                  value: _currentSliderValue,
+                                  min: 0,
+                                  max: 5,
+                                  divisions: 5,
+                                  label: _currentSliderValue.round().toString(),
+                                  onChanged: (double value) {
+                                    setState(() {
+                                      _currentSliderValue = value;
+                                    });
+                                  },
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ),
