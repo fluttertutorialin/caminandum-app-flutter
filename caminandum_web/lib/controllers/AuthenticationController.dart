@@ -18,7 +18,6 @@ class AuthenticationController extends GetxController {
   final GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
 
-
   late TextEditingController emailController,
       passwordController,
       firstNameController,
@@ -34,7 +33,6 @@ class AuthenticationController extends GetxController {
   final box = GetStorage();
   late UserProfileResponse signedInUser;
 
-
   var signupRes;
 
   void signupNewUser(String userNameS, String firstNameS, String lastNameS,
@@ -48,7 +46,7 @@ class AuthenticationController extends GetxController {
     }
   }
 
-   loginUser(String emailL, String passwordL) async {
+  loginUser(String emailL, String passwordL) async {
     try {
       final res = await AuthenticationService.loginUser(emailL, passwordL);
       print('responce login =>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> $res');
@@ -115,22 +113,19 @@ class AuthenticationController extends GetxController {
             .getDataService()
             .signUp(newSignIn)
             .then((value) {
-             Get.defaultDialog(title: "Registration successful, check your mail for"
-                 "verification link",
-             onConfirm:(){
-               Get.to(() => LoginScreen());
-             } );
-
+          Get.defaultDialog(
+              title: "Registration successful, check your mail for"
+                  "verification link",
+              onConfirm: () {
+                Get.to(() => LoginScreen());
+              });
         }).catchError(onError);
-
-
       } catch (e) {
         onError(e);
       }
     }
     signupFormKey.currentState!.save();
   }
-
 
   // bool? checkLogin() {
   //   final bool isValid = loginFormKey.currentState!.validate();
@@ -148,7 +143,7 @@ class AuthenticationController extends GetxController {
   void checkLogin() async {
     final isvalid = loginFormKey.currentState!.validate();
 
-    try{
+    try {
       if (isvalid) {
         isloading.value = true;
         //  AnonymousUser anonymousUser = AnonymousUser();
@@ -158,18 +153,15 @@ class AuthenticationController extends GetxController {
         RetrofitClientInstance.getInstance()
             .getDataService()
             .login(newLoggedIn)
-            .then((value){
+            .then((value) {
           print(value.token.toString());
           onLoginResponse(value);
         }).catchError(onError);
         loginFormKey.currentState!.save();
-
       }
-    }catch(e){
+    } catch (e) {
       onError(e);
-
     }
-
   }
 
   Future<FutureOr> onLoginResponse(UserProfileResponse value) async {
@@ -177,7 +169,7 @@ class AuthenticationController extends GetxController {
     box.write("isFirstTime", false);
     RetrofitClientInstance.getInstance().setAuthToken(value.token.toString());
     signedInUser = value;
-      Get.to(() => SelectIntrest());
+    Get.to(() => SelectIntrest());
   }
 
   onError(Object object) {
@@ -187,5 +179,4 @@ class AuthenticationController extends GetxController {
       print(object.response!.data['msg']);
     }
   }
-
 }

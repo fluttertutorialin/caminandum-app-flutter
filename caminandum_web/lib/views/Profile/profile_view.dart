@@ -165,63 +165,54 @@ class _ProfileViewState extends State<ProfileView>
     return Column(
       children: <Widget>[
         Container(
-          // margin: EdgeInsets.symmetric(vertical: 0),
+          margin: EdgeInsets.symmetric(vertical: 10),
           child: GlobalAppBar(
             leftWidget: Container(),
             title: 'Profile',
           ),
         ),
-        TabBar(
-          controller: _tabControllerNested,
-          indicatorColor: ColorPalette.colorOrange,
-          labelColor: ColorPalette.colorOrange,
-          indicatorWeight: 5,
-          unselectedLabelColor: ColorPalette.colorBlack,
-          isScrollable: false,
-          tabs: <Widget>[
-            Tab(
-              text: "Personal",
-              icon: Icon(Icons.person),
-              iconMargin: EdgeInsets.zero,
-            ),
-            Tab(
-              text: "Photos",
-              icon: Icon(Icons.photo_library),
-              iconMargin: EdgeInsets.zero,
-            ),
-            Tab(
-              text: "Sports",
-              icon: Icon(Icons.directions_run),
-              iconMargin: EdgeInsets.zero,
-            ),
-            Tab(
-              text: "Calendar",
-              icon: Icon(Icons.calendar_today),
-              iconMargin: EdgeInsets.zero,
-            ),
-            Tab(
-              text: "Preference",
-            ),
-          ],
+        Container(color: ColorPalette.colorLightGrey,
+          child: TabBar(
+            controller: _tabControllerNested,
+            indicatorColor: ColorPalette.colorOrange,
+            labelColor: ColorPalette.colorOrange,
+            indicatorWeight: 5,
+            unselectedLabelColor: ColorPalette.colorBlack,
+            isScrollable: false,
+            tabs: <Widget>[
+              Tab(
+                text: "Personal",
+                icon: Image.asset('assets/profile_icons/personal.png'),
+              ),
+              Tab(
+                text: "Photos",
+                icon: Image.asset('assets/profile_icons/photos.png'),
+              ),
+              Tab(
+                text: "Sports",
+                icon: Image.asset('assets/profile_icons/sports.png'),
+              ),
+              Tab(
+                text: "Calendar",
+                icon: Image.asset('assets/profile_icons/calendar.png'),
+              ),
+              Tab(
+                text: "Preference",
+                icon: Image.asset('assets/profile_icons/preferences.png'),
+              ),
+            ],
+          ),
         ),
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(left: 16.0, right: 16.0),
+            margin: EdgeInsets.only(left: 5, right: 5, top: 25),
+
+
             child: TabBarView(
               controller: _tabControllerNested,
               children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.blueGrey[300],
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.blueGrey[300],
-                  ),
-                ),
+            PersonalTab(),
+             PhotosTab(),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
