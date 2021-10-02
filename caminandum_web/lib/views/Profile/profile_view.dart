@@ -171,7 +171,8 @@ class _ProfileViewState extends State<ProfileView>
             title: 'Profile',
           ),
         ),
-        Container(color: ColorPalette.colorLightGrey,
+        Container(
+          color: ColorPalette.colorLightGrey,
           child: TabBar(
             controller: _tabControllerNested,
             indicatorColor: ColorPalette.colorOrange,
@@ -205,14 +206,12 @@ class _ProfileViewState extends State<ProfileView>
         ),
         Expanded(
           child: Container(
-            margin: EdgeInsets.only(left: 5, right: 5, top: 25),
-
-
+            margin: EdgeInsets.only(left: 5, right: 5),
             child: TabBarView(
               controller: _tabControllerNested,
               children: <Widget>[
-            PersonalTab(),
-             PhotosTab(),
+                PersonalTab(),
+                PhotosTab(),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),

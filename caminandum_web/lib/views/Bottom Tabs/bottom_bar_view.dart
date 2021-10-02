@@ -75,12 +75,7 @@ class _BottomBarViewState extends State<BottomBarView>
           ),
           label: '',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.perm_contact_cal,
-          ),
-          label: '',
-        ),
+
         BottomNavigationBarItem(
           icon: Icon(
             Icons.timer,
@@ -100,73 +95,7 @@ class _BottomBarViewState extends State<BottomBarView>
           label: '',
         ),
       ],
-      // items: [
-      //   BottomNavigationBarItem(
-      //     icon: Image.asset(
-      //       landingPageController.tabIndex.value == 0
-      //           ? Images.selectedHome
-      //           : Images.unSelectedHome,
-      //       height: 30.0,
-      //       width: 30.0,
-      //     ),
-      //     // Icon(
-      //     //   Icons.home,
-      //     //   // size: 28.0,
-      //     // ),
-      //     label: '',
-      //   ),
-      //   BottomNavigationBarItem(
-      //     icon: Image.asset(
-      //       landingPageController.tabIndex.value == 1
-      //           ? Images.selectedSearch
-      //           : Images.unSelectedSearch,
-      //       height: 30.0,
-      //       width: 30.0,
-      //     ),
-      //     label: '',
-      //   ),
-      //   BottomNavigationBarItem(
-      //     icon: Image.asset(
-      //       landingPageController.tabIndex.value == 2
-      //           ? Images.selectedHeart
-      //           : Images.unSelectedHeart,
-      //       height: 30.0,
-      //       width: 30.0,
-      //     ),
-      //     label: '',
-      //   ),
-      //   BottomNavigationBarItem(
-      //     icon: Image.asset(
-      //       landingPageController.tabIndex.value == 3
-      //           ? Images.selectedClock
-      //           : Images.unSelectedClock,
-      //       height: 30.0,
-      //       width: 30.0,
-      //     ),
-      //     label: '',
-      //   ),
-      //   BottomNavigationBarItem(
-      //     icon: Image.asset(
-      //       landingPageController.tabIndex.value == 4
-      //           ? Images.selectedMessage
-      //           : Images.unSelectedMessage,
-      //       height: 30.0,
-      //       width: 30.0,
-      //     ),
-      //     label: '',
-      //   ),
-      //   BottomNavigationBarItem(
-      //     icon: Image.asset(
-      //       landingPageController.tabIndex.value == 5
-      //           ? Images.selectedProfile
-      //           : Images.unSelectedProfile,
-      //       height: 30.0,
-      //       width: 30.0,
-      //     ),
-      //     label: '',
-      //     // backgroundColor: const Color(0xffED3238),
-      //   ),
-      // ],
+
     );
   }
 
@@ -185,7 +114,8 @@ class _BottomBarViewState extends State<BottomBarView>
                   children: <Widget>[
                 HomePage(),
                 HomePage(),
-                ContactsPage(),
+
+                HomePage(),
                 HomePage(),
                 ChatsScreen(),
                 ProfileView(),
