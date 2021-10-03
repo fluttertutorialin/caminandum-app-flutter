@@ -6,5 +6,6 @@ class ColorPalette {
   static const Color colorBlack = Color(0xff212121);
   static const Color colorLightGrey = Color(0xffe5e4e4);
   static const Color colorDarkThemeBackground = Color(0xff1a1919);
+
   static const Color colorLightThemeBackground = Color(0xfffffff);
 }
