@@ -1,3 +1,4 @@
+import 'package:caminandum_web/constants/themes.dart';
 import 'package:caminandum_web/view/pages/pedoMeterScreen.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
@@ -30,10 +31,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'caminandum',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        primarySwatch: Colors.blue,
-      ),
+      theme: Themes.light,darkTheme: Themes.dark,
 
       home: BottomBarView(),
 
