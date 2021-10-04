@@ -5,6 +5,7 @@ import 'package:caminandum_web/views/SelectIntrest.dart';
 import 'package:caminandum_web/views/widgets/OpenMenuScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatelessWidget {
   final AuthenticationController controller =
@@ -256,7 +257,9 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                   GestureDetector(
                                     // Try Handing with the Google Auth
-                                    onTap: () {},
+                                    onTap: () async {
+                                      controller.signInWithGoogle();
+                                    },
                                     child: Image(
                                       image: AssetImage(
                                         "assets/login_icon/google.png",
