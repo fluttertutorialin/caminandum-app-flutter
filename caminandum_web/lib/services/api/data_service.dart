@@ -78,10 +78,4 @@ abstract class GetDataService {
   Future<ContactRequest> sendContactRequest(@Body() SendContactReq sendContactReq);
 
 
-
-
-
-
-
-
 }

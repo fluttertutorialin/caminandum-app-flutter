@@ -25,7 +25,7 @@ class _GetDataService implements GetDataService {
                 .compose(_dio.options, 'user/login',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = UserProfileResponse.fromJson(_result.data!);
+    final value =  UserProfileResponse.fromJson(_result.data!);
     return value;
   }
 
