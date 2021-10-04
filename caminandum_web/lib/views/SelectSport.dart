@@ -49,6 +49,7 @@ class SelectSport extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: "Mo-re-b",
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 25),
                 ),
@@ -73,7 +74,8 @@ class SelectSport extends StatelessWidget {
                       ),
                       Text(
                         "Sports",
-                        style: TextStyle(fontFamily: "Mo-re-b"),
+                        style: TextStyle(fontFamily: "Mo-re-b",
+                            color: Colors.black),
                       ),
                     ],
                   ),
@@ -99,7 +101,8 @@ class SelectSport extends StatelessWidget {
                       ),
                       Text(
                         "Water Sports",
-                        style: TextStyle(fontFamily: "Mo-re-b"),
+                        style: TextStyle(fontFamily: "Mo-re-b",
+                            color: Colors.black),
                       ),
                     ],
                   ),
@@ -125,7 +128,8 @@ class SelectSport extends StatelessWidget {
                       ),
                       Text(
                         "Mountain Sports",
-                        style: TextStyle(fontFamily: "Mo-re-b"),
+                        style: TextStyle(fontFamily: "Mo-re-b",
+                            color: Colors.black),
                       ),
                     ],
                   ),

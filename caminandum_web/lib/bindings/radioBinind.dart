@@ -7,6 +7,7 @@ class RadioBinding extends Bindings {
   @override
   void dependencies() {
     Get.put<RadioController>(RadioController());
+    // Get.put<PedometerCobtroller>(PedometerCobtroller());
 
   }
 }

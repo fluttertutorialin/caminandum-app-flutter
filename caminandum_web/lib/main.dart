@@ -33,7 +33,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Themes.light,darkTheme: Themes.dark,
 
-      home: BottomBarView(),
+      home: HomeScreen(),
+getPages: [GetPage(name: "/home", page: () => HomeScreen())],
+
 
 //StartScreen()
 //HomeScreen(),

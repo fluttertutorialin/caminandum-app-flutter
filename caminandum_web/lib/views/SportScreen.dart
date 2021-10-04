@@ -1,3 +1,4 @@
+import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -42,19 +43,25 @@ class SportScreen extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 140,
-                    width: 140,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/photo-9.png"),
-                          fit: BoxFit.cover,
-                        )),
+                  InkWell(
+                    onTap: (){
+                      Get.to(() => HomePage());
+                    },
+                    child: Container(
+                      height: 140,
+                      width: 140,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/photo-9.png"),
+                            fit: BoxFit.cover,
+                          )),
+                    ),
                   ),
                   Text(
                     "Baseball",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -73,7 +80,8 @@ class SportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Crossfit",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -92,7 +100,8 @@ class SportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Dancing",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -111,7 +120,8 @@ class SportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Golf",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -130,7 +140,8 @@ class SportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Paddle",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -149,7 +160,8 @@ class SportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Running",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -168,7 +180,8 @@ class SportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Trail Running",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -187,7 +200,8 @@ class SportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Yoga",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),

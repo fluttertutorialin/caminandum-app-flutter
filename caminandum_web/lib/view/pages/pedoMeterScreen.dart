@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -19,14 +22,110 @@ class PedoMeterScreen extends StatefulWidget {
 class _PedoMeterScreenState extends State<PedoMeterScreen> {
   late Stream<StepCount> _stepCountStream;
   late Stream<PedestrianStatus> _pedestrianStatusStream;
-  String _status = '?', _steps = '?';
+  String _status = '?', _steps = '0';
+  late double _numerox;
+  late double _convert;
+  late num _kmx;
+  late double burnedx;
+  String _km = "Unknown";
+  String _calories = "Unknown";
 
   @override
   void initState() {
     super.initState();
+    // ask for permission
+
     initPlatformState();
   }
-  // RadioController _radioController = Get.find<RadioController>();
+
+  void onStepCount(StepCount event) {
+    print(event);
+    setState(() {
+      _steps = event.steps.toString();
+    });
+
+    var dist = event.steps;
+    double y = (dist + .0);
+    setState(() {
+      _numerox = y;
+    });
+
+    num long3 = (_numerox);
+    long3 = num.parse(y.toStringAsFixed(2));
+    var long4 = (long3 / 10000);
+
+    int decimals = 1;
+    num fac = pow(10, decimals);
+    double d = long4;
+    d = (d * fac).round() / fac;
+    print("d: $d");
+
+    getDistanceRun(_numerox);
+
+    setState(() {
+      _convert = d;
+      print(_convert);
+    });
+  }
+
+  void getDistanceRun(double _numerox) {
+    num distance = ((_numerox * 78) / 100000);
+    distance = num.parse(distance.toStringAsFixed(2));
+    var distancekmx = distance * 34;
+    distancekmx = num.parse(distancekmx.toStringAsFixed(2)) * 0.62137119;
+    //print(distance.runtimeType);
+    setState(() {
+      _km = "$distance";
+      //print(_km);
+    });
+    setState(() {
+      _kmx = num.parse(distancekmx.toStringAsFixed(2));
+    });
+    getBurnedRun();
+  }
+
+  void onPedestrianStatusChanged(PedestrianStatus event) {
+    print(event);
+    setState(() {
+      _status = event.status;
+    });
+  }
+
+  void onPedestrianStatusError(error) {
+    print('onPedestrianStatusError: $error');
+    setState(() {
+      _status = 'Unavailable';
+    });
+    print(_status);
+  }
+
+  void onStepCountError(error) {
+    print('onStepCountError: $error');
+    setState(() {
+      _steps = 'Unavailable';
+    });
+  }
+
+  void getBurnedRun() {
+    setState(() {
+      var calories = _kmx;
+      _calories = "$calories";
+      //print(_calories);
+    });
+  }
+
+  void initPlatformState() {
+    _pedestrianStatusStream = Pedometer.pedestrianStatusStream;
+    _pedestrianStatusStream
+        .listen(onPedestrianStatusChanged)
+        .onError(onPedestrianStatusError);
+
+    _stepCountStream = Pedometer.stepCountStream;
+    _stepCountStream.listen(onStepCount).onError(onStepCountError);
+
+    if (!mounted) return;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +135,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -81,8 +180,9 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
               axes: <RadialAxis>[
                 RadialAxis(
                   pointers: <GaugePointer>[
-                    const RangePointer(
-                      value: 500,
+
+                    RangePointer(
+                      value: _steps == 'Not available'? 0: double.parse(_steps),
                       cornerStyle: CornerStyle.bothCurve,
                       enableAnimation: true,
                       animationDuration: 1200,
@@ -111,9 +211,9 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                       positionFactor: 0.1,
                       angle: 90,
                       widget: Text(
-                        _steps,
+                        _steps == 'Not available'? 'Device': _steps,
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: _steps == 'Not available'?35:55,
                           fontWeight: FontWeight.bold,
                           color: Colors.white.withOpacity(0.65),
                         ),
@@ -123,7 +223,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                       positionFactor: 0.45,
                       angle: 90,
                       widget: Text(
-                        'Goal : 2000',
+                        _steps == 'Not available'?'Not Supported':'Goal: 2000',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -136,7 +236,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                   maximum: 2000,
                   showLabels: false,
                   showTicks: false,
-                  axisLineStyle: const AxisLineStyle(
+                  axisLineStyle: AxisLineStyle(
                     thickness: 0.06,
                     cornerStyle: CornerStyle.bothCurve,
                     color: Color.fromARGB(30, 0, 169, 181),
@@ -163,18 +263,18 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'Calories',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      const Text(
-                        "244",
+                      Text(
+                        (_steps == 'Not available'?'N/A':_calories),
                         style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -183,7 +283,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 10,
                 ),
                 Container(
@@ -196,19 +296,18 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'Active Time',
-                        // ignore: prefer_const_constructors
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      const Text(
-                        "244",
+                      Text(
+                        _steps == 'Not available'? 'N/A':'0',
                         style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -217,7 +316,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 10,
                 ),
                 Container(
@@ -230,18 +329,18 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'Miles',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
-                      const Text(
-                        "244",
+                      Text(
+                        _steps == 'Not available'?'N/A':_km,
                         style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -256,46 +355,5 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
         ],
       ),
     );
-  }
-
-  void onStepCount(StepCount event) {
-    print(event);
-    setState(() {
-      _steps = event.steps.toString();
-    });
-  }
-
-  void onPedestrianStatusChanged(PedestrianStatus event) {
-    print(event);
-    setState(() {
-      _status = event.status;
-    });
-  }
-
-  void onPedestrianStatusError(error) {
-    print('onPedestrianStatusError: $error');
-    setState(() {
-      _status = 'Pedestrian Status not available';
-    });
-    print(_status);
-  }
-
-  void onStepCountError(error) {
-    print('onStepCountError: $error');
-    setState(() {
-      _steps = 'Not available';
-    });
-  }
-
-  void initPlatformState() {
-    _pedestrianStatusStream = Pedometer.pedestrianStatusStream;
-    _pedestrianStatusStream
-        .listen(onPedestrianStatusChanged)
-        .onError(onPedestrianStatusError);
-
-    _stepCountStream = Pedometer.stepCountStream;
-    _stepCountStream.listen(onStepCount).onError(onStepCountError);
-
-    if (!mounted) return;
   }
 }

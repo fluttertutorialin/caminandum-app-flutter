@@ -18,7 +18,7 @@ class WaterSportScreen extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Sports',
+          'Water Sports',
           style: TextStyle(color: Colors.black),
           textAlign: TextAlign.center,
         ),
@@ -54,7 +54,8 @@ class WaterSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Beach Yoga",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -67,13 +68,15 @@ class WaterSportScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         image: DecorationImage(
-                          image: AssetImage("assets/images/photo-18.png"),
+                          image: AssetImage("assets/images/photo-18.png",
+                          ),
                           fit: BoxFit.cover,
                         )),
                   ),
                   Text(
                     "Kite Surffing",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -92,7 +95,8 @@ class WaterSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Volleball",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -111,7 +115,8 @@ class WaterSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Kayak",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -130,7 +135,8 @@ class WaterSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Jet ski",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -149,7 +155,8 @@ class WaterSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Cance",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -168,7 +175,8 @@ class WaterSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "FailBoard",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -187,7 +195,8 @@ class WaterSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Swimming",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),

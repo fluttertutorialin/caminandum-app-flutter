@@ -7,6 +7,7 @@ import 'package:caminandum_web/model/user/user.dart';
 import 'package:caminandum_web/model/user/userProfileResponse.dart';
 import 'package:caminandum_web/services/AuthenticationService.dart';
 import 'package:caminandum_web/services/api/retrofit_client.dart';
+import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/SelectIntrest.dart';
 import 'package:dio/dio.dart';
@@ -115,12 +116,13 @@ class AuthenticationController extends GetxController {
             .getDataService()
             .signUp(newSignIn)
             .then((value) {
-          Get.defaultDialog(
-              title: "Registration successful, check your mail for"
-                  "verification link",
-              onConfirm: () {
-                Get.to(() => LoginScreen());
-              });
+              Get.snackbar("Registration", "successful");
+          // Get.defaultDialog(
+          //     title: "Registration successful, check your mail for"
+          //         "verification link",
+          //     onConfirm: () {
+          //       Get.to(() => LoginScreen());
+          //     });
         }).catchError(onError);
       } catch (e) {
         onError(e);
@@ -171,7 +173,18 @@ class AuthenticationController extends GetxController {
     box.write("isFirstTime", false);
     RetrofitClientInstance.getInstance().setAuthToken(value.token.toString());
     signedInUser = value;
-    Get.to(() => SelectIntrest());
+    if(box.read("isFirstTime") == false){
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => SecondRoute()),
+      // );
+      //Get.to(() => HomePage());
+      Get.toNamed("/home");
+    }else{
+      Get.to(() => SelectIntrest());
+    }
+
+
   }
 
   onError(Object object) {

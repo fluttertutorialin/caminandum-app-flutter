@@ -47,7 +47,8 @@ class SelectIntrest extends StatelessWidget {
                   style: TextStyle(
                       fontFamily: "Mo-re-b",
                       fontWeight: FontWeight.bold,
-                      fontSize: 25),
+                      fontSize: 25,
+                      color: Colors.black),
                 ),
               ),
               InkWell(
@@ -70,7 +71,8 @@ class SelectIntrest extends StatelessWidget {
                       ),
                       Text(
                         "Men ?",
-                        style: TextStyle(fontFamily: "Mo-re-b"),
+                        style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                       ),
                     ],
                   ),
@@ -78,44 +80,56 @@ class SelectIntrest extends StatelessWidget {
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 140,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/photo-4.png"),
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                    Text(
-                      "Women ?",
-                      style: TextStyle(fontFamily: "Mo-re-b"),
-                    ),
-                  ],
+                child: InkWell(
+                  onTap: (){
+                    Get.to(() => SelectSport());
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 140,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/photo-4.png"),
+                              fit: BoxFit.cover,
+                            )),
+                      ),
+                      Text(
+                        "Women ?",
+                        style: TextStyle(fontFamily: "Mo-re-b",
+                            color: Colors.black),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 140,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          image: DecorationImage(
-                            image: AssetImage("assets/images/photo-5.png"),
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                    Text(
-                      "Couple ?",
-                      style: TextStyle(fontFamily: "Mo-re-b"),
-                    ),
-                  ],
+                child: InkWell(
+                  onTap: (){
+                    Get.to(() => SelectSport());
+                  },
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 140,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25),
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/photo-5.png"),
+                              fit: BoxFit.cover,
+                            )),
+                      ),
+                      Text(
+                        "Couple ?",
+                        style: TextStyle(fontFamily: "Mo-re-b",
+                            color: Colors.black),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

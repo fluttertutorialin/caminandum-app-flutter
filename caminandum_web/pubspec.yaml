@@ -28,6 +28,7 @@ dependencies:
   flutter_webrtc: ^0.6.5
   http: ^0.13.3
   flutter_client_sse: ^0.1.0
+  permission_handler: ^8.1.6
   carousel_slider: ^4.0.0
   just_audio: ^0.9.10
   sleek_circular_slider: ^2.0.1
@@ -81,7 +82,7 @@ flutter:
     - assets/images/Caminandum-logo.png
     - assets/menu/
     - assets/login_icon/
-    - assets/profile_icons/
+  #  - assets/profile_icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

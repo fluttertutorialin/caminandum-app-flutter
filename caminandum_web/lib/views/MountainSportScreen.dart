@@ -54,7 +54,8 @@ class MountainSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Climbing",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -73,7 +74,8 @@ class MountainSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Hockey",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -92,7 +94,8 @@ class MountainSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Skating",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -111,7 +114,8 @@ class MountainSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Nordic Walking",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -130,7 +134,8 @@ class MountainSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Sking",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
@@ -149,7 +154,8 @@ class MountainSportScreen extends StatelessWidget {
                   ),
                   Text(
                     "Snowboard",
-                    style: TextStyle(fontFamily: "Mo-re-b"),
+                    style: TextStyle(fontFamily: "Mo-re-b",
+                        color: Colors.black),
                   ),
                 ],
               ),
