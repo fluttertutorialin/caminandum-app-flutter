@@ -182,7 +182,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                   pointers: <GaugePointer>[
 
                     RangePointer(
-                      value: _steps == 'Not available'? 0: double.parse(_steps),
+                      value: _steps == 'Unavailable'? 0: double.parse(_steps),
                       cornerStyle: CornerStyle.bothCurve,
                       enableAnimation: true,
                       animationDuration: 1200,
@@ -211,9 +211,9 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                       positionFactor: 0.1,
                       angle: 90,
                       widget: Text(
-                        _steps == 'Not available'? 'Device': _steps,
+                        _steps == 'Unavailable'? 'Device': _steps,
                         style: TextStyle(
-                          fontSize: _steps == 'Not available'?35:55,
+                          fontSize: _steps == 'Unavailable'?35:55,
                           fontWeight: FontWeight.bold,
                           color: Colors.white.withOpacity(0.65),
                         ),
@@ -223,7 +223,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                       positionFactor: 0.45,
                       angle: 90,
                       widget: Text(
-                        _steps == 'Not available'?'Not Supported':'Goal: 2000',
+                        _steps == 'Unavailable'?'Not Supported':'Goal: 2000',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -274,7 +274,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                         height: 5,
                       ),
                       Text(
-                        (_steps == 'Not available'?'N/A':_calories),
+                        (_steps == 'Unavailable'?'N/A':_calories),
                         style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -307,7 +307,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                         height: 5,
                       ),
                       Text(
-                        _steps == 'Not available'? 'N/A':'0',
+                        _steps == 'Unavailable'? 'N/A':'0',
                         style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -340,7 +340,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
                         height: 5,
                       ),
                       Text(
-                        _steps == 'Not available'?'N/A':_km,
+                        _steps == 'Unavailable'?'N/A':_km,
                         style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,

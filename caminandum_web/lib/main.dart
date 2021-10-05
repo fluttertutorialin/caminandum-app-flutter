@@ -1,12 +1,15 @@
 import 'package:caminandum_web/constants/themes.dart';
 import 'package:caminandum_web/view/pages/pedoMeterScreen.dart';
+import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
+import 'package:caminandum_web/views/SelectIntrest.dart';
 import 'package:caminandum_web/views/StartScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:pedometer/pedometer.dart';
+import 'package:permission_handler/permission_handler.dart';
 import './bindings/radioBinind.dart';
 import 'constants/menu_Items.dart';
 import 'package:get_storage/get_storage.dart';
@@ -20,6 +23,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   RadioBinding().dependencies();
   await GetStorage.init();
+  final status = await Permission.activityRecognition.request();
   runApp(MyApp());
 }
 
@@ -33,8 +37,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Themes.light,darkTheme: Themes.dark,
 
-      home: HomeScreen(),
-getPages: [GetPage(name: "/home", page: () => HomeScreen())],
+      home: StartScreen(),
+getPages: [GetPage(name: "/home", page: () => HomePage()),
+  GetPage(name: "/interest", page: () => SelectIntrest()),
+  GetPage(name: "/login", page: () => LoginScreen())],
 
 
 //StartScreen()

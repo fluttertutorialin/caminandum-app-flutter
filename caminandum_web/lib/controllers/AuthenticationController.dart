@@ -178,10 +178,9 @@ class AuthenticationController extends GetxController {
       //   context,
       //   MaterialPageRoute(builder: (context) => SecondRoute()),
       // );
-      //Get.to(() => HomePage());
-      Get.toNamed("/home");
+     Get.toNamed("/home");
     }else{
-      Get.to(() => SelectIntrest());
+      Get.toNamed("/interest");
     }
 
 
