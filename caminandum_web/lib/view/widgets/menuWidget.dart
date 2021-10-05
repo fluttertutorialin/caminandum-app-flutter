@@ -10,10 +10,11 @@ class MenuWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     RadioController _radioController = Get.find<RadioController>();
     return IconButton(
-        onPressed: () => ZoomDrawer.of(context)!.toggle(),
-        icon: Icon(
-          Icons.notes,
-          color: Colors.white,
-        ));
+      onPressed: () => ZoomDrawer.of(context)!.toggle(),
+      icon: Icon(
+        Icons.notes,
+        color: context.theme.primaryIconTheme.color,
+      ),
+    );
   }
 }

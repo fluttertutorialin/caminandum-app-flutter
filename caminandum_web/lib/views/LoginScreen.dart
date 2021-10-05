@@ -1,8 +1,8 @@
 import 'package:caminandum_web/controllers/AuthenticationController.dart';
-import 'package:caminandum_web/services/api/retrofit_client.dart';
-import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
-import 'package:caminandum_web/views/SelectIntrest.dart';
+import 'package:caminandum_web/controllers/theme_controller.dart';
+import 'package:caminandum_web/views/custom_background_widget.dart';
 import 'package:caminandum_web/views/widgets/OpenMenuScreen.dart';
+import 'package:caminandum_web/views/widgets/dark_mode_widget/dark_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,28 +13,28 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController _themeController = Get.find<ThemeController>();
+
+    // Getting know that where is dark mode or light mode
     return OpenMenuScreen(
-      child: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-              // image: DecorationImage(
-              //   image: AssetImage("assets/images/Caminandum-screen.png"),
-              //   fit: BoxFit.fill,
-              // ),
-              ),
-          // margin: EdgeInsets.all(20),
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Container(
-            child: Column(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: SingleChildScrollView(
-                    child: Form(
+      child: CustomBackgroundWidget(
+        bgColor: Colors.black,
+        child: Column(
+          children: [
+            Expanded(
+              flex: 1,
+              child: SingleChildScrollView(
+                physics: AlwaysScrollableScrollPhysics(
+                  parent: BouncingScrollPhysics(),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Form(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       key: controller.loginFormKey,
                       child: Container(
+                        color: Colors.black.withOpacity(0.5),
                         width: 400,
                         padding: const EdgeInsets.all(30.0),
                         child: Column(
@@ -42,16 +42,15 @@ class LoginScreen extends StatelessWidget {
                           children: <Widget>[
                             SizedBox(
                               height:
-                                  (MediaQuery.of(context).size.height) * 0.28,
+                                  (MediaQuery.of(context).size.height) * 0.15,
                             ),
                             Text(
                               "Welcome Back!",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 24,
-                                letterSpacing: -1,
+                              style:
+                                  context.theme.textTheme.subtitle1!.copyWith(
+                                fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
-                                fontFamily: "Mo-re-B",
                               ),
                             ),
                             SizedBox(
@@ -61,89 +60,64 @@ class LoginScreen extends StatelessWidget {
                               height: 30,
                               child: Text(
                                 "Login to your Account",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.normal,
+                                style:
+                                    context.theme.textTheme.subtitle1!.copyWith(
                                   fontSize: 18.0,
                                 ),
                                 textAlign: TextAlign.left,
                               ),
                             ),
                             SizedBox(
-                              height: 10,
+                              height: 20,
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                // borderRadius: BorderRadius.circular(10.0),
-                                border: Border(
-                                  bottom: BorderSide(
-                                    width: 2.0,
-                                    color: Colors.black,
-                                  ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Username',
+                                  style: context.theme.textTheme.subtitle1!,
                                 ),
-                              ),
-                              child: TextFormField(
-                                controller: controller.emailController,
-                                onSaved: (value) {
-                                  controller.email = value!;
-                                },
-                                validator: (value) {
-                                  return controller.validateEmail(value!);
-                                },
-                                decoration: InputDecoration(
-                                  hintStyle: TextStyle(
-                                    fontSize: 18.0,
-                                  ),
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                  labelText: "Email",
-                                  prefixIcon: Icon(Icons.email),
+                                SizedBox(
+                                  height: 8,
                                 ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                // borderRadius: BorderRadius.circular(10.0),
-                                border: Border(
-                                  bottom: BorderSide(
-                                    width: 2.0,
-                                    color: Colors.black,
-                                  ),
+                                DarkTextFormField(
+                                  controller: controller.emailController,
+                                  onSaved: (value) {
+                                    controller.email = value!;
+                                  },
+                                  validator: (value) {
+                                    return controller.validateEmail(value!);
+                                  },
                                 ),
-                              ),
-                              child: TextFormField(
-                                controller: controller.passwordController,
-                                onSaved: (value) {
-                                  controller.password = value!;
-                                },
-                                validator: (value) {
-                                  return controller.validatePassword(value!);
-                                },
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  labelText: "Password",
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                  prefixIcon: Icon(Icons.lock),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
+                              ],
                             ),
                             SizedBox(
                               height: 25,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Passowrd',
+                                  style: context.theme.textTheme.subtitle1!,
+                                ),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                DarkTextFormField(
+                                  controller: controller.passwordController,
+                                  obscureText: true,
+                                  onSaved: (value) {
+                                    controller.password = value!;
+                                  },
+                                  validator: (value) {
+                                    return controller.validatePassword(value!);
+                                  },
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 30,
                             ),
                             Container(
                               child: Obx(
@@ -166,9 +140,12 @@ class LoginScreen extends StatelessWidget {
                                     controller.checkLogin();
                                     //
                                   },
-                                  color: Color(0xFFF55D32),
+                                  color: context.theme.buttonTheme.colorScheme!
+                                      .onSecondary,
                                   padding: EdgeInsets.symmetric(
-                                      vertical: 10, horizontal: 50),
+                                    vertical: 10,
+                                    horizontal: 50,
+                                  ),
                                 ),
                               ),
                             ),
@@ -182,8 +159,9 @@ class LoginScreen extends StatelessWidget {
                                 children: [
                                   Expanded(
                                     child: Container(
-                                      height: 2,
-                                      color: Color(0xFFF55D32),
+                                      height: 1,
+                                      color:
+                                          context.theme.colorScheme.onPrimary,
                                     ),
                                   ),
                                   Padding(
@@ -192,18 +170,14 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                     child: Text(
                                       "Or Login With",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        letterSpacing: -1,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: "Mo-re-B",
-                                      ),
+                                      style: context.theme.textTheme.subtitle1,
                                     ),
                                   ),
                                   Expanded(
                                     child: Container(
-                                      height: 2,
-                                      color: Color(0xFFF55D32),
+                                      height: 1,
+                                      color:
+                                          context.theme.colorScheme.onPrimary,
                                     ),
                                   ),
                                 ],
@@ -216,21 +190,16 @@ class LoginScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   "forgot your password?   ",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16.0,
+                                  style: context.theme.textTheme.subtitle1!
+                                      .copyWith(
+                                    fontSize: 14,
                                   ),
                                 ),
                                 GestureDetector(
                                   onTap: () => {},
-                                  child: Text(
-                                    "Click here.",
-                                    style: const TextStyle(
-                                      color: Color(0xFFF55D32),
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                  ),
+                                  child: Text("Click here.",
+                                      style:
+                                          context.theme.textTheme.subtitle1!),
                                 ),
                               ],
                             ),
@@ -256,7 +225,9 @@ class LoginScreen extends StatelessWidget {
                                   ),
                                   GestureDetector(
                                     // Try Handing with the Google Auth
-                                    onTap: () {},
+                                    onTap: () async {
+                                      controller.signInWithGoogle();
+                                    },
                                     child: Image(
                                       image: AssetImage(
                                         "assets/login_icon/google.png",
@@ -268,6 +239,9 @@ class LoginScreen extends StatelessWidget {
                                       debugPrint("Route to the Apple Login");
                                     },
                                     child: Image(
+                                      color: _themeController.isWeb()
+                                          ? Colors.black
+                                          : Colors.white,
                                       image: AssetImage(
                                         "assets/login_icon/apple.png",
                                       ),
@@ -300,15 +274,13 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
-
-    //temporary
   }
 }

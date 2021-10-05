@@ -1,4 +1,6 @@
+import 'package:caminandum_web/bindings/themeBinind.dart';
 import 'package:caminandum_web/constants/themes.dart';
+import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/view/pages/pedoMeterScreen.dart';
 import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
@@ -23,25 +25,26 @@ import 'views/Bottom Tabs/bottom_bar_view.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   RadioBinding().dependencies();
+  ThemeBinding().dependencies();
   await GetStorage.init();
   if(!kIsWeb)final status = await Permission.activityRecognition.request();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    ThemeController _themeController = Get.find<ThemeController>();
+
     return GetMaterialApp(
       title: 'caminandum',
       debugShowCheckedModeBanner: false,
-      theme: Themes.light,darkTheme: Themes.dark,
 
+      theme: Themes.light,
+      themeMode: _themeController.isWeb() ? ThemeMode.light : ThemeMode.dark,
+      darkTheme: Themes.dark,
       home: HomeScreen(),
-getPages: [GetPage(name: "/home", page: () => HomePage()),
-  GetPage(name: "/interest", page: () => SelectIntrest()),
-  GetPage(name: "/login", page: () => LoginScreen())],
 
 
 //StartScreen()
@@ -54,17 +57,15 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  MenuItem currentItem = MenuItems.Pedometer;
-
+  // caminadum
+  MenuItem currentItem = MenuItems.caminandum;
 
   @override
   void initState() {
-
     super.initState();
   }
 

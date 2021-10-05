@@ -1,7 +1,7 @@
 import 'package:caminandum_web/controllers/AuthenticationController.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/SecondScreen.dart';
-import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
+import 'package:caminandum_web/views/custom_background_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,108 +14,89 @@ class StartScreen extends StatefulWidget {
 
 class _StartScreenState extends State<StartScreen> {
   final AuthenticationController controller =
-  Get.put(AuthenticationController());
+      Get.put(AuthenticationController());
   @override
   void initState() {
-    print(controller.box.read('isFirstTime'));
-    if(controller.box.read('isFirstTime') == false) Get.to(LoginScreen());
+    if (controller.box.read('isFirstTime') == false) Get.to(LoginScreen());
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-      body: Center(
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height:MediaQuery.of(context).size.height ,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/Caminandum-screen.png"),
-              fit: BoxFit.fill,
+    return CustomBackgroundWidget(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            flex: 3,
+            child: SizedBox(),
+          ),
+          Expanded(
+            flex: 0,
+            child: Container(
+              child: Text(
+                'caminandum',
+                textAlign: TextAlign.end,
+                style: context.textTheme.headline6,
+              ),
             ),
           ),
-          child: Stack(
-              children:<Widget>[
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    height: MediaQuery.of(context).size.height* 0.25,
-                    decoration: BoxDecoration(
-                      // borderRadius: BorderRadius.only(bottomLeft:Radius.circular(200)),
-                      // color: Colors.blue
-                    ),
-                    child: CustomPaint(
-                     // foregroundPainter: CirclePainter(),
-                    ),
+          SizedBox(
+            height: 31,
+          ),
+          Expanded(
+            flex: 4,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 25.0,
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                  border: Border.all(
+                    width: 6,
+                    color: context.theme.colorScheme.onPrimary,
                   ),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(
-                      flex: 3,
-                      child: SizedBox(),
-                    ),
-                    Expanded(
-                        flex: 0,
-                        child: Container(
-                          child: Text(
-                            'caminandum',
-                            textAlign: TextAlign.end,
-                            // overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 40,
-                                fontFamily: "MontserratReg",
-                                letterSpacing: -3),
-                          ),
-                        )),
-                    Expanded(
-                      flex: 4,
-                      child: Image.asset("assets/images/Icon1.png"),
-                    ),
-                    Expanded(
-                        flex: 1,
-                        child: Center(
-                          // margin: EdgeInsets.all(20),
-                          child: Text(
-                            "Connecting people for outdoor Sports",
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontFamily: "Mo-re-B",
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )),
-                    Container(
-                      child: FlatButton(
-                        child: Text(
-                          'Continue',
-                          style: TextStyle(fontSize: 17.0, color: Colors.white),
-                        ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)),
-                        onPressed: () {
-
-                          Get.to(SecondScreen());
-                        },
-                        color: Color(0xFFF55D32),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 100),
-                      ),
-                    ),
-                    Expanded(flex: 1, child: SizedBox())
-                  ],
+                child: Image.asset(
+                  "assets/images/app_icon.png",
+                  fit: BoxFit.fitWidth,
                 ),
-              ]
-
+              ),
+            ),
           ),
-        ),
+          Expanded(
+              flex: 1,
+              child: Center(
+                child: Text("Connecting people for outdoor Sports",
+                    textAlign: TextAlign.center,
+                    style: context.theme.textTheme.subtitle1),
+              )),
+          Container(
+            // ignore: deprecated_member_use
+            child: FlatButton(
+              child: Text(
+                'Continue',
+                style: TextStyle(fontSize: 17.0, color: Colors.white),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50),
+              ),
+              onPressed: () {
+                Get.to(
+                  SecondScreen(),
+                );
+              },
+              color: context.theme.buttonTheme.colorScheme!.background,
+              padding: EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 100,
+              ),
+            ),
+          ),
+          Expanded(flex: 1, child: SizedBox())
+        ],
       ),
     );
   }
 }
-

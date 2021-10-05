@@ -14,6 +14,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthenticationController extends GetxController {
   final GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
@@ -31,7 +32,6 @@ class AuthenticationController extends GetxController {
   var userName = "";
   var agreed = true.obs;
   var isloading = false.obs as RxBool;
-
 
   final box = GetStorage();
   late UserProfileResponse signedInUser;
@@ -191,6 +191,19 @@ class AuthenticationController extends GetxController {
     if (object is DioError) {
       Get.snackbar("Hey", object.response!.data['msg']);
       print(object.response!.data['msg']);
+    }
+  }
+
+  Future<void> signInWithGoogle() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final GoogleSignInAccount? account = await googleSignIn.signIn();
+
+    if (account != null) {
+      debugPrint("[Google-SignIn]");
+      debugPrint(account.authentication.toString());
+      debugPrint(account.authHeaders.toString());
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await account.authentication;
     }
   }
 }
