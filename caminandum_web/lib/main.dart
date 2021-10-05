@@ -1,3 +1,4 @@
+import 'package:caminandum_web/bindings/themeBinind.dart';
 import 'package:caminandum_web/constants/themes.dart';
 import 'package:caminandum_web/view/pages/pedoMeterScreen.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
@@ -19,21 +20,21 @@ import 'views/Bottom Tabs/bottom_bar_view.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   RadioBinding().dependencies();
+  ThemeBinding().dependencies();
   await GetStorage.init();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'caminandum',
       debugShowCheckedModeBanner: false,
-      theme: Themes.light,darkTheme: Themes.dark,
+      theme: Themes.light, darkTheme: Themes.dark,
 
-      home: BottomBarView(),
+      home: HomeScreen(),
 
 //StartScreen()
 //HomeScreen(),
@@ -45,17 +46,15 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  MenuItem currentItem = MenuItems.Pedometer;
-
+  // caminadum
+  MenuItem currentItem = MenuItems.caminandum;
 
   @override
   void initState() {
-
     super.initState();
   }
 

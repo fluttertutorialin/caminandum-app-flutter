@@ -209,30 +209,6 @@ class _PlayerScreenState extends State<PlayerScreen>
           'caminandum Radio',
           style: TextStyle(color: textColor),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 5, bottom: 5, top: 2),
-            child: Container(
-              height: 70,
-              width: 70,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0XFFBE0C1C),
-                    blurRadius: 5,
-                  ),
-                ],
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(
-                    'assets/images/caminandum-logo.png',
-                  ),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
       body: SafeArea(
         child: ListView(
@@ -240,9 +216,7 @@ class _PlayerScreenState extends State<PlayerScreen>
           children: [
             //Share Icons widgets
             ShareIconWidgets(),
-
             //Song Logo Image
-
             Center(
               child: SizedBox(
                 height: 130,

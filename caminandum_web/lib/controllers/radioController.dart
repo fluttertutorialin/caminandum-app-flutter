@@ -19,8 +19,10 @@ class RadioController extends GetxController {
   final player = AudioPlayer();
   @override
   onInit() async {
+    debugPrint("[RadioController]");
     super.onInit();
     var brightness = SchedulerBinding.instance!.window.platformBrightness;
+
     isDarkMode = brightness == Brightness.dark;
     textColor = isDarkMode ? Colors.white : Colors.black;
     setPlayerURL();
@@ -42,7 +44,6 @@ class RadioController extends GetxController {
     //   newSong.artist = data['artist'];
     //   this.songsDetail.value = newSong;
     // });
-
 
     /* need to uncomment radio request
     Timer.periodic(Duration(seconds: 2), (Timer t) async {
