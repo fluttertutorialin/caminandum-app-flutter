@@ -174,13 +174,14 @@ class AuthenticationController extends GetxController {
     RetrofitClientInstance.getInstance().setAuthToken(value.token.toString());
     signedInUser = value;
     if(box.read("isFirstTime") == false){
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => SecondRoute()),
-      // );
-     Get.toNamed("/home");
+      Future(() {
+        Get.to(() => HomePage());
+      });
     }else{
-      Get.toNamed("/interest");
+      Future(() {
+        Get.to(() => SelectIntrest());
+      });
+
     }
 
 

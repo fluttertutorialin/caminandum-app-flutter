@@ -17,7 +17,12 @@ class _StartScreenState extends State<StartScreen> {
       Get.put(AuthenticationController());
   @override
   void initState() {
-    if (controller.box.read('isFirstTime') == false) Get.to(LoginScreen());
+    Future(() {
+      if (controller.box.read('isFirstTime') == false) Get.to(LoginScreen());
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => CityScreen()));
+    });
+
     super.initState();
   }
 
