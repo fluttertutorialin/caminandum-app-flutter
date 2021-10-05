@@ -5,6 +5,7 @@ import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
 import 'package:caminandum_web/views/SelectIntrest.dart';
 import 'package:caminandum_web/views/StartScreen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   RadioBinding().dependencies();
   await GetStorage.init();
-  final status = await Permission.activityRecognition.request();
+  if(!kIsWeb)final status = await Permission.activityRecognition.request();
   runApp(MyApp());
 }
 
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Themes.light,darkTheme: Themes.dark,
 
-      home: StartScreen(),
+      home: HomeScreen(),
 getPages: [GetPage(name: "/home", page: () => HomePage()),
   GetPage(name: "/interest", page: () => SelectIntrest()),
   GetPage(name: "/login", page: () => LoginScreen())],

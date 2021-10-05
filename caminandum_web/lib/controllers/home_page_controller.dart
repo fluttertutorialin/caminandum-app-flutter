@@ -1,36 +1,103 @@
+import 'dart:async';
+
 import 'package:caminandum_web/model/dummy_random_contacts_model.dart';
+import 'package:caminandum_web/model/user/near_user.dart';
+import 'package:caminandum_web/model/user/near_user_home_api.dart';
+import 'package:caminandum_web/services/api/retrofit_client.dart';
 import 'package:caminandum_web/services/random_contacts/add_contacts.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class HomePageController extends GetxController {
   var statusVaccine = true.obs;
   var statusGroup = true.obs;
+  var isGetNearUser = false.obs;
+  var isLoading = true.obs;
 
   // List View
   var isChangeViewToList = true.obs;
+
   // Grid View
   var isChangeViewToGrid = false.obs;
+
   // 3 Grid View
   var isChangeViewToGridView = false.obs;
 
-  // Future model of random contacts
-  List<RandomContactModel> contactList = <RandomContactModel>[].obs;
+  List<NearbyUser> userList = <NearbyUser>[].obs;
+  List<NearbyUser> userList2 = <NearbyUser>[].obs;
+  List<Profile> userProfile = <Profile>[].obs;
 
-  //Future<DummyRandomContacts>? dummyRandomContact;
+  // Pagination
+  final PagingController<int, NearbyUser> pagingController =
+      PagingController(firstPageKey: 1);
+
+  late Position _currentPosition;
+  var currentLatitude = ''.obs;
+  var currentLongitude = ''.obs;
+  int page = 1;
+
   @override
   void onInit() {
-    getDummyRandomContacts();
+    getCurrentLocation();
+    checkNearUser(page);
+
+    pagingController.addPageRequestListener((pageKey) {
+      checkNearUser(pageKey);
+    });
     super.onInit();
   }
 
-  void getDummyRandomContacts() async {
-    try {
-      var dummyRandomContact = await RandomContactService().getRandomContacts();
+  void dispose() {
+    super.dispose();
+  }
 
-      contactList = dummyRandomContact;
+  getCurrentLocation() async {
+    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+        .then((Position position) async {
+      // Store the position in the variable
+      _currentPosition = position;
+      currentLatitude.value = position.latitude.toString();
+      currentLongitude.value = position.longitude.toString();
+      print('CURRENT POS: $_currentPosition');
+
+      // For moving the camera to current location
+    });
+  }
+
+  var isLoadingPage = false.obs;
+
+  checkNearUser(page) {
+    print("page -->>>  $page");
+    try {
+      isLoading(true);
+      update();
+
+      RetrofitClientInstance.getInstance()
+          .getDataService()
+          .nearUser(0, 0, "23.0225", '72.5714', page)
+          .then((value) {
+        userList.add(value);
+        // final isLastPage = userList[0].total < ;
+        // userList2.add(value.profiles);
+        // userList2.add(value);
+        // print('value -->>> ${userList2[0].profiles.length}');
+        // final isLastPage = userList[0].total <= userList2[0].profiles.length;
+        // print('isLastPage -->>> $isLastPage');
+
+        // if (isLastPage) {
+        //   pagingController.appendLastPage(userList2);
+        // } else {
+        //   final nextPageKey = page + 1;
+        //   pagingController.appendPage(userList2, nextPageKey);
+        // }
+        isLoading(false);
+        update();
+      });
     } catch (e) {
-      print('check: $e');
+      isLoading(false);
+      print(e);
     }
   }
 
