@@ -1,8 +1,9 @@
-import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
+import 'package:caminandum_web/view/widgets/menuWidget.dart';
+import 'package:caminandum_web/views/custom_background_widget.dart';
 import 'package:caminandum_web/views/widgets/OpenMenuScreen.dart';
+import 'package:caminandum_web/views/widgets/quarter_circle_painter/quarter_circle_painter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:caminandum_web/view/widgets/menuWidget.dart';
 import 'LoginSignupOptionsScreen.dart';
 
 class ThirdScreen extends StatelessWidget {
@@ -11,18 +12,10 @@ class ThirdScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OpenMenuScreen(
-      child: Scaffold(
-        body: Center(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/Caminandum-screen.png"),
-                fit: BoxFit.fill,
-              ),
-            ),
-            child: Column(
+      child: CustomBackgroundWidget(
+        child: Builder(
+          builder: (context) {
+            return Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Expanded(
@@ -30,37 +23,32 @@ class ThirdScreen extends StatelessWidget {
                   child: SizedBox(),
                 ),
                 Expanded(
-                    flex: 3,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        'Welcome to caminandum',
-                        textAlign: TextAlign.center,
-                        // overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 35,
-                            fontFamily: "MontserratReg",
-                            letterSpacing: -2),
-                      ),
-                    )),
+                  flex: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Welcome to caminandum',
+                      textAlign: TextAlign.center,
+                      // overflow: TextOverflow.ellipsis,
+                      style: context.textTheme.headline6,
+                    ),
+                  ),
+                ),
                 Row(
                   children: <Widget>[
                     Container(
-                        width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.symmetric(horizontal: 25),
-                        child: Text(
-                          'We are a market place dedicated to'
-                          ' connecting people who want to do'
-                          ' outdoor sports through an app'
-                          ' that also offers services for the purchase'
-                          ' of activities ,both sports and adventure',
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              fontFamily: "MontserratReg",
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                        ))
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      child: Text(
+                        'We are a market place dedicated to'
+                        ' connecting people who want to do'
+                        ' outdoor sports through an app'
+                        ' that also offers services for the purchase'
+                        ' of activities ,both sports and adventure',
+                        textAlign: TextAlign.center,
+                        style: context.theme.textTheme.subtitle1,
+                      ),
+                    )
                   ],
                 ),
                 Expanded(
@@ -70,14 +58,10 @@ class ThirdScreen extends StatelessWidget {
                       Expanded(
                         flex: 1,
                         child: Padding(
-                          padding: const EdgeInsets.all(40.0),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 25, vertical: 20.0),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(25.0),
-                            // color: Colors.redAccent,
-                            // margin:EdgeInsets.symmetric(horizontal: 50.0),
-                            // decoration: BoxDecoration(
-                            //   borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                            // ),
                             child: Image.asset("assets/images/Rectangle83.png"),
                           ),
                         ),
@@ -88,15 +72,10 @@ class ThirdScreen extends StatelessWidget {
                 Expanded(
                     flex: 1,
                     child: Container(
-                      // margin: EdgeInsets.all(20),
                       child: Text(
                         "Connecting people for outdoor Sports",
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontFamily: "Mo-re-B",
-                          fontSize: 17,
-                          // fontWeight: FontWeight.bold
-                        ),
+                        style: context.theme.textTheme.subtitle1,
                       ),
                     )),
                 Container(
@@ -117,8 +96,8 @@ class ThirdScreen extends StatelessWidget {
                 ),
                 Expanded(flex: 1, child: SizedBox())
               ],
-            ),
-          ),
+            );
+          },
         ),
       ),
     );

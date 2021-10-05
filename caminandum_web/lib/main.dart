@@ -1,5 +1,6 @@
 import 'package:caminandum_web/bindings/themeBinind.dart';
 import 'package:caminandum_web/constants/themes.dart';
+import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/view/pages/pedoMeterScreen.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
@@ -29,11 +30,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    ThemeController _themeController = Get.find<ThemeController>();
+
     return GetMaterialApp(
       title: 'caminandum',
       debugShowCheckedModeBanner: false,
-      theme: Themes.light, darkTheme: Themes.dark,
-
+      theme: Themes.light,
+      themeMode: _themeController.isWeb() ? ThemeMode.light : ThemeMode.dark,
+      darkTheme: Themes.dark,
       home: HomeScreen(),
 
 //StartScreen()

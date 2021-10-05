@@ -13,7 +13,7 @@ class MenuWidget extends StatelessWidget {
       onPressed: () => ZoomDrawer.of(context)!.toggle(),
       icon: Icon(
         Icons.notes,
-        color: Color(0xFFF55D32),
+        color: context.theme.primaryIconTheme.color,
       ),
     );
   }

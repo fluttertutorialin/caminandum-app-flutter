@@ -1,20 +1,8 @@
-import 'package:caminandum_web/constants/menuItems.dart';
 import 'package:caminandum_web/controllers/MainManuController.dart';
-import 'package:caminandum_web/model/menuItem.dart';
 import 'package:caminandum_web/view/pages/menuScreen.dart';
-import 'package:caminandum_web/view/pages/pedoMeterScreen.dart';
-import 'package:caminandum_web/view/pages/playerScreen.dart';
-import 'package:caminandum_web/views/StartScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
-
-// class OpenMenuScreen extends StatefulWidget {
-
-//
-//   @override
-//   _OpenMenuScreenState createState() => _OpenMenuScreenState();
-// }
 
 class OpenMenuScreen extends StatelessWidget {
   final child;
