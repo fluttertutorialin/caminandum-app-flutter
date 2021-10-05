@@ -14,13 +14,11 @@ import 'package:caminandum_web/services/random_contacts/add_contacts.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-
- // Future<DummyRandomContacts>? _dummyRandomContact;
+  // Future<DummyRandomContacts>? _dummyRandomContact;
   final homePageController = Get.put(HomePageController());
 
   @override
   Widget build(BuildContext context) {
-    homePageController.getDummyRandomContacts();
     var height = MediaQuery.of(context).size.height;
 
     var width = MediaQuery.of(context).size.width;
@@ -128,17 +126,16 @@ class HomePage extends StatelessWidget {
           ),
         ),
         // _userListView()
-Container(height: 100,color: Colors.red,),
         Obx(
           () => homePageController.isChangeViewToList.value
-              ? UserListView()
+              ? UserListView(controller: homePageController)
               : homePageController.isChangeViewToGrid.value
-                  ? UserGrid()
+                  ? UserGrid(controller: homePageController)
                   : homePageController.isChangeViewToGridView.value
-                      ? UserGridView()
-                      : UserListView(),
+                      ? UserGridView(controller: homePageController)
+                      : UserListView(controller: homePageController),
         ),
-        Container(height: 100,color: Colors.red,),
+
         // _userGridView3()
       ],
     );

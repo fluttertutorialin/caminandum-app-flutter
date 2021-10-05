@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+
 import 'package:caminandum_web/model/base/base.dart';
 import 'package:caminandum_web/model/contact/contact_request.dart';
 import 'package:caminandum_web/model/contact/direct_contact_request.dart';
@@ -11,6 +12,8 @@ import 'package:caminandum_web/model/pedometer/PedometerStat.dart';
 import 'package:caminandum_web/model/pedometer/pedometer_goals.dart';
 import 'package:caminandum_web/model/user/add_location.dart';
 import 'package:caminandum_web/model/user/get_my_user_model.dart';
+import 'package:caminandum_web/model/user/near_user.dart';
+import 'package:caminandum_web/model/user/near_user_home_api.dart';
 import 'package:caminandum_web/model/user/update_pedometer_goals.dart';
 import 'package:caminandum_web/model/user/update_pedometer_stat.dart';
 import 'package:caminandum_web/model/user/user.dart';
@@ -77,5 +80,11 @@ abstract class GetDataService {
   @POST("user/deny-request")
   Future<ContactRequest> sendContactRequest(@Body() SendContactReq sendContactReq);
 
+  @GET("user/nearby-users")
+  Future<NearbyUser> nearUser(@Query("onlyVaccinated") int onlyVaccinated,
+      @Query("groupByCompany") int groupByCompany,
+      @Query("lat") String lat,
+      @Query("long") String long,
+      @Query("page") int page);
 
 }
