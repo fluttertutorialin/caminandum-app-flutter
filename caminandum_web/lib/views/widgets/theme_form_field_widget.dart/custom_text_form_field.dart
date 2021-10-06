@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class DarkTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final Function(String?)? onSaved;
   final bool? obscureText;
   final String? Function(String?)? validator;
 
-  DarkTextFormField({
+  CustomTextFormField({
     Key? key,
     required this.controller,
     this.onSaved,

@@ -3,7 +3,6 @@ import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/views/custom_background_widget.dart';
 import 'package:caminandum_web/views/widgets/OpenMenuScreen.dart';
 import 'package:caminandum_web/views/widgets/theme_form_field_widget.dart/dark_text_form_field.dart';
-import 'package:caminandum_web/views/widgets/theme_form_field_widget.dart/light_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,9 +11,6 @@ class SignupScreen extends StatelessWidget {
       Get.put(AuthenticationController());
 
   Widget registerForm(BuildContext context) {
-    ThemeController _themeController = Get.find<ThemeController>();
-    bool isDark = _themeController.isDark();
-
     return Column(
       children: [
         SizedBox(
@@ -35,139 +31,94 @@ class SignupScreen extends StatelessWidget {
           children: [
             Text('First Name', style: context.theme.textTheme.subtitle1!),
             SizedBox(
-              height: isDark ? 8 : 0,
+              height: 8,
             ),
-            isDark
-                ? DarkTextFormField(
-                    controller: controller.firstNameController,
-                    onSaved: (value) {
-                      controller.firstName = value!;
-                    },
-                  )
-                : LightTextFormField(
-                    controller: controller.firstNameController,
-                    onSaved: (value) {
-                      controller.firstName = value!;
-                    },
-                  ),
+            CustomTextFormField(
+              controller: controller.firstNameController,
+              onSaved: (value) {
+                controller.firstName = value!;
+              },
+            ),
           ],
         ),
         SizedBox(
-          height: isDark ? 10 : 20,
+          height: 10,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Last Name', style: context.theme.textTheme.subtitle1!),
             SizedBox(
-              height: isDark ? 8 : 0,
+              height: 8,
             ),
-            isDark
-                ? DarkTextFormField(
-                    controller: controller.lastNameController,
-                    onSaved: (value) {
-                      controller.lastName = value!;
-                    },
-                  )
-                : LightTextFormField(
-                    controller: controller.lastNameController,
-                    onSaved: (value) {
-                      controller.lastName = value!;
-                    },
-                  ),
+            CustomTextFormField(
+              controller: controller.lastNameController,
+              onSaved: (value) {
+                controller.lastName = value!;
+              },
+            ),
           ],
         ),
         SizedBox(
-          height: isDark ? 10 : 20,
+          height: 10,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Username', style: context.theme.textTheme.subtitle1!),
             SizedBox(
-              height: isDark ? 8 : 0,
+              height: 8,
             ),
-            isDark
-                ? DarkTextFormField(
-                    controller: controller.userNameController,
-                    onSaved: (value) {
-                      controller.userName = value!;
-                    },
-                  )
-                : LightTextFormField(
-                    controller: controller.userNameController,
-                    onSaved: (value) {
-                      controller.userName = value!;
-                    },
-                  ),
+            CustomTextFormField(
+              controller: controller.userNameController,
+              onSaved: (value) {
+                controller.userName = value!;
+              },
+            ),
           ],
         ),
         SizedBox(
-          height: isDark ? 10 : 20,
+          height: 10,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Password', style: context.theme.textTheme.subtitle1!),
             SizedBox(
-              height: isDark ? 8 : 15,
+              height: 8,
             ),
-            isDark
-                ? DarkTextFormField(
-                    controller: controller.passwordController,
-                    obscureText: true,
-                    onSaved: (value) {
-                      controller.password = value!;
-                    },
-                    validator: (value) {
-                      return controller.validatePassword(value!);
-                    },
-                  )
-                : LightTextFormField(
-                    controller: controller.passwordController,
-                    obscureText: true,
-                    onSaved: (value) {
-                      controller.password = value!;
-                    },
-                    validator: (value) {
-                      return controller.validatePassword(value!);
-                    },
-                  ),
+            CustomTextFormField(
+              controller: controller.passwordController,
+              obscureText: true,
+              onSaved: (value) {
+                controller.password = value!;
+              },
+              validator: (value) {
+                return controller.validatePassword(value!);
+              },
+            ),
           ],
         ),
         SizedBox(
-          height: isDark ? 10 : 20,
+          height: 10,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Email', style: context.theme.textTheme.subtitle1!),
             SizedBox(
-              height: isDark ? 8 : 15,
+              height: 8,
             ),
-            isDark
-                ? DarkTextFormField(
-                    controller: controller.emailController,
-                    onSaved: (value) {
-                      controller.email = value!;
-                    },
-                    validator: (value) {
-                      return controller.validateEmail(value!);
-                    },
-                  )
-                : LightTextFormField(
-                    controller: controller.emailController,
-                    onSaved: (value) {
-                      controller.email = value!;
-                    },
-                    validator: (value) {
-                      return controller.validateEmail(value!);
-                    },
-                  ),
+            CustomTextFormField(
+              controller: controller.emailController,
+              onSaved: (value) {
+                controller.email = value!;
+              },
+              validator: (value) {
+                return controller.validateEmail(value!);
+              },
+            ),
           ],
-        ),
-        SizedBox(
-          height: 10,
         ),
         Row(
           children: [

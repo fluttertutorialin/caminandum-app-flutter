@@ -174,12 +174,8 @@ class AuthenticationController extends GetxController {
     box.write("isFirstTime", false);
     RetrofitClientInstance.getInstance().setAuthToken(value.token.toString());
     signedInUser = value;
-<<<<<<< HEAD
     print('check values clicked or not');
-    if(box.read("isFirstTime") == false){
-=======
     if (box.read("isFirstTime") == false) {
->>>>>>> 6a9119d... merge with master
       Future(() {
         Get.to(() => BottomBarView());
       });

@@ -3,7 +3,6 @@ import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/views/custom_background_widget.dart';
 import 'package:caminandum_web/views/widgets/OpenMenuScreen.dart';
 import 'package:caminandum_web/views/widgets/theme_form_field_widget.dart/dark_text_form_field.dart';
-import 'package:caminandum_web/views/widgets/theme_form_field_widget.dart/light_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,32 +27,20 @@ class LoginScreen extends StatelessWidget {
               'Username',
               style: context.theme.textTheme.subtitle1!,
             ),
-            SizedBox(
-              height: isDark ? 8 : 15,
-            ),
-            isDark
-                ? DarkTextFormField(
-                    controller: controller.emailController,
-                    onSaved: (value) {
-                      controller.email = value!;
-                    },
-                    validator: (value) {
-                      return controller.validateEmail(value!);
-                    },
-                  )
-                : LightTextFormField(
-                    controller: controller.emailController,
-                    onSaved: (value) {
-                      controller.email = value!;
-                    },
-                    validator: (value) {
-                      return controller.validateEmail(value!);
-                    },
-                  ),
+            SizedBox(height: 8),
+            CustomTextFormField(
+              controller: controller.emailController,
+              onSaved: (value) {
+                controller.email = value!;
+              },
+              validator: (value) {
+                return controller.validateEmail(value!);
+              },
+            )
           ],
         ),
         SizedBox(
-          height: isDark ? 15 : 50,
+          height: 15,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,29 +50,18 @@ class LoginScreen extends StatelessWidget {
               style: context.theme.textTheme.subtitle1!,
             ),
             SizedBox(
-              height: isDark ? 8 : 15,
+              height: 8,
             ),
-            isDark
-                ? DarkTextFormField(
-                    controller: controller.passwordController,
-                    obscureText: true,
-                    onSaved: (value) {
-                      controller.password = value!;
-                    },
-                    validator: (value) {
-                      return controller.validatePassword(value!);
-                    },
-                  )
-                : LightTextFormField(
-                    controller: controller.passwordController,
-                    obscureText: true,
-                    onSaved: (value) {
-                      controller.password = value!;
-                    },
-                    validator: (value) {
-                      return controller.validatePassword(value!);
-                    },
-                  ),
+            CustomTextFormField(
+              controller: controller.passwordController,
+              obscureText: true,
+              onSaved: (value) {
+                controller.password = value!;
+              },
+              validator: (value) {
+                return controller.validatePassword(value!);
+              },
+            ),
           ],
         ),
       ],
@@ -143,7 +119,7 @@ class LoginScreen extends StatelessWidget {
                             Container(
                               height: 30,
                               child: Text(
-                                "Login to your Account",
+                                "Login To Your Account",
                                 style:
                                     context.theme.textTheme.subtitle1!.copyWith(
                                   fontSize: 18.0,
