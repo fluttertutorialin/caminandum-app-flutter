@@ -7,6 +7,7 @@ import 'package:caminandum_web/model/user/user.dart';
 import 'package:caminandum_web/model/user/userProfileResponse.dart';
 import 'package:caminandum_web/services/AuthenticationService.dart';
 import 'package:caminandum_web/services/api/retrofit_client.dart';
+import 'package:caminandum_web/views/Bottom%20Tabs/bottom_bar_view.dart';
 import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/SelectIntrest.dart';
@@ -116,7 +117,7 @@ class AuthenticationController extends GetxController {
             .getDataService()
             .signUp(newSignIn)
             .then((value) {
-              Get.snackbar("Registration", "successful");
+          Get.snackbar("Registration", "successful");
           // Get.defaultDialog(
           //     title: "Registration successful, check your mail for"
           //         "verification link",
@@ -173,19 +174,20 @@ class AuthenticationController extends GetxController {
     box.write("isFirstTime", false);
     RetrofitClientInstance.getInstance().setAuthToken(value.token.toString());
     signedInUser = value;
+<<<<<<< HEAD
     print('check values clicked or not');
     if(box.read("isFirstTime") == false){
+=======
+    if (box.read("isFirstTime") == false) {
+>>>>>>> 6a9119d... merge with master
       Future(() {
-        Get.to(() => HomePage());
+        Get.to(() => BottomBarView());
       });
-    }else{
+    } else {
       Future(() {
         Get.to(() => SelectIntrest());
       });
-
     }
-
-
   }
 
   onError(Object object) {
