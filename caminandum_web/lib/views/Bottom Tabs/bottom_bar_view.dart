@@ -7,6 +7,7 @@ import 'package:caminandum_web/views/ChatScreen/chats_screen.dart';
 import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
 import 'package:caminandum_web/views/contacts_page/contacts_page.dart';
+import 'package:caminandum_web/views/contacts_page/notification_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -117,8 +118,9 @@ class _BottomBarViewState extends State<BottomBarView>
 
                 HomePage(),
                 HomePage(),
-                ChatsScreen(),
-                ProfileView(),
+                // ChatsScreen(),
+                    NotificationView(),
+                    ProfileView(),
               ])
 
           // IndexedStack(
