@@ -37,6 +37,8 @@ class Images {
   static String selected3Grid = path + 'selected3Grid.png';
   static String unSelected3Grid = path + 'unSelectedGridView.png';
 
+
+  static String userProfile = 'assets/images/photo-43.png';
   static String heart = path + 'Heart.png';
   static String menu = path + 'Menu.png';
   static String profile = path + 'Profile.png';

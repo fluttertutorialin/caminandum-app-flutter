@@ -173,6 +173,7 @@ class AuthenticationController extends GetxController {
     box.write("isFirstTime", false);
     RetrofitClientInstance.getInstance().setAuthToken(value.token.toString());
     signedInUser = value;
+    print('check values clicked or not');
     if(box.read("isFirstTime") == false){
       Future(() {
         Get.to(() => HomePage());
