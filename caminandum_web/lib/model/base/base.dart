@@ -39,8 +39,8 @@ class _Converter<T> implements JsonConverter<T, Object> {
       else if(json is Map<String, dynamic> &&
           json.containsKey('msg') &&
           json.containsKey('warnings')){
-        data = Error.fromJson(json) as T;
-        return Error.fromJson(json) as T;}
+        data = ResMessage.fromJson(json) as T;
+        return ResMessage.fromJson(json) as T;}
     }
     return data!;
   }

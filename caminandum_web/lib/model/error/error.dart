@@ -4,12 +4,12 @@
 
 import 'dart:convert';
 
-Error errorFromJson(String str) => Error.fromJson(json.decode(str));
+ResMessage errorFromJson(String str) => ResMessage.fromJson(json.decode(str));
 
-String errorToJson(Error data) => json.encode(data.toJson());
+String errorToJson(ResMessage data) => json.encode(data.toJson());
 
-class Error {
-  Error({
+class ResMessage {
+  ResMessage({
     this.msg,
     this.warnings,
   });
@@ -17,7 +17,7 @@ class Error {
   String ?msg;
   List<String> ?warnings;
 
-  factory Error.fromJson(Map<String, dynamic> json) => Error(
+  factory ResMessage.fromJson(Map<String, dynamic> json) => ResMessage(
     msg: json["msg"],
     warnings: List<String>.from(json["warnings"].map((x) => x)),
   );
