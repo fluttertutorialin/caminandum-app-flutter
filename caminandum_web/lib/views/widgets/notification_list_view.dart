@@ -5,9 +5,14 @@ import 'package:get/get_utils/src/extensions/context_extensions.dart';
 
 class NotificationListView extends StatelessWidget {
   const NotificationListView(
-      {Key? key, this.avtar, this.title, this.iconAccept, this.iconDeclined,this.controller, this.theme})
+      {Key? key,
+      this.avtar,
+      this.title,
+      this.iconAccept,
+      this.iconDeclined,
+      this.controller,
+      this.theme})
       : super(key: key);
-
 
   final avtar;
   final title;
@@ -15,10 +20,11 @@ class NotificationListView extends StatelessWidget {
   final iconDeclined;
   final controller;
   final theme;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height*0.1,
+      height: MediaQuery.of(context).size.height * 0.1,
       width: MediaQuery.of(context).size.width,
       child: ListTile(
         onTap: controller.requestDetailsPage,
@@ -32,14 +38,13 @@ class NotificationListView extends StatelessWidget {
             width: 50.0,
           ),
         ),
-          title: Text(title,
-            maxLines: 2,
-            style: context.theme.textTheme.subtitle1!
-          ),
-        trailing: Icon(iconDeclined,
-        color: theme?ColorPalette.colorWhite:ColorPalette.colorBlack,
+        title:
+            Text(title, maxLines: 2, style: context.theme.textTheme.subtitle1!),
+        trailing: Icon(
+          iconDeclined,
+          color: theme ? ColorPalette.colorWhite : ColorPalette.colorBlack,
         ),
-        ),
+      ),
     );
   }
 }
