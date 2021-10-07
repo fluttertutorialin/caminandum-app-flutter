@@ -32,7 +32,9 @@ class RequestDetails extends StatelessWidget {
                           },
                           child: Icon(
                             Icons.chevron_left,
-                            color: ColorPalette.colorWhite,
+                            color: !_themeController.isDark()
+                                ? ColorPalette.colorBlack
+                                : ColorPalette.colorWhite,
                             size: 35.0,
                           ),
                         ),
@@ -42,7 +44,9 @@ class RequestDetails extends StatelessWidget {
                         alignment: Alignment.topRight,
                         child: Icon(
                           Icons.more_vert,
-                          color: ColorPalette.colorWhite,
+                          color: !_themeController.isDark()
+                              ? ColorPalette.colorBlack
+                              : ColorPalette.colorWhite,
                           size: 35.0,
                         ),
                       ),

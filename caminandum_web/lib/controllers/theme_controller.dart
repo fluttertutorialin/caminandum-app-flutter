@@ -15,7 +15,7 @@ class ThemeController extends GetxController {
   @override
   onInit() async {
     _isWeb = kIsWeb;
-    _isDark = false;
+    _isDark = true;
     debugPrint("[ThemeController]:$_isDark");
     _isDark ? Get.changeTheme(ThemeData.dark()) : Get.changeTheme(Themes.light);
     // Get.changeTheme(ThemeData.light());
