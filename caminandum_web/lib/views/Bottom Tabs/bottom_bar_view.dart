@@ -70,13 +70,11 @@ class _BottomBarViewState extends State<BottomBarView>
             Icons.search,
           ),
           label: '',
-        ),        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.connect_without_contact
-          ),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.connect_without_contact),
           label: '',
         ),
-
         BottomNavigationBarItem(
           icon: Icon(
             Icons.timer,
@@ -96,7 +94,6 @@ class _BottomBarViewState extends State<BottomBarView>
           label: '',
         ),
       ],
-
     );
   }
 
@@ -118,9 +115,9 @@ class _BottomBarViewState extends State<BottomBarView>
 
                 HomePage(),
                 HomePage(),
-                // ChatsScreen(),
-                    NotificationView(),
-                    ProfileView(),
+                ChatsScreen(),
+                // NotificationView(),
+                ProfileView(),
               ])
 
           // IndexedStack(
