@@ -1,7 +1,3 @@
-import 'dart:developer';
-
-
-import 'package:caminandum_web/model/base/base.dart';
 import 'package:caminandum_web/model/chat/conversations.dart';
 import 'package:caminandum_web/model/contact/contact_request.dart';
 import 'package:caminandum_web/model/contact/direct_contact_request.dart';
@@ -14,14 +10,12 @@ import 'package:caminandum_web/model/pedometer/pedometer_goals.dart';
 import 'package:caminandum_web/model/user/add_location.dart';
 import 'package:caminandum_web/model/user/get_my_user_model.dart';
 import 'package:caminandum_web/model/user/near_user.dart';
-import 'package:caminandum_web/model/user/near_user_home_api.dart';
 import 'package:caminandum_web/model/user/update_pedometer_goals.dart';
 import 'package:caminandum_web/model/user/update_pedometer_stat.dart';
 import 'package:caminandum_web/model/user/user.dart';
 import 'package:caminandum_web/model/user/userProfileResponse.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
-
 part 'data_service.g.dart';
 
 @RestApi()
@@ -67,7 +61,8 @@ abstract class GetDataService {
   Future<Error> addLocationHistory(@Body() AddLocation addLocation);
 
   @POST("user/accept-request")
-  Future<ContactRequest> acceptContactRequest(@Body() RequestModel requestModel);
+  Future<ContactRequest> acceptContactRequest(
+      @Body() RequestModel requestModel);
 
   // @POST("user/accept-request")
   // Future<ContactRequest> getMyContactRequest(@Body() RequestModel requestModel);
@@ -76,13 +71,16 @@ abstract class GetDataService {
   Future<ContactRequest> denyContactRequest(@Body() RequestModel requestModel);
 
   @POST("user/deny-request")
-  Future<ContactRequest> directContactRequest(@Body() DirectContactRequest directContactRequest);
+  Future<ContactRequest> directContactRequest(
+      @Body() DirectContactRequest directContactRequest);
 
   @POST("user/deny-request")
-  Future<ContactRequest> sendContactRequest(@Body() SendContactReq sendContactReq);
+  Future<ContactRequest> sendContactRequest(
+      @Body() SendContactReq sendContactReq);
 
   @GET("user/nearby-users")
-  Future<NearbyUser> nearUser(@Query("onlyVaccinated") int onlyVaccinated,
+  Future<NearbyUser> nearUser(
+      @Query("onlyVaccinated") int onlyVaccinated,
       @Query("groupByCompany") int groupByCompany,
       @Query("lat") String lat,
       @Query("long") String long,
@@ -90,8 +88,4 @@ abstract class GetDataService {
 
   @GET("user/conversations")
   Future<Conversations> getMyConversations(@Query("limit") int limit, @Query("page") int page);
-
-
-
-
 }
