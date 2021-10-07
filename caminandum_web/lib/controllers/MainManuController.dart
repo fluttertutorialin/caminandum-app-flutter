@@ -11,7 +11,9 @@ class MainMenuController extends GetxController {
   var flag = true.obs;
 
   Widget getScreen() {
+    print("===> Get Screen");
     switch (currentItem.value) {
+
       case MenuItems.PlayerScreen:
         return PlayerScreen();
 
@@ -20,7 +22,7 @@ class MainMenuController extends GetxController {
 
       case MenuItems.caminandum:
         // Get.to(() => StartScreen());
-        return StartScreen();
+        return   StartScreen();
 
       default:
         return PedoMeterScreen();

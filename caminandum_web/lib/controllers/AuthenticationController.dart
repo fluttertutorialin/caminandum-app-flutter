@@ -7,6 +7,7 @@ import 'package:caminandum_web/model/user/user.dart';
 import 'package:caminandum_web/model/user/userProfileResponse.dart';
 import 'package:caminandum_web/services/AuthenticationService.dart';
 import 'package:caminandum_web/services/api/retrofit_client.dart';
+import 'package:caminandum_web/view/pages/pedoMeterScreen.dart';
 import 'package:caminandum_web/views/Bottom%20Tabs/bottom_bar_view.dart';
 import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
@@ -172,6 +173,8 @@ class AuthenticationController extends GetxController {
   Future<FutureOr> onLoginResponse(UserProfileResponse value) async {
     isloading.value = false;
     box.write("isFirstTime", false);
+    sAuthToken = value.token.toString();
+    print("AuthToken ===> $sAuthToken");
     RetrofitClientInstance.getInstance().setAuthToken(value.token.toString());
     signedInUser = value;
     print('check values clicked or not');
