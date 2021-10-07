@@ -1,5 +1,4 @@
 import 'package:caminandum_web/constants/colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 ///TextStyles
@@ -24,7 +23,7 @@ const kBoldTextStyle = TextStyle(
 
 const kTextFieldDecoration = InputDecoration(
   hintText: 'Enter a value',
-  contentPadding: EdgeInsets.symmetric( horizontal: 20.0),
+  contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
   border: UnderlineInputBorder(
     borderSide: BorderSide(color: Colors.red),
   ),
@@ -36,9 +35,9 @@ const kProfileTabTextStyle = TextStyle(
     //  decoration: TextDecoration.none,
     color: ColorPalette.colorBlack);
 const kChooseLangLevel = TextStyle(
-    fontFamily: 'Poppins',
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    //  decoration: TextDecoration.none,
-    color: ColorPalette.colorBlack);
-
+  fontFamily: 'Poppins',
+  fontSize: 12,
+  fontWeight: FontWeight.w400,
+  //  decoration: TextDecoration.none,
+  color: ColorPalette.colorBlack,
+);

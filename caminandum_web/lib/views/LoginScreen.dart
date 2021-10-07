@@ -2,7 +2,7 @@ import 'package:caminandum_web/controllers/AuthenticationController.dart';
 import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/views/custom_background_widget.dart';
 import 'package:caminandum_web/views/widgets/OpenMenuScreen.dart';
-import 'package:caminandum_web/views/widgets/dark_mode_widget/dark_text_form_field.dart';
+import 'package:caminandum_web/views/widgets/theme_form_field_widget.dart/dark_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,14 +11,71 @@ class LoginScreen extends StatelessWidget {
       Get.put(AuthenticationController());
   bool isloading = false;
 
+  Widget registerForm(
+    BuildContext context,
+    bool isDark,
+  ) {
+    return Column(
+      children: [
+        SizedBox(
+          height: isDark ? 25 : 0,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Username',
+              style: context.theme.textTheme.subtitle1!,
+            ),
+            SizedBox(height: 8),
+            CustomTextFormField(
+              controller: controller.emailController,
+              onSaved: (value) {
+                controller.email = value!;
+              },
+              validator: (value) {
+                return controller.validateEmail(value!);
+              },
+            )
+          ],
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Passowrd',
+              style: context.theme.textTheme.subtitle1!,
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            CustomTextFormField(
+              controller: controller.passwordController,
+              obscureText: true,
+              onSaved: (value) {
+                controller.password = value!;
+              },
+              validator: (value) {
+                return controller.validatePassword(value!);
+              },
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     ThemeController _themeController = Get.find<ThemeController>();
+    final isDark = _themeController.isDark();
 
-    // Getting know that where is dark mode or light mode
     return OpenMenuScreen(
       child: CustomBackgroundWidget(
-        bgColor: Colors.black,
+        childOnTap: true,
         child: Column(
           children: [
             Expanded(
@@ -34,7 +91,6 @@ class LoginScreen extends StatelessWidget {
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       key: controller.loginFormKey,
                       child: Container(
-                        color: Colors.black.withOpacity(0.5),
                         width: 400,
                         padding: const EdgeInsets.all(30.0),
                         child: Column(
@@ -44,6 +100,10 @@ class LoginScreen extends StatelessWidget {
                               height:
                                   (MediaQuery.of(context).size.height) * 0.15,
                             ),
+                            if (isDark)
+                              SizedBox(
+                                height: 35,
+                              ),
                             Text(
                               "Welcome Back!",
                               textAlign: TextAlign.center,
@@ -59,7 +119,7 @@ class LoginScreen extends StatelessWidget {
                             Container(
                               height: 30,
                               child: Text(
-                                "Login to your Account",
+                                "Login To Your Account",
                                 style:
                                     context.theme.textTheme.subtitle1!.copyWith(
                                   fontSize: 18.0,
@@ -70,52 +130,7 @@ class LoginScreen extends StatelessWidget {
                             SizedBox(
                               height: 20,
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Username',
-                                  style: context.theme.textTheme.subtitle1!,
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                DarkTextFormField(
-                                  controller: controller.emailController,
-                                  onSaved: (value) {
-                                    controller.email = value!;
-                                  },
-                                  validator: (value) {
-                                    return controller.validateEmail(value!);
-                                  },
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 25,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Passowrd',
-                                  style: context.theme.textTheme.subtitle1!,
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                DarkTextFormField(
-                                  controller: controller.passwordController,
-                                  obscureText: true,
-                                  onSaved: (value) {
-                                    controller.password = value!;
-                                  },
-                                  validator: (value) {
-                                    return controller.validatePassword(value!);
-                                  },
-                                ),
-                              ],
-                            ),
+                            registerForm(context, isDark),
                             SizedBox(
                               height: 30,
                             ),
@@ -170,7 +185,11 @@ class LoginScreen extends StatelessWidget {
                                     ),
                                     child: Text(
                                       "Or Login With",
-                                      style: context.theme.textTheme.subtitle1,
+                                      style: context.theme.textTheme.subtitle1!
+                                          .copyWith(
+                                        fontSize: 18.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
                                   Expanded(
@@ -192,14 +211,19 @@ class LoginScreen extends StatelessWidget {
                                   "forgot your password?   ",
                                   style: context.theme.textTheme.subtitle1!
                                       .copyWith(
-                                    fontSize: 14,
+                                    fontSize: 16.0,
                                   ),
                                 ),
                                 GestureDetector(
                                   onTap: () => {},
-                                  child: Text("Click here.",
-                                      style:
-                                          context.theme.textTheme.subtitle1!),
+                                  child: Text(
+                                    "Click here.",
+                                    style: context.theme.textTheme.subtitle1!
+                                        .copyWith(
+                                      fontSize: 16.0,
+                                      color: context.theme.indicatorColor,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
@@ -239,9 +263,7 @@ class LoginScreen extends StatelessWidget {
                                       debugPrint("Route to the Apple Login");
                                     },
                                     child: Image(
-                                      color: _themeController.isWeb()
-                                          ? Colors.black
-                                          : Colors.white,
+                                      color: context.theme.colorScheme.primary,
                                       image: AssetImage(
                                         "assets/login_icon/apple.png",
                                       ),

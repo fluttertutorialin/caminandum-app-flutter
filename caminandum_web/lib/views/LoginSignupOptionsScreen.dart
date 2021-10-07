@@ -1,3 +1,4 @@
+import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/views/LoginScreen.dart';
 import 'package:caminandum_web/views/SignupScreen.dart';
 import 'package:caminandum_web/views/custom_background_widget.dart';
@@ -10,6 +11,8 @@ class LoginSignupOptionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController _themeController = Get.find<ThemeController>();
+
     return OpenMenuScreen(
       child: CustomBackgroundWidget(
         child: Padding(
@@ -88,6 +91,10 @@ class LoginSignupOptionsScreen extends StatelessWidget {
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
+                    side: BorderSide(
+                      width: 2,
+                      color: context.theme.colorScheme.onPrimary,
+                    ),
                   ),
                   onPressed: () {
                     print('hello world');
