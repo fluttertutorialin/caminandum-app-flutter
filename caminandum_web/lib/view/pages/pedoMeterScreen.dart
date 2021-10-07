@@ -655,7 +655,7 @@ class _PedoMeterScreenState extends State<PedoMeterScreen> {
       todayInfo = await PedometerServiceManager().getTodayInfo();
       setState(() {
 
-        _steps = todayInfo.stepCount.toString();
+        _steps = (todayInfo.stepCount ?? 0).toString();
         dailyGoal = (todayInfo.currentGoals?.dailyStepCountGoal ?? 2000).toString();
 
       });
