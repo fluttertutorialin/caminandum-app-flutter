@@ -116,7 +116,7 @@ class _BottomBarViewState extends State<BottomBarView>
                   HomePage(),
                   HomePage(),
                   HomePage(),
-                  ChatsScreen(),
+                  NotificationView(),
                   ProfileView(),
                 ])
 

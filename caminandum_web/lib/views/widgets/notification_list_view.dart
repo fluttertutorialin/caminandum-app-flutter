@@ -1,16 +1,20 @@
+import 'package:caminandum_web/constants/colors.dart';
 import 'package:caminandum_web/constants/images.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get_utils/src/extensions/context_extensions.dart';
 
 class NotificationListView extends StatelessWidget {
   const NotificationListView(
-      {Key? key, this.avtar, this.title, this.iconAccept, this.iconDeclined,this.controller})
+      {Key? key, this.avtar, this.title, this.iconAccept, this.iconDeclined,this.controller, this.theme})
       : super(key: key);
+
+
   final avtar;
   final title;
   final iconAccept;
   final iconDeclined;
   final controller;
+  final theme;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,9 +34,10 @@ class NotificationListView extends StatelessWidget {
         ),
           title: Text(title,
             maxLines: 2,
+            style: context.theme.textTheme.subtitle1!
           ),
         trailing: Icon(iconDeclined,
-        color: Colors.white,
+        color: theme?ColorPalette.colorWhite:ColorPalette.colorBlack,
         ),
         ),
     );
