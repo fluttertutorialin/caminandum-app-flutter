@@ -1,16 +1,21 @@
 import 'package:caminandum_web/constants/colors.dart';
 import 'package:caminandum_web/constants/images.dart';
 import 'package:caminandum_web/controllers/contact_notification_controller.dart';
+import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
 import 'package:caminandum_web/views/widgets/notification_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
+import '../custom_background_widget.dart';
+
 class NotificationView extends StatelessWidget {
   NotificationView({Key? key}) : super(key: key);
   var appBarIconSize;
-final contactNotiController=Get.put(ContactNotificationController());
+  final contactNotiController = Get.put(ContactNotificationController());
+  ThemeController _themeController = Get.find<ThemeController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,11 +33,13 @@ final contactNotiController=Get.put(ContactNotificationController());
             Expanded(
               child: Container(
                 padding: EdgeInsets.only(top: 5),
-                color: ColorPalette.colorDarkGrey,
+                color: _themeController.isDark()
+                    ? ColorPalette.colorBlack
+                    : ColorPalette.colorWhite,
                 child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
+                    physics: BouncingScrollPhysics(),
                     itemCount: 10,
-                    itemBuilder: (context,index){
+                    itemBuilder: (context, index) {
                       return Expanded(
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -42,6 +49,7 @@ final contactNotiController=Get.put(ContactNotificationController());
                             title: "Cate wants to add you as a contact",
                             iconAccept: FontAwesomeIcons.check,
                             iconDeclined: Icons.close_sharp,
+                            theme: _themeController.isDark(),
                           ),
                         ),
                       );

@@ -101,24 +101,25 @@ class _BottomBarViewState extends State<BottomBarView>
   Widget build(BuildContext context) {
     // ignore: omit_local_variable_types
 
-    return SafeArea(
-      child: Scaffold(
-          bottomNavigationBar: buildBottomNavigationMenu(),
-          body:
-              //Obx(() =>
-              TabBarView(
-                  controller: _tabController,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: <Widget>[
-                HomePage(),
-                HomePage(),
 
-                HomePage(),
-                HomePage(),
-                ChatsScreen(),
-                // NotificationView(),
-                ProfileView(),
-              ])
+    return Material(
+      child: SafeArea(
+        child: Scaffold(
+            bottomNavigationBar: buildBottomNavigationMenu(),
+            body:
+                //Obx(() =>
+                TabBarView(
+                    controller: _tabController,
+                    physics: NeverScrollableScrollPhysics(),
+                    children: <Widget>[
+                  HomePage(),
+                  HomePage(),
+                  HomePage(),
+                  HomePage(),
+                  NotificationView(),
+                  ProfileView(),
+                ])
+
 
           // IndexedStack(
           //   index: landingPageController.tabIndex.value,
@@ -135,6 +136,7 @@ class _BottomBarViewState extends State<BottomBarView>
           // )
           ),
       //)
+    )
     );
   }
 }
