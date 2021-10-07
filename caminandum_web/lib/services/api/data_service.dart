@@ -1,7 +1,7 @@
 import 'dart:developer';
 
+
 import 'package:caminandum_web/model/base/base.dart';
-import 'package:caminandum_web/model/chat_model.dart';
 import 'package:caminandum_web/model/contact/contact_request.dart';
 import 'package:caminandum_web/model/contact/direct_contact_request.dart';
 import 'package:caminandum_web/model/contact/request_model.dart';
@@ -48,24 +48,19 @@ abstract class GetDataService {
   Future<GetMyUserModel> getMyUserProfile(@Body() UserProfile userProfile);
 
   @GET("pedometer/month-stats")
-  Future<PedometerStat> getThisMonthPedometerStat(
-      @Body() PedometerStat pedometerStat);
+  Future<PedometerStat> getThisMonthPedometerStat(@Body() PedometerStat pedometerStat);
 
   @PUT("pedometer/stats")
-  Future<PedometerStat> updatePedometerStat(
-      @Body() UpdatePedometerStat updatePedometerStat);
+  Future<PedometerStat> updatePedometerStat(@Body() UpdatePedometerStat updatePedometerStat);
 
   @GET("pedometer/today-stats")
-  Future<PedometerStat> todayPedometerStat(
-      @Body() UpdatePedometerStat updatePedometerStat);
+  Future<PedometerStat> todayPedometerStat(@Body() UpdatePedometerStat updatePedometerStat);
 
   @PUT("pedometer/today-stats")
-  Future<PedometerStat> updateTodaysStat(
-      @Body() UpdatePedometerStat updatePedometerStat);
+  Future<PedometerStat> updateTodaysStat(@Body() UpdatePedometerStat updatePedometerStat);
 
   @PUT("pedometer/update-pedometer-goals")
-  Future<PedometerGoals> updatePedometerGoals(
-      @Body() UpdatePedometerGoals updatePedometerGoals);
+  Future<PedometerGoals> updatePedometerGoals(@Body() UpdatePedometerGoals updatePedometerGoals);
 
   @POST("user/add-location-history")
   Future<Error> addLocationHistory(@Body() AddLocation addLocation);
@@ -95,4 +90,11 @@ abstract class GetDataService {
       @Query("lat") String lat,
       @Query("long") String long,
       @Query("page") int page);
+
+  @GET("user/conversations")
+  Future<Conversations> getMyConversations(@Query("limit") int limit, @Query("page") int page);
+
+
+
+
 }

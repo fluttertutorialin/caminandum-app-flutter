@@ -172,6 +172,7 @@ class AuthenticationController extends GetxController {
   Future<FutureOr> onLoginResponse(UserProfileResponse value) async {
     isloading.value = false;
     box.write("isFirstTime", false);
+    //setting token
     RetrofitClientInstance.getInstance().setAuthToken(value.token.toString());
     signedInUser = value;
     print('check values clicked or not');
