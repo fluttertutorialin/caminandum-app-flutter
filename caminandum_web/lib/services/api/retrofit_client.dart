@@ -10,7 +10,7 @@ class RetrofitClientInstance {
     _dio.options.responseType = ResponseType.json;
     _dio.options.headers["accept"] = "application/json";
     _dio.options.headers["Authorization"] =
-         authToken.isEmpty == true ? '' : 'Bearer $authToken';
+         authToken.isEmpty == true ? '' : '$authToken'; //Bearer
     _dio.options.connectTimeout = (3 * 60 * 1000);
     _dio.interceptors
         .add(LogInterceptor(responseBody: true, requestBody: true));

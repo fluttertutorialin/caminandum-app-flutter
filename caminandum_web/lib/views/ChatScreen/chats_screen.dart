@@ -1,4 +1,5 @@
 import 'package:caminandum_web/constants/colors.dart';
+import 'package:caminandum_web/controllers/conversation_controller.dart';
 import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/model/chat_model.dart';
 import 'package:caminandum_web/view/widgets/menuWidget.dart';
@@ -16,6 +17,8 @@ class ChatsScreen extends StatefulWidget {
 }
 
 class _ChatsScreenState extends State<ChatsScreen> {
+  final ConversationController controller = Get.put(ConversationController());
+
   ///temporary chat dummy data pending API
   List<ChatModel> dummyData = [
     new ChatModel(
@@ -70,8 +73,6 @@ class _ChatsScreenState extends State<ChatsScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -80,7 +81,9 @@ class _ChatsScreenState extends State<ChatsScreen> {
           centerTitle: true,
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  controller.getConversation();
+                },
                 icon: Icon(
                   Icons.search,
                   color: context.theme.primaryIconTheme.color,
