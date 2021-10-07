@@ -27,7 +27,7 @@ Future<void> main() async {
   RadioBinding().dependencies();
   ThemeBinding().dependencies();
   await GetStorage.init();
-  if(!kIsWeb)final status = await Permission.activityRecognition.request();
+  if (!kIsWeb) final status = await Permission.activityRecognition.request();
   runApp(MyApp());
 }
 
@@ -40,15 +40,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'caminandum',
       debugShowCheckedModeBanner: false,
-
-      theme: Themes.light,
-      themeMode: _themeController.isWeb() ? ThemeMode.light : ThemeMode.dark,
       darkTheme: Themes.dark,
+      theme: Themes.light,
+      themeMode: _themeController.isDark() ? ThemeMode.dark : ThemeMode.light,
       home: HomeScreen(),
-
-
-//StartScreen()
-//HomeScreen(),
     );
   }
 }

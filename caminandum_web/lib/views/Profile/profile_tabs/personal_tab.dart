@@ -387,9 +387,7 @@ class PersonalTabState extends State<PersonalTab>
                             Column(
                               children: [
                                 Slider(
-
                                   //thumbColor: ColorPalette.colorOrange,
-
 
                                   activeColor: ColorPalette.colorBlack,
                                   inactiveColor: ColorPalette.colorLightGrey,

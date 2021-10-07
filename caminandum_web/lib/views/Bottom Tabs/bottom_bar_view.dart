@@ -7,6 +7,7 @@ import 'package:caminandum_web/views/ChatScreen/chats_screen.dart';
 import 'package:caminandum_web/views/HomePage/home_page.dart';
 import 'package:caminandum_web/views/Profile/profile_view.dart';
 import 'package:caminandum_web/views/contacts_page/contacts_page.dart';
+import 'package:caminandum_web/views/contacts_page/notification_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,7 @@ class _BottomBarViewState extends State<BottomBarView>
   TabController? _tabController;
   @override
   void initState() {
+    debugPrint('[_BottomBarViewState]');
     // TODO: implement initState
 
     super.initState();
@@ -69,13 +71,11 @@ class _BottomBarViewState extends State<BottomBarView>
             Icons.search,
           ),
           label: '',
-        ),        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.connect_without_contact
-          ),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.connect_without_contact),
           label: '',
         ),
-
         BottomNavigationBarItem(
           icon: Icon(
             Icons.timer,
@@ -95,7 +95,6 @@ class _BottomBarViewState extends State<BottomBarView>
           label: '',
         ),
       ],
-
     );
   }
 
@@ -103,39 +102,40 @@ class _BottomBarViewState extends State<BottomBarView>
   Widget build(BuildContext context) {
     // ignore: omit_local_variable_types
 
-    return SafeArea(
-      child: Scaffold(
-          bottomNavigationBar: buildBottomNavigationMenu(),
-          body:
-              //Obx(() =>
-              TabBarView(
-                  controller: _tabController,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: <Widget>[
-                HomePage(),
-                HomePage(),
+    return Material(
+      child: SafeArea(
+        child: Scaffold(
+            bottomNavigationBar: buildBottomNavigationMenu(),
+            body:
+                //Obx(() =>
+                TabBarView(
+                    controller: _tabController,
+                    physics: NeverScrollableScrollPhysics(),
+                    children: <Widget>[
+                  HomePage(),
+                  HomePage(),
+                  HomePage(),
+                  HomePage(),
+                  ChatsScreen(),
+                  ProfileView(),
+                ])
 
-                HomePage(),
-                HomePage(),
-                ChatsScreen(),
-                ProfileView(),
-              ])
-
-          // IndexedStack(
-          //   index: landingPageController.tabIndex.value,
-          //   children: [
-          //     HomePage(),
-          //     HomePage(),
-          //     HomePage(),
-          //     HomePage(),
-          //
-          //     ///check rename to chatscreen
-          //     ChatScreen(),
-          //     ProfileView(),
-          //   ],
-          // )
-          ),
-      //)
+            // IndexedStack(
+            //   index: landingPageController.tabIndex.value,
+            //   children: [
+            //     HomePage(),
+            //     HomePage(),
+            //     HomePage(),
+            //     HomePage(),
+            //
+            //     ///check rename to chatscreen
+            //     ChatScreen(),
+            //     ProfileView(),
+            //   ],
+            // )
+            ),
+        //)
+      ),
     );
   }
 }
