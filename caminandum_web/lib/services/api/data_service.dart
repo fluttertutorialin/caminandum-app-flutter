@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-
 import 'package:caminandum_web/model/base/base.dart';
+import 'package:caminandum_web/model/chat_model.dart';
 import 'package:caminandum_web/model/contact/contact_request.dart';
 import 'package:caminandum_web/model/contact/direct_contact_request.dart';
 import 'package:caminandum_web/model/contact/request_model.dart';
@@ -48,25 +48,31 @@ abstract class GetDataService {
   Future<GetMyUserModel> getMyUserProfile(@Body() UserProfile userProfile);
 
   @GET("pedometer/month-stats")
-  Future<PedometerStat> getThisMonthPedometerStat(@Body() PedometerStat pedometerStat);
+  Future<PedometerStat> getThisMonthPedometerStat(
+      @Body() PedometerStat pedometerStat);
 
   @PUT("pedometer/stats")
-  Future<PedometerStat> updatePedometerStat(@Body() UpdatePedometerStat updatePedometerStat);
+  Future<PedometerStat> updatePedometerStat(
+      @Body() UpdatePedometerStat updatePedometerStat);
 
   @GET("pedometer/today-stats")
-  Future<PedometerStat> todayPedometerStat(@Body() UpdatePedometerStat updatePedometerStat);
+  Future<PedometerStat> todayPedometerStat(
+      @Body() UpdatePedometerStat updatePedometerStat);
 
   @PUT("pedometer/today-stats")
-  Future<PedometerStat> updateTodaysStat(@Body() UpdatePedometerStat updatePedometerStat);
+  Future<PedometerStat> updateTodaysStat(
+      @Body() UpdatePedometerStat updatePedometerStat);
 
   @PUT("pedometer/update-pedometer-goals")
-  Future<PedometerGoals> updatePedometerGoals(@Body() UpdatePedometerGoals updatePedometerGoals);
+  Future<PedometerGoals> updatePedometerGoals(
+      @Body() UpdatePedometerGoals updatePedometerGoals);
 
   @POST("user/add-location-history")
   Future<Error> addLocationHistory(@Body() AddLocation addLocation);
 
   @POST("user/accept-request")
-  Future<ContactRequest> acceptContactRequest(@Body() RequestModel requestModel);
+  Future<ContactRequest> acceptContactRequest(
+      @Body() RequestModel requestModel);
 
   // @POST("user/accept-request")
   // Future<ContactRequest> getMyContactRequest(@Body() RequestModel requestModel);
@@ -75,19 +81,18 @@ abstract class GetDataService {
   Future<ContactRequest> denyContactRequest(@Body() RequestModel requestModel);
 
   @POST("user/deny-request")
-  Future<ContactRequest> directContactRequest(@Body() DirectContactRequest directContactRequest);
+  Future<ContactRequest> directContactRequest(
+      @Body() DirectContactRequest directContactRequest);
 
   @POST("user/deny-request")
-  Future<ContactRequest> sendContactRequest(@Body() SendContactReq sendContactReq);
+  Future<ContactRequest> sendContactRequest(
+      @Body() SendContactReq sendContactReq);
 
   @GET("user/nearby-users")
-  Future<NearbyUser> nearUser(@Query("onlyVaccinated") int onlyVaccinated,
+  Future<NearbyUser> nearUser(
+      @Query("onlyVaccinated") int onlyVaccinated,
       @Query("groupByCompany") int groupByCompany,
       @Query("lat") String lat,
       @Query("long") String long,
       @Query("page") int page);
-
-
-
-
 }
