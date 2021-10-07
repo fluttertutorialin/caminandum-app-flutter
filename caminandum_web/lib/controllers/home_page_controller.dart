@@ -1,11 +1,5 @@
-import 'dart:async';
-
-import 'package:caminandum_web/model/dummy_random_contacts_model.dart';
 import 'package:caminandum_web/model/user/near_user.dart';
-import 'package:caminandum_web/model/user/near_user_home_api.dart';
 import 'package:caminandum_web/services/api/retrofit_client.dart';
-import 'package:caminandum_web/services/random_contacts/add_contacts.dart';
-import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';

@@ -78,9 +78,16 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context) => MenuScreen(
           currentItem: currentItem,
           onSelectedItem: (item) {
-            print(item);
-            setState(() => currentItem = item);
-            ZoomDrawer.of(context)!.close();
+            print("====> ${item.title}");
+            setState(() {
+              currentItem = item;
+
+
+
+              ZoomDrawer.of(context)!.close();
+            });
+            //setState(() => currentItem = item);
+
           },
         ),
       ),
@@ -88,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget getScreen() {
+    print("==> Menu Get screen call");
     switch (currentItem) {
       case MenuItems.PlayerScreen:
         return const PlayerScreen();
