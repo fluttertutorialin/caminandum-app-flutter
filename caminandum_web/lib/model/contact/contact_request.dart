@@ -58,17 +58,21 @@ class Request {
   String ?status;
   String ?updatedAt;
 
-  factory Request.fromJson(Map<String, dynamic> json) => Request(
-    between: List<String>.from(json["between"].map((x) => x)),
-    createdAt: json["created_at"],
-    id: json["id"],
-    invitationNote: json["invitation_note"],
-    profile: Profile.fromJson(json["profile"]),
-    receiverId: json["receiver_id"],
-    senderId: json["sender_id"],
-    status: json["status"],
-    updatedAt: json["updated_at"],
-  );
+  factory Request.fromJson(Map<String, dynamic> json) {
+    List<String> empty = [];
+  return  Request(
+      between:json["between"] != null ? List<String>.from(json["between"].map((x) => x)):empty,
+      createdAt: json["created_at"],
+      id: json["id"],
+      invitationNote: json["invitation_note"],
+      profile:json["profile"] != null ? Profile.fromJson(json["profile"]): Profile(),
+      receiverId: json["receiver_id"],
+      senderId: json["sender_id"],
+      status: json["status"],
+      updatedAt: json["updated_at"],
+    );
+  }
+
 
   Map<String, dynamic> toJson() => {
     "between": List<dynamic>.from(between!.map((x) => x)),
@@ -114,21 +118,24 @@ class Profile {
   String ?status;
   String ?userId;
 
-  factory Profile.fromJson(Map<String, dynamic> json) => Profile(
-    avatar: json["avatar"],
-    bio: json["bio"],
-    covid19Vaccinated: json["covid19_vaccinated"],
-    dateJoined: json["date_joined"],
-    firstName: json["first_name"],
-    gender: json["gender"],
-    id: json["id"],
-    isPublic: json["is_public"],
-    lastMessage: json["last_message"],
-    lastName: json["last_name"],
-    photos: List<String>.from(json["photos"].map((x) => x)),
-    status: json["status"],
-    userId: json["user_id"],
-  );
+  factory Profile.fromJson(Map<String, dynamic> json){
+    List<String> empty = [];
+ return Profile(
+      avatar: json["avatar"],
+      bio: json["bio"],
+      covid19Vaccinated: json["covid19_vaccinated"],
+      dateJoined: json["date_joined"],
+      firstName: json["first_name"],
+      gender: json["gender"],
+      id: json["id"],
+      isPublic: json["is_public"],
+      lastMessage: json["last_message"],
+      lastName: json["last_name"],
+      photos: json["photos"] != null ? List<String>.from(json["photos"].map((x) => x)) :empty,
+      status: json["status"],
+      userId: json["user_id"],
+    );
+  }
 
   Map<String, dynamic> toJson() => {
     "avatar": avatar,
