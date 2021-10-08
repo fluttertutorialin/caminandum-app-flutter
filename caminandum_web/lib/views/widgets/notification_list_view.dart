@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
 
 class NotificationListView extends StatelessWidget {
-  const NotificationListView(
-      {Key? key,
+  const NotificationListView({Key? key,
       this.avtar,
       this.title,
       this.iconAccept,
       this.iconDeclined,
       this.controller,
-      this.theme})
-      : super(key: key);
+      this.theme,
+      required this.onTap
+  }) : super(key: key);
 
   final avtar;
   final title;
@@ -20,6 +20,7 @@ class NotificationListView extends StatelessWidget {
   final iconDeclined;
   final controller;
   final theme;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +28,11 @@ class NotificationListView extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.1,
       width: MediaQuery.of(context).size.width,
       child: ListTile(
-        onTap: controller.requestDetailsPage,
+        onTap: onTap(),
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(30.0),
           child: FadeInImage(
-            image: AssetImage(avtar),
+            image: NetworkImage('https://api.caminandum.com/'+avtar),
             placeholder: AssetImage(Images.profile),
             fit: BoxFit.cover,
             height: 50.0,

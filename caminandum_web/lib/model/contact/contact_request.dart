@@ -15,7 +15,7 @@ class ContactRequest {
     this.userIds,
   });
 
-  List<Request> ?requests;
+  List<Request>? requests;
   List<String> ?userIds;
 
   factory ContactRequest.fromJson(Map<String, dynamic> json) {

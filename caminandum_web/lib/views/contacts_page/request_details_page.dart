@@ -18,159 +18,159 @@ class RequestDetails extends StatelessWidget {
             : ColorPalette.colorOrange,
         body: SafeArea(
           child: Column(
-            children: [
-              Padding(
+              children: [
+          Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            child: Row(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: InkWell(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: Icon(
+                      Icons.chevron_left,
+                      color: !_themeController.isDark()
+                          ? ColorPalette.colorBlack
+                          : ColorPalette.colorWhite,
+                      size: 35.0,
+                    ),
+                  ),
+                ),
+                Spacer(),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Icon(
+                    Icons.more_vert,
+                    color: !_themeController.isDark()
+                        ? ColorPalette.colorBlack
+                        : ColorPalette.colorWhite,
+                    size: 35.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(),
+        ),
+        Expanded(
+          flex: 7,
+          child: Stack(
+              children: [
+          Container(
+          margin: EdgeInsets.only(top: 78),
+          decoration: BoxDecoration(
+            color: _themeController.isDark()
+                ? ColorPalette.colorBlack
+                : ColorPalette.colorWhite,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(40.0),
+                topRight: Radius.circular(40.0)),
+          ),
+          child: Center(
+            child: Container(
+                height: 250.0,
+                decoration: BoxDecoration(
+                  color: _themeController.isDark()
+                      ? ColorPalette.colorBlack
+                      : ColorPalette.colorWhite,
+                  border: Border.all(
+                      width: 2.0, color: ColorPalette.colorWhite),
+                  boxShadow:_themeController.isDark()?[]: [new BoxShadow(
+                  color:  ColorPalette.colorWhite,
+                  blurRadius: 50.0,
+                ),]
+
+            ),
+            child: Card(
+              color: _themeController.isDark()
+                  ? ColorPalette.colorBlack
+                  : ColorPalette.colorWhite,
+              elevation: 5.0,
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  child: Row(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.topRight,
                         child: InkWell(
                           onTap: () {
                             Get.back();
                           },
                           child: Icon(
-                            Icons.chevron_left,
+                            Icons.close,
                             color: !_themeController.isDark()
                                 ? ColorPalette.colorBlack
                                 : ColorPalette.colorWhite,
-                            size: 35.0,
-                          ),
-                        ),
-                      ),
-                      Spacer(),
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: Icon(
-                          Icons.more_vert,
-                          color: !_themeController.isDark()
-                              ? ColorPalette.colorBlack
-                              : ColorPalette.colorWhite,
-                          size: 35.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(),
-              ),
-              Expanded(
-                flex: 7,
-                child: Stack(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(top: 78),
-                      decoration: BoxDecoration(
-                        color: _themeController.isDark()
-                            ? ColorPalette.colorBlack
-                            : ColorPalette.colorWhite,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40.0),
-                            topRight: Radius.circular(40.0)),
-                      ),
-                      child: Center(
-                        child: Container(
-                          height: 250.0,
-                          decoration: BoxDecoration(
-                              color: _themeController.isDark()
-                              ? ColorPalette.colorBlack
-                              : ColorPalette.colorWhite,
-                            border: Border.all(
-                                width: 2.0, color: ColorPalette.colorWhite),
-                              boxShadow:_themeController.isDark()?[]: [new BoxShadow(
-                                color:  ColorPalette.colorWhite,
-                                blurRadius: 50.0,
-                              ),]
-
-                          ),
-                          child: Card(
-                           color: _themeController.isDark()
-                                ? ColorPalette.colorBlack
-                                : ColorPalette.colorWhite,
-                            elevation: 5.0,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Align(
-                                      alignment: Alignment.topRight,
-                                      child: InkWell(
-                                        onTap: () {
-                                          Get.back();
-                                        },
-                                        child: Icon(
-                                          Icons.close,
-                                          color: !_themeController.isDark()
-                                              ? ColorPalette.colorBlack
-                                              : ColorPalette.colorWhite,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20.0,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Text(
-                                      "Accept Tasha ?",
-                                      style: context.theme.textTheme.subtitle1!
-                                          .copyWith(
-                                        fontSize: 20.0,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 30.0,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        ButtonWidget(
-                                          title: 'Cancel',
-                                          onTap: () {},
-                                          controller: _themeController.isDark(),
-                                        ),
-                                        ButtonWidget(
-                                          title: 'Confirm',
-                                          onTap: () {},
-                                          controller: _themeController.isDark(),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
                           ),
                         ),
                       ),
                     ),
-                    Align(
-                        alignment: Alignment.topCenter,
-                        child: SizedBox(
-                          child: CircleAvatar(
-                            radius: 80.0,
-                            backgroundImage: AssetImage(Images.userProfile),
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        "Accept Tasha ?",
+                        style: context.theme.textTheme.subtitle1!
+                            .copyWith(
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment:
+                        MainAxisAlignment.spaceBetween,
+                        children: [
+                          ButtonWidget(
+                            title: 'Cancel',
+                            onTap: () {},
+                            controller: _themeController.isDark(),
                           ),
-                        )),
+                          ButtonWidget(
+                            title: 'Confirm',
+                            onTap: () {},
+                            controller: _themeController.isDark(),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
-            ],
+            ),
           ),
         ),
       ),
+      Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+            child: CircleAvatar(
+              radius: 80.0,
+              backgroundImage: AssetImage(Images.userProfile),
+            ),
+          )),
+      ],
+    ),
+    ),
+    ],
+    ),
+    ),
+    ),
     );
   }
 }

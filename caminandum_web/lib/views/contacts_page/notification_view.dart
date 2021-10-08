@@ -2,6 +2,7 @@ import 'package:caminandum_web/constants/colors.dart';
 import 'package:caminandum_web/constants/images.dart';
 import 'package:caminandum_web/controllers/contact_notification_controller.dart';
 import 'package:caminandum_web/controllers/theme_controller.dart';
+import 'package:caminandum_web/views/contacts_page/request_details_page.dart';
 import 'package:caminandum_web/views/widgets/AppbarWidget.dart';
 import 'package:caminandum_web/views/widgets/notification_list_view.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,8 @@ import '../custom_background_widget.dart';
 class NotificationView extends StatelessWidget {
   NotificationView({Key? key}) : super(key: key);
   var appBarIconSize;
-  final contactNotiController = Get.put(ContactNotificationController());
+  final contactNotificationController =
+      Get.put(ContactNotificationController());
   ThemeController _themeController = Get.find<ThemeController>();
 
   @override
@@ -36,24 +38,33 @@ class NotificationView extends StatelessWidget {
                 color: _themeController.isDark()
                     ? ColorPalette.colorBlack
                     : ColorPalette.colorWhite,
-                child: ListView.builder(
+                child: Obx(() => ListView.builder(
                     physics: BouncingScrollPhysics(),
-                    itemCount: 10,
+                    itemCount:
+                        contactNotificationController.contactList!.length,
                     itemBuilder: (context, index) {
-                      return Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: NotificationListView(
-                            controller: contactNotiController,
-                            avtar: Images.profile,
-                            title: "Cate wants to add you as a contact",
-                            iconAccept: FontAwesomeIcons.check,
-                            iconDeclined: Icons.close_sharp,
-                            theme: _themeController.isDark(),
-                          ),
+                      var request =
+                          contactNotificationController.contactList![index];
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: NotificationListView(
+                          onTap: () {
+Get.snackbar("Notification", "In Progress");
+                            // Get.to(RequestDetails(
+                            //   image:request.profile!.avatar??"",
+                            //   values: request.profile!??null,
+                            //   id: request.id,
+                            // ), fullscreenDialog: true);
+                          },
+                          controller: contactNotificationController.contactList,
+                          avtar: request.profile!.avatar??"",
+                          title: request.profile!.firstName ?? "",
+                          iconAccept: FontAwesomeIcons.check,
+                          iconDeclined: Icons.close_sharp,
+                          theme: _themeController.isDark(),
                         ),
                       );
-                    }),
+                    })),
               ),
             ),
           ],
