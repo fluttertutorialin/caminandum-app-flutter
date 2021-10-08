@@ -267,9 +267,12 @@ class _GetDataService implements GetDataService {
   }
 
   @override
-  Future<PedometerStat> updatePedometerStat(updatePedometerStat) async {
+  Future<PedometerStat> updatePedometerStat(
+      updatePedometerStat, increment) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'increment': increment,
+    };
     final _data = <String, dynamic>{};
     _data.addAll(updatePedometerStat.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(

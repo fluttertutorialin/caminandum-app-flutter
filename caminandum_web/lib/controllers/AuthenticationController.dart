@@ -176,8 +176,6 @@ class AuthenticationController extends GetxController {
 
     //setting token
 
-    sAuthToken = value.token.toString();
-    print("AuthToken ===> $sAuthToken");
     RetrofitClientInstance.getInstance().setAuthToken(value.token.toString());
     signedInUser = value;
     print('check values clicked or not');

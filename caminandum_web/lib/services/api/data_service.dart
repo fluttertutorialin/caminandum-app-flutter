@@ -92,7 +92,7 @@ abstract class GetDataService {
   //for Pedometer
   @PUT("pedometer/stats")
   Future<PedometerStat> updatePedometerStat(
-      @Body() UpdatePedometerStat updatePedometerStat);
+      @Body() UpdatePedometerStat updatePedometerStat,@Query("increment") int increment);
   @PUT("pedometer/today-stats")
   Future<PedometerStat> updateTodaysStat(
       @Body() UpdatePedometerStat updatePedometerStat);
