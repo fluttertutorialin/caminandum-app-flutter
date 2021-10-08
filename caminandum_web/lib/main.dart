@@ -2,11 +2,9 @@ import 'package:caminandum_web/bindings/themeBinind.dart';
 import 'package:caminandum_web/constants/themes.dart';
 import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/view/pages/pedoMeterScreen.dart';
-import 'package:caminandum_web/views/HomePage/home_page.dart';
-import 'package:caminandum_web/views/LoginScreen.dart';
-import 'package:caminandum_web/views/Profile/profile_view.dart';
-import 'package:caminandum_web/views/SelectIntrest.dart';
+import 'package:caminandum_web/views/Profile/profile_screen.dart';
 import 'package:caminandum_web/views/StartScreen.dart';
+import 'package:caminandum_web/views/widgets/widget_container.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
@@ -15,16 +13,17 @@ import 'package:permission_handler/permission_handler.dart';
 import './bindings/radioBinind.dart';
 import 'constants/menu_Items.dart';
 import 'package:get_storage/get_storage.dart';
-import 'controllers/AuthenticationController.dart';
 import 'model/menu_Item.dart';
 import 'view/pages/menu_screen.dart';
 import 'view/pages/player_screen.dart';
 import 'views/Bottom Tabs/bottom_bar_view.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   RadioBinding().dependencies();
   ThemeBinding().dependencies();
+
   await GetStorage.init();
   if (!kIsWeb) final status = await Permission.activityRecognition.request();
   runApp(MyApp());
@@ -65,54 +64,43 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ZoomDrawer(
-      style: DrawerStyle.Style1,
-      angle: -10,
-      borderRadius: 40,
-      mainScreen: getScreen(),
-      slideWidth: MediaQuery.of(context).size.width * 0.80,
-      showShadow: true,
-      backgroundColor: Colors.orangeAccent,
-      menuScreen: Builder(
-        builder: (context) => MenuScreen(
-          currentItem: currentItem,
-          onSelectedItem: (item) {
-            print("====> ${item.title}");
-            setState(() {
-              currentItem = item;
-
-
-
+    return WidgetContainer(
+      child: ZoomDrawer(
+        style: DrawerStyle.Style1,
+        angle: -10,
+        borderRadius: 40,
+        mainScreen: getScreen(),
+        slideWidth: kIsWeb ? 225 : MediaQuery.of(context).size.width * 0.80,
+        showShadow: true,
+        backgroundColor: Colors.orangeAccent,
+        menuScreen: Builder(
+          builder: (context) => MenuScreen(
+            currentItem: currentItem,
+            onSelectedItem: (item) {
+              print(item);
+              setState(() => currentItem = item);
               ZoomDrawer.of(context)!.close();
-            });
-            //setState(() => currentItem = item);
-
-          },
+            },
+          ),
         ),
       ),
     );
   }
 
   Widget getScreen() {
-    print("==> Menu Get screen call");
     switch (currentItem) {
       case MenuItems.PlayerScreen:
-        return const PlayerScreen();
-
+        return PlayerScreen();
       case MenuItems.Pedometer:
-        return const PedoMeterScreen();
-
+        return PedoMeterScreen();
       case MenuItems.caminandum:
-        return const StartScreen();
-
+        return StartScreen();
       case MenuItems.home:
-        return const BottomBarView();
-
+        return BottomBarView();
       case MenuItems.person:
-        return ProfileView();
-
+        return ProfileScreen();
       default:
-        return const PedoMeterScreen();
+        return PedoMeterScreen();
     }
   }
 }

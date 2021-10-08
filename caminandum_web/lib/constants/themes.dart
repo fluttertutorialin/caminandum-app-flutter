@@ -1,10 +1,36 @@
+import 'package:caminandum_web/constants/custom_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 class Themes {
+  static final poppinsText = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 22,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+  final tabAppBar = CustomColorScheme(
+    lightBackgroundColor: Color(0xFFB4B1B1).withOpacity(0.35),
+    darkBackgroundColor: Color(0xFFB4B1B1).withOpacity(0.35),
+    lightSelectedIconColor: Colors.black,
+    darkSelectedIconColor: Colors.black,
+    lightUnSelectedIconColor: Colors.black,
+    darkUnSelectedIconColor: Colors.grey.withOpacity(0.35),
+  );
+
+  final wPoppingsText = CustomColorScheme(
+    darkTextStyle: poppinsText,
+    lightTextStyle: poppinsText,
+  );
+
   static final light = ThemeData.light().copyWith(
-    scaffoldBackgroundColor: Colors.transparent,
+    scaffoldBackgroundColor: Colors.white,
     backgroundColor: Colors.white,
     brightness: Brightness.light,
+    tabBarTheme: TabBarTheme(
+      labelColor: Colors.black,
+      unselectedLabelColor: Colors.black,
+      labelPadding: EdgeInsets.all(0),
+    ),
     appBarTheme: AppBarTheme(
       color: Colors.white,
       foregroundColor: Colors.white,
@@ -69,6 +95,7 @@ class Themes {
   static final dark = ThemeData.dark().copyWith(
     scaffoldBackgroundColor: Colors.black,
     brightness: Brightness.dark,
+    backgroundColor: Colors.black,
     appBarTheme: AppBarTheme(
       color: Colors.black,
       foregroundColor: Colors.black,
@@ -78,6 +105,11 @@ class Themes {
         fontFamily: "Poppins",
         fontSize: 18,
       ),
+    ),
+    tabBarTheme: TabBarTheme(
+      labelColor: Colors.black,
+      unselectedLabelColor: Colors.black,
+      labelPadding: EdgeInsets.all(0),
     ),
     primaryColor: Colors.transparent,
     primaryColorDark: Colors.black,

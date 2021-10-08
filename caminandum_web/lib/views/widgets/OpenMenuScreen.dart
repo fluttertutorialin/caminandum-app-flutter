@@ -8,6 +8,7 @@ import 'package:caminandum_web/views/StartScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class OpenMenuScreen extends StatefulWidget {
   final child;
@@ -28,7 +29,7 @@ class _OpenMenuScreenState extends State<OpenMenuScreen> {
       angle: -10,
       borderRadius: 40,
       mainScreen: childWidget,
-      slideWidth: MediaQuery.of(context).size.width * 0.80,
+      slideWidth: kIsWeb ? 225 : MediaQuery.of(context).size.width * 0.80,
       showShadow: true,
       backgroundColor: Colors.orangeAccent,
       menuScreen: Builder(
@@ -40,18 +41,15 @@ class _OpenMenuScreenState extends State<OpenMenuScreen> {
             setState(() {
               controller.currentItem.value = item;
               switch (controller.currentItem.value.title) {
-
                 case "Pedometer":
-                    childWidget = PedoMeterScreen();
-                    break;
+                  childWidget = PedoMeterScreen();
+                  break;
                 default:
                   print("===> Invalid menu item");
-                   break;
-
+                  break;
               }
               ZoomDrawer.of(context)!.close();
             });
-
           },
         ),
       ),

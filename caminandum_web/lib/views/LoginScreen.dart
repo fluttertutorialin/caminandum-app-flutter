@@ -3,10 +3,11 @@ import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/views/custom_background_widget.dart';
 import 'package:caminandum_web/views/widgets/OpenMenuScreen.dart';
 import 'package:caminandum_web/views/widgets/theme_form_field_widget.dart/custom_text_form_field.dart';
+import 'package:caminandum_web/views/widgets/widget_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'widgets/theme_form_field_widget.dart/custom_text_form_field.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class LoginScreen extends StatelessWidget {
   final AuthenticationController controller =
@@ -75,234 +76,246 @@ class LoginScreen extends StatelessWidget {
     ThemeController _themeController = Get.find<ThemeController>();
     final isDark = _themeController.isDark();
 
-    return OpenMenuScreen(
-      child: CustomBackgroundWidget(
-        childOnTap: true,
-        child: Column(
-          children: [
-            Expanded(
-              flex: 1,
-              child: SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(
-                  parent: BouncingScrollPhysics(),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Form(
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      key: controller.loginFormKey,
-                      child: Container(
-                        width: 400,
-                        padding: const EdgeInsets.all(30.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            SizedBox(
-                              height:
-                                  (MediaQuery.of(context).size.height) * 0.15,
-                            ),
-                            if (isDark)
-                              SizedBox(
-                                height: 35,
-                              ),
-                            Text(
-                              "Welcome Back!",
-                              textAlign: TextAlign.center,
-                              style:
-                                  context.theme.textTheme.subtitle1!.copyWith(
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                              height: 30,
-                              child: Text(
-                                "Login To Your Account",
-                                style:
-                                    context.theme.textTheme.subtitle1!.copyWith(
-                                  fontSize: 18.0,
+    return WidgetContainer(
+      child: OpenMenuScreen(
+        child: CustomBackgroundWidget(
+          childOnTap: kIsWeb ? false : true,
+          child: Column(
+            children: [
+              Expanded(
+                flex: 1,
+                child: SingleChildScrollView(
+                  physics: AlwaysScrollableScrollPhysics(
+                    parent: BouncingScrollPhysics(),
+                  ),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Form(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          key: controller.loginFormKey,
+                          child: Container(
+                            width: 400,
+                            padding: const EdgeInsets.all(30.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                SizedBox(
+                                  height: (MediaQuery.of(context).size.height) *
+                                      0.15,
                                 ),
-                                textAlign: TextAlign.left,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            registerForm(context, isDark),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Container(
-                              child: Obx(
-                                () => FlatButton(
-                                  child: controller.isloading.value == false
-                                      ? Text(
-                                          'Login',
-                                          style: TextStyle(
-                                              fontSize: 18.0,
-                                              color: Colors.white),
-                                        )
-                                      : Center(
-                                          child: CircularProgressIndicator(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50)),
-                                  onPressed: () {
-                                    controller.checkLogin();
-                                    //
-                                  },
-                                  color: context.theme.buttonTheme.colorScheme!
-                                      .onSecondary,
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 10,
-                                    horizontal: 50,
+                                if (isDark)
+                                  SizedBox(
+                                    height: 35,
                                   ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 35,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10.0),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      height: 1,
-                                      color:
-                                          context.theme.colorScheme.onPrimary,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10.0,
-                                    ),
-                                    child: Text(
-                                      "Or Login With",
-                                      style: context.theme.textTheme.subtitle1!
-                                          .copyWith(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      height: 1,
-                                      color:
-                                          context.theme.colorScheme.onPrimary,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 50,
-                            ),
-                            Row(
-                              children: [
                                 Text(
-                                  "forgot your password?   ",
+                                  "Welcome Back!",
+                                  textAlign: TextAlign.center,
                                   style: context.theme.textTheme.subtitle1!
                                       .copyWith(
-                                    fontSize: 16.0,
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: () => {},
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                Container(
+                                  height: 30,
                                   child: Text(
-                                    "Click here.",
+                                    "Login To Your Account",
                                     style: context.theme.textTheme.subtitle1!
                                         .copyWith(
-                                      fontSize: 16.0,
-                                      color: context.theme.indicatorColor,
+                                      fontSize: 18.0,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                registerForm(context, isDark),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Container(
+                                  child: Obx(
+                                    () => FlatButton(
+                                      child: controller.isloading.value == false
+                                          ? Text(
+                                              'Login',
+                                              style: TextStyle(
+                                                  fontSize: 18.0,
+                                                  color: Colors.white),
+                                            )
+                                          : Center(
+                                              child: CircularProgressIndicator(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(50)),
+                                      onPressed: () {
+                                        controller.checkLogin();
+                                        //
+                                      },
+                                      color: context.theme.buttonTheme
+                                          .colorScheme!.onSecondary,
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: 10,
+                                        horizontal: 50,
+                                      ),
                                     ),
                                   ),
                                 ),
+                                SizedBox(
+                                  height: 35,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          height: 1,
+                                          color: context
+                                              .theme.colorScheme.onPrimary,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 10.0,
+                                        ),
+                                        child: Text(
+                                          "Or Login With",
+                                          style: context
+                                              .theme.textTheme.subtitle1!
+                                              .copyWith(
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Container(
+                                          height: 1,
+                                          color: context
+                                              .theme.colorScheme.onPrimary,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 50,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "forgot your password?   ",
+                                      style: context.theme.textTheme.subtitle1!
+                                          .copyWith(
+                                        fontSize: 16.0,
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () => {},
+                                      child: Text(
+                                        "Click here.",
+                                        style: context
+                                            .theme.textTheme.subtitle1!
+                                            .copyWith(
+                                          fontSize: 16.0,
+                                          color: context.theme.indicatorColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 25.0,
+                                ),
+                                SizedBox(
+                                  height: 45,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          debugPrint(
+                                              "Route to the FacebookLogin");
+                                        },
+                                        child: Image(
+                                          image: AssetImage(
+                                            "assets/login_icon/fb.png",
+                                          ),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        // Try Handing with the Google Auth
+                                        onTap: () async {
+                                          controller.signInWithGoogle();
+                                        },
+                                        child: Image(
+                                          image: AssetImage(
+                                            "assets/login_icon/google.png",
+                                          ),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          debugPrint(
+                                              "Route to the Apple Login");
+                                        },
+                                        child: Image(
+                                          color:
+                                              context.theme.colorScheme.primary,
+                                          image: AssetImage(
+                                            "assets/login_icon/apple.png",
+                                          ),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          debugPrint(
+                                              "Route to the Weibo Login");
+                                        },
+                                        child: Image(
+                                          image: AssetImage(
+                                            "assets/login_icon/weibo.png",
+                                          ),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          debugPrint(
+                                              "Route to the Wechat Login");
+                                        },
+                                        child: Image(
+                                          image: AssetImage(
+                                            "assets/login_icon/wechat.png",
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
                               ],
                             ),
-                            SizedBox(
-                              height: 25.0,
-                            ),
-                            SizedBox(
-                              height: 45,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      debugPrint("Route to the FacebookLogin");
-                                    },
-                                    child: Image(
-                                      image: AssetImage(
-                                        "assets/login_icon/fb.png",
-                                      ),
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    // Try Handing with the Google Auth
-                                    onTap: () async {
-                                      controller.signInWithGoogle();
-                                    },
-                                    child: Image(
-                                      image: AssetImage(
-                                        "assets/login_icon/google.png",
-                                      ),
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      debugPrint("Route to the Apple Login");
-                                    },
-                                    child: Image(
-                                      color: context.theme.colorScheme.primary,
-                                      image: AssetImage(
-                                        "assets/login_icon/apple.png",
-                                      ),
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      debugPrint("Route to the Weibo Login");
-                                    },
-                                    child: Image(
-                                      image: AssetImage(
-                                        "assets/login_icon/weibo.png",
-                                      ),
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      debugPrint("Route to the Wechat Login");
-                                    },
-                                    child: Image(
-                                      image: AssetImage(
-                                        "assets/login_icon/wechat.png",
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,8 +1,8 @@
 import 'package:caminandum_web/controllers/theme_controller.dart';
-import 'package:caminandum_web/view/widgets/menuWidget.dart';
 import 'package:caminandum_web/views/widgets/quarter_circle_painter/quarter_circle_painter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_utils/src/extensions/context_extensions.dart';
@@ -52,7 +52,15 @@ class CustomBackgroundWidget extends StatelessWidget {
                                       backgroundColor: Colors.transparent,
                                       bottomOpacity: 0.0,
                                       elevation: 0.0,
-                                      leading: MenuWidget(),
+                                      leading: IconButton(
+                                        onPressed: () =>
+                                            ZoomDrawer.of(context)!.toggle(),
+                                        icon: Icon(
+                                          Icons.notes,
+                                          color: context
+                                              .theme.primaryIconTheme.color,
+                                        ),
+                                      ),
                                     ),
                                     body: child,
                                   ),
@@ -75,7 +83,14 @@ class CustomBackgroundWidget extends StatelessWidget {
                               appBar: AppBar(
                                 bottomOpacity: 0.0,
                                 elevation: 0.0,
-                                leading: MenuWidget(),
+                                leading: IconButton(
+                                  onPressed: () =>
+                                      ZoomDrawer.of(context)!.toggle(),
+                                  icon: Icon(
+                                    Icons.notes,
+                                    color: context.theme.primaryIconTheme.color,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -84,6 +99,7 @@ class CustomBackgroundWidget extends StatelessWidget {
                     ),
                   if (childOnTap && _themeController.isDark())
                     Positioned.fill(
+                      top: 85,
                       child: SafeArea(
                         child: child,
                       ),
@@ -95,7 +111,13 @@ class CustomBackgroundWidget extends StatelessWidget {
                           backgroundColor: Colors.transparent,
                           bottomOpacity: 0.0,
                           elevation: 0.0,
-                          leading: MenuWidget(),
+                          leading: IconButton(
+                            onPressed: () => ZoomDrawer.of(context)!.toggle(),
+                            icon: Icon(
+                              Icons.notes,
+                              color: context.theme.primaryIconTheme.color,
+                            ),
+                          ),
                         ),
                         body: child,
                       ),

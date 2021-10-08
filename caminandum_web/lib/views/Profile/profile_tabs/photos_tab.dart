@@ -8,18 +8,18 @@ class PhotosTab extends StatefulWidget {
   _PhotosTabState createState() => _PhotosTabState();
 }
 
-
 class _PhotosTabState extends State<PhotosTab>
     with AutomaticKeepAliveClientMixin {
-  final controller = Get.put(ProfileViewController());
+  // final controller = Get.put(ProfileViewController());
 
   @override
   Widget build(BuildContext context) {
+    return Container();
 
-    super.build(context);
-    return Center(
-      child: Obx(() => Text(controller.firstNameController.value.text)),
-    );
+    // super.build(context);
+    // return Center(
+    //   child: Obx(() => Text(controller.firstNameController.value.text)),
+    // );
   }
 
   @override

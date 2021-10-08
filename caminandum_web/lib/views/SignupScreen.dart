@@ -3,8 +3,10 @@ import 'package:caminandum_web/controllers/theme_controller.dart';
 import 'package:caminandum_web/views/custom_background_widget.dart';
 import 'package:caminandum_web/views/widgets/OpenMenuScreen.dart';
 import 'package:caminandum_web/views/widgets/theme_form_field_widget.dart/custom_text_form_field.dart';
+import 'package:caminandum_web/views/widgets/widget_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'widgets/theme_form_field_widget.dart/custom_text_form_field.dart';
 
@@ -152,60 +154,62 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OpenMenuScreen(
-      child: Scaffold(
-        body: CustomBackgroundWidget(
-          childOnTap: true,
-          child: Column(
-            children: [
-              Expanded(
-                flex: 1,
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(
-                    parent: BouncingScrollPhysics(),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Form(
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        key: controller.signupFormKey,
-                        child: Container(
-                          width: 400,
-                          padding: const EdgeInsets.all(30.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              registerForm(context),
-                              FlatButton(
-                                child: Text(
-                                  'Sign up',
-                                  style: TextStyle(
-                                      fontSize: 18.0, color: Colors.white),
+    return WidgetContainer(
+      child: OpenMenuScreen(
+        child: Scaffold(
+          body: CustomBackgroundWidget(
+            childOnTap: kIsWeb ? false : true,
+            child: Column(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: SingleChildScrollView(
+                    physics: AlwaysScrollableScrollPhysics(
+                      parent: BouncingScrollPhysics(),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Form(
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          key: controller.signupFormKey,
+                          child: Container(
+                            width: 400,
+                            padding: const EdgeInsets.all(30.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                registerForm(context),
+                                FlatButton(
+                                  child: Text(
+                                    'Sign up',
+                                    style: TextStyle(
+                                        fontSize: 18.0, color: Colors.white),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(50)),
+                                  onPressed: () {
+                                    print('hello world from signup');
+                                    controller.checkSignup();
+                                    // Get.to(() => SignupScreen());
+                                  },
+                                  color: context.theme.buttonTheme.colorScheme!
+                                      .onSecondary,
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 10,
+                                    horizontal: 50,
+                                  ),
                                 ),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(50)),
-                                onPressed: () {
-                                  print('hello world from signup');
-                                  controller.checkSignup();
-                                  // Get.to(() => SignupScreen());
-                                },
-                                color: context
-                                    .theme.buttonTheme.colorScheme!.onSecondary,
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 10,
-                                  horizontal: 50,
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

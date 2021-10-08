@@ -71,6 +71,7 @@ dev_dependencies:
   build_runner: ^2.1.2
   json_serializable: ^4.1.0
   retrofit_generator: any
+  flutter_datetime_picker: ^1.5.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -88,6 +89,8 @@ flutter:
     - assets/images/Caminandum-logo.png
     - assets/menu/
     - assets/login_icon/
+    - assets/profile_icon/
+
 
 
   #  - assets/profile_icons/

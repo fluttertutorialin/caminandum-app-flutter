@@ -6,17 +6,13 @@ import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 
 class ThemeController extends GetxController {
-  late bool _isWeb;
   late bool _isDark;
 
-  // bool isWeb() => _isWeb;
   bool isDark() => _isDark;
 
   @override
   onInit() async {
-    _isWeb = kIsWeb;
-    _isDark = true;
-    debugPrint("[ThemeController]:$_isDark");
+    _isDark = !kIsWeb;
     _isDark ? Get.changeTheme(ThemeData.dark()) : Get.changeTheme(Themes.light);
     // Get.changeTheme(ThemeData.light());
     SystemChrome.setSystemUIOverlayStyle(

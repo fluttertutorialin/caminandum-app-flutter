@@ -53,7 +53,6 @@ class LoginSignupOptionsScreen extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          width: MediaQuery.of(context).size.width,
           alignment: Alignment.center,
           decoration: const BoxDecoration(
             image: DecorationImage(
@@ -63,6 +62,7 @@ class LoginSignupOptionsScreen extends StatelessWidget {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               const Expanded(
                 flex: 3,

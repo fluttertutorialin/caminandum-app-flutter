@@ -1,15 +1,9 @@
 import 'package:caminandum_web/constants/colors.dart';
-import 'package:caminandum_web/constants/images.dart';
-import 'package:caminandum_web/controllers/bottom_bar_view_controller.dart';
-import 'package:caminandum_web/view/widgets/text_widget.dart';
-import 'package:caminandum_web/views/ChatScreen/chat_detaill_screen.dart';
-import 'package:caminandum_web/views/ChatScreen/chats_screen.dart';
 import 'package:caminandum_web/views/HomePage/home_page.dart';
-import 'package:caminandum_web/views/Profile/profile_view.dart';
-import 'package:caminandum_web/views/contacts_page/contacts_page.dart';
+import 'package:caminandum_web/views/Profile/profile_screen.dart';
 import 'package:caminandum_web/views/contacts_page/notification_view.dart';
+import 'package:caminandum_web/views/widgets/widget_container.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView({Key? key}) : super(key: key);
@@ -101,9 +95,9 @@ class _BottomBarViewState extends State<BottomBarView>
   Widget build(BuildContext context) {
     // ignore: omit_local_variable_types
 
-
-    return Material(
-      child: SafeArea(
+    return WidgetContainer(
+      child: Material(
+          child: SafeArea(
         child: Scaffold(
             bottomNavigationBar: buildBottomNavigationMenu(),
             body:
@@ -117,26 +111,25 @@ class _BottomBarViewState extends State<BottomBarView>
                   HomePage(),
                   HomePage(),
                   NotificationView(),
-                  ProfileView(),
+                  ProfileScreen(),
                 ])
 
-
-          // IndexedStack(
-          //   index: landingPageController.tabIndex.value,
-          //   children: [
-          //     HomePage(),
-          //     HomePage(),
-          //     HomePage(),
-          //     HomePage(),
-          //
-          //     ///check rename to chatscreen
-          //     ChatScreen(),
-          //     ProfileView(),
-          //   ],
-          // )
-          ),
-      //)
-    )
+            // IndexedStack(
+            //   index: landingPageController.tabIndex.value,
+            //   children: [
+            //     HomePage(),
+            //     HomePage(),
+            //     HomePage(),
+            //     HomePage(),
+            //
+            //     ///check rename to chatscreen
+            //     ChatScreen(),
+            //     ProfileView(),
+            //   ],
+            // )
+            ),
+        //)
+      )),
     );
   }
 }

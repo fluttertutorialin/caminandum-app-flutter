@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final Function(String?)? onSaved;
+  final TextInputType? keyboardType;
+  final EdgeInsetsGeometry? contentPadding;
   final bool? obscureText;
   final String? Function(String?)? validator;
 
@@ -12,6 +14,10 @@ class CustomTextFormField extends StatelessWidget {
     required this.controller,
     this.onSaved,
     this.validator,
+    this.keyboardType = TextInputType.emailAddress,
+    this.contentPadding = const EdgeInsets.symmetric(
+      horizontal: 10.0,
+    ),
     this.obscureText = false,
   });
   @override
@@ -19,6 +25,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       obscureText: obscureText!,
+      keyboardType: keyboardType,
       onSaved: (value) {
         onSaved!(value);
       },
