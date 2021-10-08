@@ -9,6 +9,7 @@ ContactRequest contactRequestFromJson(String str) => ContactRequest.fromJson(jso
 String contactRequestToJson(ContactRequest data) => json.encode(data.toJson());
 
 class ContactRequest {
+
   ContactRequest({
     this.requests,
     this.userIds,
@@ -17,10 +18,16 @@ class ContactRequest {
   List<Request> ?requests;
   List<String> ?userIds;
 
-  factory ContactRequest.fromJson(Map<String, dynamic> json) => ContactRequest(
-    requests: List<Request>.from(json["requests"].map((x) => Request.fromJson(x))),
-    userIds: List<String>.from(json["user_ids"].map((x) => x)),
-  );
+  factory ContactRequest.fromJson(Map<String, dynamic> json) {
+   List<Request> empty = [];
+   List<String> emptyString = [];
+   return ContactRequest(
+      requests:json["requests"] != null ?
+      List<Request>.from(json["requests"].map((x) => Request.fromJson(x))): empty,
+      userIds: json["user_ids"] != null ? List<String>.from(json["user_ids"].map((x) => x)):emptyString,
+    );
+  }
+
 
   Map<String, dynamic> toJson() => {
     "requests": List<dynamic>.from(requests!.map((x) => x.toJson())),

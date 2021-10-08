@@ -190,6 +190,9 @@ class AuthenticationController extends GetxController {
         Get.to(() => SelectIntrest());
       });
     }
+    //testing  contact request
+    RetrofitClientInstance.getInstance()
+        .getDataService().getMyContactRequest(value.id.toString());
   }
 
   onError(Object object) {
